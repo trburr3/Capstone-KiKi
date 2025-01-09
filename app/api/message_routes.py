@@ -23,16 +23,18 @@ def create_message():
 
     newMessage = Message(
         sender_id = user_id,
-        recipient_id = data.get('recipient_id')
+        recipient_id = data.get('recipient_id'),
         message = data.get('message')
     )
+
+    db.session.add(newMessage)
     db.session.commit()
     return newMessage.to_dict(), 201
 
-@message_routes.route('/<int:messageId>', methods=['PUT'])
+@message_routes.route('/<int:message_id>', methods=['PUT'])
 @login_required
-def edit_messages(messageId):
-    message = Message.query.get(messageId)
+def edit_messages(message_id):
+    message = Message.query.get(message_id)
     if not message or not message.sender_id == current_user.get_id():
         return { 'errors': { 'message': 'No message found.' } }, 404
 
@@ -44,10 +46,10 @@ def edit_messages(messageId):
     db.session.commit()
     return message.to_dict()
 
-@message_routes.route('/<int:messageId>', methods=['DELETE'])
+@message_routes.route('/<int:message_id>', methods=['DELETE'])
 @login_required
-def delete_message(messageId):
-    message = Message.query.get(messageId)
+def delete_message(message_id):
+    message = Message.query.get(message_id)
     if not message or not message.sender_id == current_user.get_id():
         return { 'errors': { 'message': 'No message found.' } }, 404
 
