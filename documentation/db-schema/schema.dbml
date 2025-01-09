@@ -1,0 +1,84 @@
+Table User {
+  id integer [primary key]
+  username varchar
+  email email
+  firstName varchar
+  lastName varchar
+  native varchar
+  learning varchar
+  level integer
+  bio varchar
+  city varchar
+  state varchar
+  pref_theme varchar
+  pref_chatroom varchar
+  prof_pic url
+}
+
+Table Message {
+  id integer [primary key]
+  sender_id integer
+  recipient_id integer
+  text varchar
+  updated_at timestamp
+  created_at timestamp
+}
+
+Table Requests {
+  id integer [primary key]
+  sender_id integer
+  recipient_id integer
+  pending boolean
+}
+
+Table Friends {
+  id integer [primary key]
+  user_id integer
+  friend_id integer
+  user_nickname varchar
+  friend_nickname varchar
+}
+
+Table Post_Bonus {
+  id integer [primary key]
+  user_id integer
+  body varchar
+  level integer
+  language varchar
+  title varchar
+  private boolean
+  // likes integer
+  updated_at timestamp
+  created_at timestamp
+}
+
+Table Comment_Bonus {
+  id integer [primary key]
+  post_id integer
+  user_id integer
+  body varchar
+  // likes integer
+  updated_at timestamp
+  created_at timestamp
+}
+
+Table Like_Bonus {
+  id integer [primary key]
+  user_id integer
+  post_id integer
+  comment_id integer
+}
+
+Ref: "User"."id" < "Message"."sender_id"
+
+Ref: "User"."id" < "Friends"."user_id"
+
+Ref: "User"."id" < "Post_Bonus"."user_id"
+
+Ref: "Post_Bonus"."id" < "Comment_Bonus"."post_id"
+
+Ref: "Post_Bonus"."id" < "Like_Bonus"."post_id"
+
+Ref: "User"."id" < "Like_Bonus"."id"
+
+Ref: "User"."id" < "Requests"."sender_id"
