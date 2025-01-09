@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Friend, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
@@ -76,51 +76,51 @@ def seed_friends():
         friend_id=5,
         user_id=6,
     )
-    friend19 = friend(
+    friend19 = Friend(
         friend_id=1,
         user_id=7,
     )
-    friend20 = friend(
+    friend20 = Friend(
         friend_id=4,
         user_id=7,
     )
-    friend21 = friend(
+    friend21 = Friend(
         friend_id=3,
         user_id=7,
     )
-    friend22 = friend(
+    friend22 = Friend(
         friend_id=2,
         user_id=8,
     )
-    friend23 = friend(
+    friend23 = Friend(
         friend_id=6,
         user_id=8,
     )
-    friend24 = friend(
+    friend24 = Friend(
         friend_id=5,
         user_id=8,
     )
-    friend25 = friend(
+    friend25 = Friend(
         friend_id=1,
         user_id=9,
     )
-    friend26 = friend(
+    friend26 = Friend(
         friend_id=3,
         user_id=9,
     )
-    friend27 = friend(
+    friend27 = Friend(
         friend_id=4,
         user_id=9,
     )
-    friend28 = friend(
+    friend28 = Friend(
         friend_id=6,
         user_id=10,
     )
-    friend29 = friend(
+    friend29 = Friend(
         friend_id=2,
         user_id=10,
     )
-    friend30 = friend(
+    friend30 = Friend(
         friend_id=5,
         user_id=10,
     )

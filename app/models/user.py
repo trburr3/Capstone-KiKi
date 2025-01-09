@@ -21,8 +21,8 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(1000), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
-    pref_theme = db.Column(db.String(255), nullable=True)
-    pref_chatroom = db.Column(db.String(255), nullable=False)
+    pref_theme = db.Column(db.String(255), default='light')
+    pref_chatroom = db.Column(db.String(255), default='light')
     prof_pic = db.Column(db.String(255), nullable=False)
 
     #relationships

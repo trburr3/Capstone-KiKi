@@ -16,7 +16,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 'default.png',
         )
     esther = User(
         username='pinkie00',
@@ -46,7 +46,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     lia = User(
+    lia = User(
         username='mufasa',
         email='lia@aa.io',
         password='password',
@@ -60,7 +60,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     amar = User(
+    amar = User(
         username='butchkid',
         email='butch@aa.io',
         password='password',
@@ -74,7 +74,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     spring = User(
+    spring = User(
         username='spring',
         email='spring@aa.io',
         password='password',
@@ -88,7 +88,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     isa = User(
+    isa = User(
         username='miniIsa',
         email='isa@aa.io',
         password='password',
@@ -102,7 +102,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     chanelle = User(
+    chanelle = User(
         username='chanchan',
         email='chan@aa.io',
         password='password',
@@ -116,7 +116,7 @@ def seed_users():
         state = 'Illinois',
         prof_pic = 'default.png'
         )
-     ashley = User(
+    ashley = User(
         username='ashusername',
         email='ash@aa.io',
         password='password',
@@ -130,7 +130,7 @@ def seed_users():
         state = 'New York',
         prof_pic = 'default.png'
         )
-     djeneba = User(
+    djeneba = User(
         username='dejeneba_real',
         email='djeneba@aa.io',
         password='password',
@@ -144,7 +144,7 @@ def seed_users():
         state = 'New York',
         prof_pic = 'default.png'
         )
-     maya = User(
+    maya = User(
         username='mimi',
         email='mimi@aa.io',
         password='password',
@@ -158,7 +158,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     zell = User(
+    zell = User(
         username='raisezell',
         email='zell@aa.io',
         password='password',
@@ -172,7 +172,7 @@ def seed_users():
         state = 'California',
         prof_pic = 'default.png'
         )
-     asajahnique = User(
+    asajahnique = User(
         username='asa',
         email='asa@aa.io',
         password='password',
@@ -188,7 +188,7 @@ def seed_users():
         pref_chatroom = 'pink',
         prof_pic = 'default.png'
         )
-     regina = User(
+    regina = User(
         username='gina',
         email='gina@aa.io',
         password='password',
@@ -204,7 +204,7 @@ def seed_users():
         pref_chatroom = 'pink',
         prof_pic = 'default.png'
         )
-     alyssa = User(
+    alyssa = User(
         username='pretty_alyssa',
         email='alyssa@aa.io',
         password='password',
@@ -218,7 +218,7 @@ def seed_users():
         state = 'California',
         prof_pic = 'default.png'
         )
-     karter = User(
+    karter = User(
         username='kingkarter',
         email='karter@aa.io',
         password='password',
@@ -230,8 +230,6 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'San Francisco',
         state = 'California',
-        pref_theme = 'light',
-        pref_chatroom = 'pink',
         prof_pic = 'default.png'
         )
     rachelly = User(
@@ -246,8 +244,6 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        pref_theme = 'light',
-        pref_chatroom = 'pink',
         prof_pic = 'default.png'
         )
     car = User(
@@ -306,7 +302,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     marqui = User(
+    marqui = User(
         username='moneymark',
         email='mark@aa.io',
         password='password',
@@ -320,7 +316,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     jaida = User(
+    jaida = User(
         username='jaida_kiss',
         email='jaida@aa.io',
         password='password',
@@ -334,7 +330,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     torrien = User(
+    torrien = User(
         username='torrie_otaku',
         email='torrie@aa.io',
         password='password',
@@ -348,7 +344,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     taylore = User(
+    taylore = User(
         username='taye',
         email='taye@aa.io',
         password='password',
@@ -362,7 +358,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     gale = User(
+    gale = User(
         username='galeStorm',
         email='gale@aa.io',
         password='password',
@@ -376,7 +372,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     latoyia = User(
+    latoyia = User(
         username='ms_hollywood',
         email='toyia@aa.io',
         password='password',
@@ -390,7 +386,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     alayna = User(
+    alayna = User(
         username='nana',
         email='alayna@aa.io',
         password='password',
@@ -404,7 +400,7 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     helena = User(
+    helena = User(
         username='helena32',
         email='helena@aa.io',
         password='password',
@@ -418,12 +414,12 @@ def seed_users():
         state = 'Florida',
         prof_pic = 'default.png'
         )
-     emma = User(
-        username='brittluvpie',
-        email='britt@aa.io',
+    emma = User(
+        username='emma_down',
+        email='emma@aa.io',
         password='password',
-        fist_name = 'Britt',
-        last_name = 'D.',
+        fist_name = 'Emma',
+        last_name = 'O.',
         native = 'English',
         learning = 'Japanese',
         level = 2,
@@ -432,7 +428,7 @@ def seed_users():
         state = 'Illinois',
         prof_pic = 'default.png'
         )
-     jhonny = User(
+    jhonny = User(
         username='jhon_cena',
         email='jhon@aa.io',
         password='password',

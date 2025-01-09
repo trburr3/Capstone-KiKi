@@ -1,4 +1,4 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Post, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
@@ -27,22 +27,22 @@ def seed_posts():
         level = 1,
         author_id = 1
         )
-     post4 = Post(
+    post4 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='French',
         level = 1,
-        private = False
+        private = False,
         author_id = 1
         )
-     post5 = Post(
+    post5 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Japanese',
         level = 2,
         author_id = 1
         )
-     post6 = Post(
+    post6 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Japanese',
@@ -50,7 +50,7 @@ def seed_posts():
         private = False,
         author_id = 10
         )
-     post7 = Post(
+    post7 = Post(
        title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Portuguese',
@@ -58,22 +58,22 @@ def seed_posts():
         private = False,
         author_id = 12
         )
-     post8 = Post(
+    post8 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Portuguese',
         level = 2,
         author_id = 3
         )
-     post9 = Post(
+    post9 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Portuguese',
         level = 1,
-        private = 'M.',
+        private = False,
         author_id = 3
         )
-     post10 = Post(
+    post10 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Spanish',
@@ -81,7 +81,7 @@ def seed_posts():
         private = False,
         author_id = 2
         )
-     post11 = Post(
+    post11 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Spanish',
@@ -89,7 +89,7 @@ def seed_posts():
         private = False,
         author_id = 2
         )
-     post12 = Post(
+    post12 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Spanish',
@@ -97,7 +97,7 @@ def seed_posts():
         private = False,
         author_id = 1
         )
-     post13 = Post(
+    post13 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='French',
@@ -105,7 +105,7 @@ def seed_posts():
         private = False,
         author_id = 5
         )
-     post14 = Post(
+    post14 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Sapnish',
@@ -113,7 +113,7 @@ def seed_posts():
         private = False,
         author_id = 4
         )
-     post15 = Post(
+    post15 = Post(
         title='Post Title',
         body='This is a sample post and this is the example body of that post.',
         language='Japanese',
