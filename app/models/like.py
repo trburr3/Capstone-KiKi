@@ -8,15 +8,13 @@ class Like(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     author_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('comments.id')), nullable=True)
 
     def to_dict(self):
         return {
             'id': self.id,
-            'sender_id': self.sender_id,
-            'recipient_id': self.recipient_id,
-            'message': self.message,
-            'user_nickname': self.user_nickname,
-            'friend_nickname': self.friend_nickname,
+            'author_id': self.author_id,
+            'user_id': self.user_id,
+            'coment_id': self.coment_id,
         }
