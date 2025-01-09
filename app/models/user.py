@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     native = db.Column(db.String(255), nullable=False)
     learning = db.Column(db.String(255), nullable=False)
     level = db.Column(db.Integer, nullable=False)
-    bio = db.Column(db.String(255), nullable=False)
+    bio = db.Column(db.String(1000), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
     pref_theme = db.Column(db.String(255), nullable=True)
