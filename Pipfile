@@ -25,6 +25,11 @@ markupsafe = "==2.1.2"
 sqlalchemy = "==1.4.46"
 werkzeug = "==2.2.2"
 wtforms = "==3.0.1"
+dnspython = "==2.7.0"
+email-validator = "==2.2.0"
+idna = "==3.10"
+importlib-metadata = "==6.9.0"
+zipp = "==3.17.0"
 
 [dev-packages]
 
