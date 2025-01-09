@@ -13,6 +13,25 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    fist_name = db.Column(db.String(255), nullable=False)
+    last_name = db.Column(db.String(255), nullable=False)
+    native = db.Column(db.String(255), nullable=False)
+    learning = db.Column(db.String(255), nullable=False)
+    level = db.Column(db.Integer, nullable=False)
+    bio = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
+    pref_theme = db.Column(db.String(255), nullable=True)
+    pref_chatroom = db.Column(db.String(255), nullable=False)
+    prof_pic = db.Column(db.String(255), nullable=False)
+
+    #relationships
+    messages = db.relationship('Message', backref='sender', cascade='all, delete-orphan', lazy=True)
+    posts = db.relationship('Post', backref='author', cascade='all, delete-orphan', lazy=True)
+    comments = db.relationship('Comment', backref='author', cascade='all, delete-orphan', lazy=True)
+    requests = db.relationship('Request', backref='sender', cascade='all, delete-orphan', lazy=True)
+    friends = db.relationship('Friend', backref='pair', cascade='all, delete-orphan', lazy=True)
+    likes = db.relationship('Like', backref='creator', cascade='all, delete-orphan', lazy=True)
 
     @property
     def password(self):
@@ -29,5 +48,16 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'fist_name': self.id,
+            'last_name': self.username,
+            'native': self.native,
+            'learning': self.learning,
+            'level': self.level,
+            'bio': self.bio,
+            'city': self.city,
+            'state': self.state,
+            'pref_theme': self.pref_theme,
+            'pref_chatroom': self.pref_chatroom,
+            'prof_pic': self.prof_pic,
         }
