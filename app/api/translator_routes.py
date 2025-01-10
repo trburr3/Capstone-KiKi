@@ -22,12 +22,11 @@ def translate():
         elif language == 'French':
             return 'fr'
         elif language == 'Japanese':
-            return 'es'
+            return 'ja'
 
     key = '6pb8xwH6yY7dcO14BEi1neJHDugV4yukp2sNoW2Lx4AGEjji2XMvJQQJ99BAACYeBjFXJ3w3AAAbACOGeRCB'
     endpoint = 'https://api.cognitive.microsofttranslator.com/'
     path = '/translate'
-    # target_language_parameter = '&to=' + target_language
     location = 'eastus'
     constructed_url = endpoint + path
     params = {
@@ -44,5 +43,6 @@ def translate():
     body = [{ 'text': original_text }]
     translator_request = requests.post(constructed_url, params=params, headers=headers, json=body)
     translator_response = translator_request.json()
-    # translated_text = translator_response[0]['translations'][0]['text']
-    return json.dumps(translator_response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
+    translated_text = translator_response[0]['translations'][0]['text']
+    # return json.dumps(translator_response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
+    return translated_text
