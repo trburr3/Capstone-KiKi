@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    fist_name = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     native = db.Column(db.String(255), nullable=False)
     learning = db.Column(db.String(255), nullable=False)
@@ -49,7 +49,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'fist_name': self.id,
+            'first_name': self.id,
             'last_name': self.username,
             'native': self.native,
             'learning': self.learning,

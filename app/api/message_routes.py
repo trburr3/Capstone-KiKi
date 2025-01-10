@@ -12,7 +12,7 @@ def get_all_messages():
     user_id = current_user.get_id()
     messages = Message.query.filter(Message.sender_id == user_id or Message.recipient_id == user_id)
     if not messages :
-        return { 'errors': { 'messages': 'No messages found.' } }, 404
+        return { 'errors': { 'Messages': 'No messages found.' } }, 404
     return {'Messages': [message.to_dict() for message in messages]}
 
 @message_routes.route('/', methods=['POST'])
@@ -35,8 +35,9 @@ def create_message():
 @login_required
 def edit_messages(message_id):
     message = Message.query.get(message_id)
-    if not message or not message.sender_id == current_user.get_id():
-        return { 'errors': { 'message': 'No message found.' } }, 404
+    user_id = int(current_user.get_id())
+    if not message or not message.sender_id == user_id:
+        return { 'errors': { 'Message': 'No message found.' } }, 404
 
     data = request.get_json()
     editedMessage = data.get("message")
@@ -50,9 +51,10 @@ def edit_messages(message_id):
 @login_required
 def delete_message(message_id):
     message = Message.query.get(message_id)
-    if not message or not message.sender_id == current_user.get_id():
-        return { 'errors': { 'message': 'No message found.' } }, 404
+    user_id = int(current_user.get_id())
+    if not message or not message.sender_id == user_id:
+        return { 'errors': { 'Message': 'No message found.' } }, 404
 
     db.session.delete(message)
     db.session.commit()
-    return { 'message': 'Message successfully deleted.' }
+    return { 'Message': 'Message successfully deleted.' }

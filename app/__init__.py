@@ -7,9 +7,11 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from .api.translate_routes import translate_routes
+from .api.translator_routes import translate_routes
+from .api.profile_routes import profile_routes
 from .api.message_routes import message_routes
 from .api.post_routes import post_routes
+from .api.friend_routes import friend_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -34,6 +36,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(translate_routes, url_prefix='/api/translate')
 app.register_blueprint(message_routes, url_prefix='/api/messages')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
+app.register_blueprint(profile_routes, url_prefix='/api/profile')
+app.register_blueprint(friend_routes, url_prefix='/api/friends')
 db.init_app(app)
 Migrate(app, db)
 

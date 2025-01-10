@@ -1,12 +1,12 @@
 from flask import Blueprint, jsonify, request
 import requests, os, uuid, json
-from app.forms import Translate
+from app.forms import TranslatorForm
 
 translate_routes = Blueprint('translate', __name__)
 
 @translate_routes.route('/', methods=['POST'])
 def translate():
-    form = Translate()
+    form = TranslatorForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     original_text = form.data['text']
 
