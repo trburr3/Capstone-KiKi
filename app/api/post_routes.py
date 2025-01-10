@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models.db import db
-from app.models import User, Post, Comment
+from app.models import User, Post, Comment, Like
 from flask_login import current_user, login_required
 from datetime import datetime
 
@@ -13,6 +13,7 @@ def get_all_posts():
     if not posts :
         return { 'errors': { 'Posts': 'No posts found.' } }, 404
     def postNormalizer(post):
+        likes = Like.query.filter(Like.post_id == post.id)
         formattedPost = {
             "id": post.id,
             "author_id": post.author_id,
@@ -24,6 +25,7 @@ def get_all_posts():
             "title": post.title,
             "created_at": post.created_at,
             "updated_at": post.updated_at,
+            "likes": [User.query.get(like.user_id).username for like in likes if like.comment_id is None ]
         }
         return formattedPost
     return {'Posts': [postNormalizer(post) for post in posts]}
@@ -87,14 +89,17 @@ def get_all_comments(post_id):
     if not comments :
         return { 'errors': { 'Comments': 'No comments found.' } }, 404
     def commentNormalizer(comment):
+        likes = Like.query.filter(Like.post_id == post_id, Like.comment_id == comment.id)
         formattedComment = {
             "id": comment.id,
             "author_id": comment.author_id,
             "author_name": User.query.get(comment.author_id).first_name + ' ' + User.query.get(comment.author_id).last_name,
+            "author_username": User.query.get(comment.author_id).username,
             "auhtor_pic": User.query.get(comment.author_id).prof_pic,
             "comment": comment.comment,
             "created_at": comment.created_at,
             "updated_at": comment.updated_at,
+            "likes": [User.query.get(like.user_id).username for like in likes]
         }
         return formattedComment
     return {'Comments': [commentNormalizer(comment) for comment in comments]}

@@ -9,7 +9,7 @@ message_routes = Blueprint('messages', __name__)
 @message_routes.route('/')
 @login_required
 def get_all_messages():
-    user_id = current_user.get_id()
+    user_id = int(current_user.get_id())
     messages = Message.query.filter(Message.sender_id == user_id or Message.recipient_id == user_id)
     if not messages :
         return { 'errors': { 'Messages': 'No messages found.' } }, 404
@@ -18,7 +18,7 @@ def get_all_messages():
 @message_routes.route('/', methods=['POST'])
 @login_required
 def create_message():
-    user_id = current_user.get_id()
+    user_id = int(current_user.get_id())
     data = request.get_json()
 
     newMessage = Message(
