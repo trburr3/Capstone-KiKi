@@ -12,6 +12,7 @@ from .api.profile_routes import profile_routes
 from .api.message_routes import message_routes
 from .api.post_routes import post_routes
 from .api.friend_routes import friend_routes
+from .api.request_routes import request_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -38,6 +39,7 @@ app.register_blueprint(message_routes, url_prefix='/api/messages')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(profile_routes, url_prefix='/api/profile')
 app.register_blueprint(friend_routes, url_prefix='/api/friends')
+app.register_blueprint(request_routes, url_prefix='/api/requests')
 db.init_app(app)
 Migrate(app, db)
 
