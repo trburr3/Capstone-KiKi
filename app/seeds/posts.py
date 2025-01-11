@@ -38,7 +38,7 @@ def seed_posts():
         )
     post5 = Post(
         title="What’s the difference between 'です' and 'ます'?",
-        body='I know formality and manners are huge in Japanese, but I can wrap my head around the different polite sentence-ending forms. Like why would you want to use one over the other?',
+        body='I know formality and manners are huge in Japanese, but I can`t wrap my head around the different polite sentence-ending forms. Like why would you want to use one over the other?',
         language='Japanese',
         level = 1,
         author_id = 1

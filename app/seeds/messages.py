@@ -6,103 +6,103 @@ from sqlalchemy.sql import text
 def seed_messages():
     message1 = Message(
         sender_id=1,
-        recipient_id=1,
-        message='Does anyone want to carpool to the beach cleanup this weekend?'
+        recipient_id=2,
+        message='Hey, my name is Chuck E. nice to meet you! Would you like to be friends?'
     )
     message2 = Message(
         sender_id=2,
         recipient_id=1,
-        message="I’ll bring some extra gloves and trash bags for the cleanup!"
+        message="Nice to meet you Chuck E.! How long have you been a learner?"
     )
     message3 = Message(
         sender_id=3,
         recipient_id=1,
-        message="Let’s meet at the entrance by 8:00 AM to get started!"
+        message="I liked your post! Have you been able to find a strategy that works for you?"
     )
     message4 = Message(
         sender_id=4,
         recipient_id=2,
-        message="The toy drive is coming up soon! Who’s bringing toys?"
+        message="Hi, would you like to be friends?"
     )
     message5 = Message(
         sender_id=5,
         recipient_id=2,
-        message='I can contribute board games and stuffed animals.'
+        message='Thank you for commenting on my post, it helped a lot!'
     )
     message6 = Message(
         sender_id=6,
         recipient_id=2,
-        message="Let’s sort the toys into age-appropriate groups on the event day."
+        message="I am learning about the preterite today, would you mind helping me out?"
     )
     message7 = Message(
         sender_id=1,
         recipient_id=3,
-        message='Is everyone ready to help at the soup kitchen this week?'
+        message='Not yet, any suggestions?'
     )
     message8 = Message(
         sender_id=3,
-        recipient_id=3,
-        message="I’ll take care of the serving line. Let’s coordinate tasks."
+        recipient_id=1,
+        message="I know just the thing! Let me share some resources with you."
     )
     message9 = Message(
         sender_id=6,
         recipient_id=3,
-        message='I can help prepare meals in the morning shift.'
+        message='Great post yesterday! That question saved my life.'
     )
     message10 = Message(
         sender_id=2,
         recipient_id=4,
-        message="The puppy car wash is set for Saturday! Don’t forget your towels!"
+        message="Absolutely send me a request!"
     )
     message11 = Message(
         sender_id=5,
         recipient_id=4,
-        message='I’ll bring dog shampoo and some treats for the pups!'
+        message='I see that we are similar levels would you like to study together?'
     )
     message12 = Message(
         sender_id=4,
-        recipient_id=4,
-        message='Let’s set up a photo booth to help promote adoptions.'
+        recipient_id=5,
+        message="Of course let's arrange a time!"
     )
     message13 = Message(
         sender_id=3,
         recipient_id=5,
-        message='Are we all set for the Helping Hands event next week?'
+        message='Have you been able to solve your problem?'
     )
     message14 = Message(
         sender_id=1,
         recipient_id=5,
-        message='I’ve arranged for some supplies. Let me know what else we need.'
+        message='Hey, I need someone to practcie my pronunciation with are you available?'
     )
     message15 = Message(
         sender_id=6,
         recipient_id=5,
-        message="I can assist with heavy lifting and setting up equipment."
+        message="I see that you are learning something similar to me. Let's be friends !"
     )
     message16 = Message(
         sender_id=4,
         recipient_id=6,
-        message="The Kids Theatre program is next month. Who’s helping with rehearsals?"
+        message="Hi, how are you ?"
     )
     message17 = Message(
         sender_id=2,
         recipient_id=6,
-        message="I can assist with costume design and stage setup."
+        message="Sure thing! I would be happy to!"
     )
     message18 = Message(
         sender_id=5,
         recipient_id=6,
-        message='I’ll help the kids practice their lines and gestures.'
+        message='For sure! Check your requests.'
     )
     message19 = Message(
         sender_id=1,
         recipient_id=7,
-        message="The garden cleanup is this weekend. Don’t forget sunscreen!"
+        message="I saw your post and know an awesome quizlet if you need it !"
     )
     message20 = Message(
         sender_id=4,
         recipient_id=7,
-        message="I’ll bring refreshments and snacks for everyone!"
+        message="Hi, how are you ?"
     )
     message21 = Message(
         sender_id=3,
@@ -112,7 +112,7 @@ def seed_messages():
     message22 = Message(
         sender_id=2,
         recipient_id=8,
-        message='We’re planning activities for the senior center. Ideas?'
+        message='Gathering some learners for a local meet up are you in?'
     )
     message23 = Message(
         sender_id=6,
@@ -122,37 +122,37 @@ def seed_messages():
     message24 = Message(
         sender_id=5,
         recipient_id=8,
-        message='Great idea! I can bring some materials for the trivia game.'
+        message='Hi, how are you?'
     )
     message25 = Message(
         sender_id=1,
         recipient_id=9,
-        message="We’re assembling hygiene kits this Friday. Anyone bringing supplies?"
+        message="Hi, I saw in your bio that you like to cook! Can you share any recipes with me?"
     )
     message26 = Message(
         sender_id=3,
         recipient_id=9,
-        message="I’ll bring toothbrushes, toothpaste, and deodorants."
+        message="Hi, I am also a fan of international programs! See any good ones lately?"
     )
     message27 = Message(
         sender_id=4,
         recipient_id=9,
-        message='I’ll pack everything into the kits on the event day.'
+        message='Hi, how are you?'
     )
     message28 = Message(
-        sender_id=6,
-        recipient_id=10,
-        message='The blood donation drive needs more volunteers. Who’s available?'
+        sender_id=7,
+        recipient_id=1,
+        message='What is your favorite part of learning a new language?'
     )
     message29 = Message(
         sender_id=2,
-        recipient_id=10,
-        message="I’ll be there. Let’s coordinate the registration process."
+        recipient_id=1,
+        message="I’ve only just begun! Signed up to make more friends who want to speak the same language."
     )
     message30 = Message(
         sender_id=5,
-        recipient_id=10,
-        message="Don’t forget to eat a light meal before donating!"
+        recipient_id=1,
+        message="Yup, let arrange a time for a call !"
     )
 
     db.session.add_all([

@@ -7,42 +7,42 @@ def seed_comments():
     comment1 = Comment(
         post_id=1,
         author_id=1,
-        comment='Does anyone want to carpool to the beach cleanup this weekend?'
+        comment='Any tips are greatly appreciated.'
     )
     comment2 = Comment(
         post_id=2,
         author_id=1,
-        comment="I’ll bring some extra gloves and trash bags for the cleanup!"
+        comment="'To be' or 'To be', what a question!"
     )
     comment3 = Comment(
         post_id=3,
         author_id=1,
-        comment="Let’s meet at the entrance by 8:00 AM to get started!"
+        comment="English speakers often struggle with this concept, dont give up!"
     )
     comment4 = Comment(
         post_id=4,
         author_id=2,
-        comment="The toy drive is coming up soon! Who’s bringing toys?"
+        comment="I would be happy to help! Let's chat about it!"
     )
     comment5 = Comment(
         post_id=5,
         author_id=2,
-        comment='I can contribute board games and stuffed animals.'
+        comment='This may sound silly, but try watching anime and pay close attention to their conjugations!'
     )
     comment6 = Comment(
         post_id=6,
         author_id=2,
-        comment="Let’s sort the toys into age-appropriate groups on the event day."
+        comment="Très bien!"
     )
     comment7 = Comment(
         post_id=1,
         author_id=3,
-        comment='Is everyone ready to help at the soup kitchen this week?'
+        comment="Don't worry it is never offensive to try!"
     )
     comment8 = Comment(
         post_id=3,
         author_id=3,
-        comment="I’ll take care of the serving line. Let’s coordinate tasks."
+        comment="Being polite is different everywhere. Try to consider what it is to be polite in French and maybe that would help."
     )
     comment9 = Comment(
         post_id=6,
@@ -52,7 +52,7 @@ def seed_comments():
     comment10 = Comment(
         post_id=2,
         author_id=4,
-        comment="The puppy car wash is set for Saturday! Don’t forget your towels!"
+        comment="If only Shakespeare could teach us the answers to this one."
     )
     comment11 = Comment(
         post_id=5,
@@ -62,97 +62,97 @@ def seed_comments():
     comment12 = Comment(
         post_id=4,
         author_id=4,
-        comment='Let’s set up a photo booth to help promote adoptions.'
+        comment='As a beginner this gets everyone, so don`t be discouraged!'
     )
     comment13 = Comment(
         post_id=3,
         author_id=5,
-        comment='Are we all set for the Helping Hands event next week?'
+        comment='Formal conjugations can be such a drag, but you never forget once you master it!'
     )
     comment14 = Comment(
         post_id=1,
         author_id=5,
-        comment='I’ve arranged for some supplies. Let me know what else we need.'
+        comment='I had the same issue when I first started. Just keep at it!'
     )
     comment15 = Comment(
         post_id=6,
         author_id=5,
-        comment="I can assist with heavy lifting and setting up equipment."
+        comment="Comme c'est joli"
     )
     comment16 = Comment(
         post_id=4,
         author_id=6,
-        comment="The Kids Theatre program is next month. Who’s helping with rehearsals?"
+        comment="There is a similar concept in Spanish! Maybe check out some of the posts for that language for tips."
     )
     comment17 = Comment(
         post_id=2,
         author_id=6,
-        comment="I can assist with costume design and stage setup."
+        comment="I know a great video series on this! Check messages I have shared it with you !"
     )
     comment18 = Comment(
         post_id=5,
         author_id=6,
-        comment='I’ll help the kids practice their lines and gestures.'
+        comment='So true anime and other Japanese programs actually helped me a lot! Check your messages for some recommendations! '
     )
     comment19 = Comment(
         post_id=1,
         author_id=7,
-        comment="The garden cleanup is this weekend. Don’t forget sunscreen!"
+        comment="Try finding programs where you can hear people make that sound and you try to imitate them!"
     )
     comment20 = Comment(
         post_id=4,
         author_id=7,
-        comment="I’ll bring refreshments and snacks for everyone!"
+        comment="I also need to practice this concept! DM whenever you have some time and we can work togeth on this."
     )
     comment21 = Comment(
         post_id=3,
         author_id=7,
-        comment='I’ll handle coordinating the trash disposal afterward.'
+        comment='Try thinking about scenarios where you want to give someone respect such as when speaking to someone older. That is usually when this applies.'
     )
     comment22 = Comment(
         post_id=2,
         author_id=8,
-        comment='We’re planning activities for the senior center. Ideas?'
+        comment='I had the same issue! Please update this post later with any resources you discover!'
     )
     comment23 = Comment(
         post_id=6,
         author_id=8,
-        comment='How about a trivia contest or a storytelling session?'
+        comment="Peux-tu m'aider avec mon écriture?"
     )
     comment24 = Comment(
         post_id=5,
         author_id=8,
-        comment='Great idea! I can bring some materials for the trivia game.'
+        comment='Formality is hard at first when considered from as a native English Speaker. Just be patient, it will make sense with pracitce!'
     )
     comment25 = Comment(
         post_id=1,
         author_id=9,
-        comment="We’re assembling hygiene kits this Friday. Anyone bringing supplies?"
+        comment="Try watching a YouTube video on phoentics! Message me if you need suggestions."
     )
     comment26 = Comment(
         post_id=3,
         author_id=9,
-        comment="I’ll bring toothbrushes, toothpaste, and deodorants."
+        comment="I am having the same issue! Let's practice together!"
     )
     comment27 = Comment(
         post_id=4,
         author_id=9,
-        comment='I’ll pack everything into the kits on the event day.'
+        comment='This topic is so confusing! Let me know when you figure it out!'
     )
     comment28 = Comment(
         post_id=6,
         author_id=10,
-        comment='The blood donation drive needs more volunteers. Who’s available?'
+        comment='Moi aussi!'
     )
     comment29 = Comment(
         post_id=2,
         author_id=10,
-        comment="I’ll be there. Let’s coordinate the registration process."
+        comment="This is one of the trickiest parts for most beginners!"
     )
     comment30 = Comment(
         post_id=5,
         author_id=10,
-        comment="Don’t forget to eat a light meal before donating!"
+        comment="Good to know I am not the only one who struggles with this !"
     )
 
     db.session.add_all([
