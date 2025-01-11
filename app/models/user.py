@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(255), nullable=False)
     pref_theme = db.Column(db.String(255), default='light')
     pref_chatroom = db.Column(db.String(255), default='light')
-    prof_pic = db.Column(db.String(255), nullable=False)
+    prof_pic = db.Column(db.Integer, nullable=False)
 
     #relationships
     messages = db.relationship('Message', backref='sender', cascade='all, delete-orphan', lazy=True)

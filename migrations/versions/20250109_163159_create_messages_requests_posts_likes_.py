@@ -33,7 +33,7 @@ def upgrade():
     sa.Column('state', sa.String(length=255), nullable=False),
     sa.Column('pref_theme', sa.String(length=255), default='light'),
     sa.Column('pref_chatroom', sa.String(length=255), default='light'),
-    sa.Column('prof_pic', sa.String(length=255), nullable=False),
+    sa.Column('prof_pic', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

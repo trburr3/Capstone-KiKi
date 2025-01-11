@@ -16,7 +16,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png',
+        prof_pic = 1,
         )
     esther = User(
         username='pinkie00',
@@ -30,7 +30,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     aixa = User(
         username='guillotine',
@@ -44,7 +44,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
     lia = User(
         username='mufasa',
@@ -58,7 +58,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     amar = User(
         username='butchkid',
@@ -72,7 +72,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     spring = User(
         username='spring',
@@ -86,7 +86,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     isa = User(
         username='miniIsa',
@@ -100,7 +100,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     chanelle = User(
         username='chanchan',
@@ -114,7 +114,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Chicago',
         state = 'Illinois',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     ashley = User(
         username='ashusername',
@@ -128,7 +128,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'New York',
         state = 'New York',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
     djeneba = User(
         username='dejeneba_real',
@@ -142,7 +142,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'New York',
         state = 'New York',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     maya = User(
         username='mimi',
@@ -156,7 +156,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
     zell = User(
         username='raisezell',
@@ -170,7 +170,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'San Francisco',
         state = 'California',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     asajahnique = User(
         username='asa',
@@ -186,7 +186,7 @@ def seed_users():
         state = 'New York',
         pref_theme = 'dark',
         pref_chatroom = 'pink',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     regina = User(
         username='gina',
@@ -202,7 +202,7 @@ def seed_users():
         state = 'New York',
         pref_theme = 'dark',
         pref_chatroom = 'pink',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     alyssa = User(
         username='pretty_alyssa',
@@ -216,7 +216,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'San Francisco',
         state = 'California',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     karter = User(
         username='kingkarter',
@@ -230,7 +230,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'San Francisco',
         state = 'California',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     rachelly = User(
         username='chelly',
@@ -244,7 +244,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     car = User(
         username='thee_car',
@@ -258,7 +258,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Chicago',
         state = 'Illinois',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
     ishmael = User(
         username='ishy',
@@ -272,7 +272,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     kaylee = User(
         username='kale',
@@ -286,7 +286,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     britt = User(
         username='brittluvpie',
@@ -300,7 +300,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     marqui = User(
         username='moneymark',
@@ -314,7 +314,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
     jaida = User(
         username='jaida_kiss',
@@ -328,7 +328,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     torrien = User(
         username='torrie_otaku',
@@ -342,7 +342,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     taylore = User(
         username='taye',
@@ -356,7 +356,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     gale = User(
         username='galeStorm',
@@ -370,7 +370,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     latoyia = User(
         username='ms_hollywood',
@@ -384,7 +384,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 4
         )
     alayna = User(
         username='nana',
@@ -398,7 +398,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 5
         )
     helena = User(
         username='helena32',
@@ -412,7 +412,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Miami',
         state = 'Florida',
-        prof_pic = 'default.png'
+        prof_pic = 2
         )
     emma = User(
         username='emma_down',
@@ -426,7 +426,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Chicago',
         state = 'Illinois',
-        prof_pic = 'default.png'
+        prof_pic = 1
         )
     jhonny = User(
         username='jhon_cena',
@@ -440,7 +440,7 @@ def seed_users():
         bio = 'This is a sample bio',
         city = 'Chicago',
         state = 'Illinois',
-        prof_pic = 'default.png'
+        prof_pic = 3
         )
 
     db.session.add(demo)
