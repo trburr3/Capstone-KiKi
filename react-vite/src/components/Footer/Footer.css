@@ -1,0 +1,15 @@
+.footer-container{
+    display: flex;
+    position: inherit;
+    align-items: center;
+    justify-content: space-around;
+    background-color: grey;
+    border-top: solid black 5px;
+    height: 50px;
+}
+
+.footer-container>button{
+    background-color: grey;
+    color: white;
+    border: grey;
+}
