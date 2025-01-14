@@ -1,6 +1,8 @@
 .footer-container{
     display: flex;
-    position: inherit;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     align-items: center;
     justify-content: space-around;
     background-color: grey;

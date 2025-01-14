@@ -1,0 +1,11 @@
+#translator-modal-button>button{
+    border-radius: 60%;
+    background-color: rgba(0, 255, 238, 0.327);
+    font-size: xx-large;
+}
+
+#translator-modal-button{
+    position: absolute;
+    right: 10px;
+    bottom: 100px;
+}

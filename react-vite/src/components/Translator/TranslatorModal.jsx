@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useModal } from '../../context/Modal';
 
 const TranslatorModal = () => {
+    const {closeModal} = useModal()
     const dispatch = useDispatch();
     const [originalText, setOriginalText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
     const [language, setLanguage] = useState('English');
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.stopPropagation()
 
         console.log(originalText)
         console.log(language)
@@ -16,6 +18,7 @@ const TranslatorModal = () => {
         // res = await dispatch(thunkTranslate(originalText))
 
         // setTranslatedText(res)
+        closeModal
 
         return
     }
@@ -27,69 +30,70 @@ const TranslatorModal = () => {
             <div className='translator-input'>
             <form className='translator-form' onSubmit={handleSubmit}>
                 <div className='translator-input-buttons'>
+                    <label>
                     Language:
-                        <label>
-                            <input
-                            type="radio"
+                    <select>
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="English"
-                            checked={language == "Enlgish"}
+                            // checked={language == ""}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
-                            value="English"
-                            checked={language == "Enlgish"}
-                            onChange={(e) => setLanguage(e.target.value)}
-                            required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
+                                Enlgish
+                            </option>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="French"
-                            checked={language == "French"}
+                            // checked={language == "French"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
+                                French
+                            </option>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="Italian"
-                            checked={language == "Italian"}
+                            // checked={language == "Italian"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
+                                Italian
+                            </option>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="Japanese"
-                            checked={language == "Japanese"}
+                            // checked={language == "Japanese"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
+                                Japanese
+                            </option>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="Portuguese"
-                            checked={language == "Portuguese"}
+                            // checked={language == "Portuguese"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
-                        </label>
-                        <label>
-                            <input
-                            type="radio"
+                                Portuguese
+                            </option>
+                        {/* </label> */}
+                        {/* <label> */}
+                            <option
+                            // type="radio"
                             value="Spanish"
-                            checked={language == "Spanish"}
+                            // checked={language == "Spanish"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
-                            </input>
+                                Spanish
+                            </option>
+                        {/* </label> */}
+                        </select>
                         </label>
                     </div>
                 <div className='translator-input-box'>
@@ -102,15 +106,13 @@ const TranslatorModal = () => {
                         required
                         ></input>
                     </label>
+                    <button>Submit</button>
+                </div>
+                <br />
+                <div className='translator-output'>
+                    {translatedText ? <p>{translatedText}</p> : <p>Translating...</p>}
                 </div>
             </form>
-            </div>
-            <div className='translator-output'>
-                <inpt
-                type="textarea"
-                placeholder='Tranlating...'
-                value={translatedText}
-                ></inpt>
             </div>
         </div>
         </>
