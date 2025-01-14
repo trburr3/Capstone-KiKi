@@ -26,7 +26,7 @@ const getPosts = (published, drafts) => ({
 })
 
 export const thunkAuthenticate = () => async (dispatch) => {
-	const response = await fetch("/api/auth/");
+	const response = await fetch("/api/users/current");
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
@@ -107,6 +107,41 @@ export const thunkGetAllUserPosts = () => async dispatch => {
   }
 };
 
+export const thunkDeleteProfile = (user) => async dispatch => {
+  const response = await csrfFetch(`/api/profile/delete/${user.id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" }
+  });
+
+  if(response.ok) {
+    await dispatch(removeUser());
+  } else if (response.status < 500) {
+    const errorMessages = await response.text();
+    console.error(errorMessages)
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+};
+
+export const thunkEditProfile = (user) => async dispatch => {
+  const response = await csrfFetch("/api/profile/edit", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  });
+
+  if(response.ok) {
+    const newUser = await response.json();
+    // console.log('WHO AM I?',newUser)
+    dispatch(setUser(newUser));
+  } else if (response.status < 500) {
+    const errorMessages = await response.text();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+};
+
 const normalData = (data) => {
   const normalData = {}
   data.forEach((event) => {
@@ -121,6 +156,7 @@ const initialState = { user: null, achievements: {}, posts: { published: {}, pri
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
+      // console.log('DID WE MAKE IT ', action.payload)
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };

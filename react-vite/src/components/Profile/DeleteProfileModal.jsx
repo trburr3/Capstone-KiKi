@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useNavigate } from "react-router-dom";
-// import { thunkDeleteProfile } from "../../redux/session";
+import { thunkDeleteProfile } from "../../redux/session";
 import './Profile.css';
 import { Link } from "react-router-dom";
 

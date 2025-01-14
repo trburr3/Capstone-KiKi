@@ -23,8 +23,8 @@ def username_exists(form, field):
 class EditProfileForm(FlaskForm):
     username = StringField(
         'username', validators=[username_exists])
-    email = StringField('email', validators=[Email(), user_exists])
-    fist_name = StringField('first_name', validators=[])
+    email = StringField('email', validators=[])
+    first_name = StringField('first_name', validators=[])
     last_name = StringField('last_name', validators=[])
     native = StringField('native', validators=[])
     learning = StringField('learning', validators=[])
@@ -32,6 +32,6 @@ class EditProfileForm(FlaskForm):
     bio = StringField('bio', validators=[])
     city = StringField('city', validators=[])
     state = StringField('state', validators=[])
-    prof_pic = StringField('prof_pic', validators=[])
+    prof_pic = IntegerField('prof_pic', validators=[])
     pref_theme = StringField('pref_theme', validators=[])
     pref_chatroom = StringField('pref_chatroom', validators=[])

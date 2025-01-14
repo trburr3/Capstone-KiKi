@@ -182,40 +182,34 @@ const ProfilePage = ({ profileState }) => {
 						</div>
 						<div>
 							<label>Learning</label>
-                            <select>
+                            <select value={learning} onChange={(e) => setLearning(e.target.value)}>
                                 <option
                                     value="English"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     Enlgish
                                 </option>
                                 <option
                                     value="French"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     French
                                 </option>
                                 <option
                                     value="Italian"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     Italian
                                 </option>
                                 <option
                                     value="Japanese"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     Japanese
                                 </option>
                                 <option
                                     value="Portuguese"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     Portuguese
                                 </option>
                                 <option
                                     value="Spanish"
-                                    onChange={(e) => setLearning(e.target.value)}
                                     required>
                                     Spanish
                                 </option>
@@ -223,22 +217,19 @@ const ProfilePage = ({ profileState }) => {
 						</div>
                         <div>
 							<label>Level</label>
-							<select>
+							<select value={level} onChange={(e) => setLevel(e.target.value)}>
                                 <option
                                     value="1"
-                                    onChange={(e) => setLevel(e.target.value)}
                                     required>
                                     Beginner
                                 </option>
                                 <option
                                 value="2"
-                                onChange={(e) => setLevel(e.target.value)}
                                 required>
                                     Intermediate
                                 </option>
                                 <option
                                 value="3"
-                                onChange={(e) => setLevel(e.target.value)}
                                 required>
                                     Master
                                 </option>

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-// import { thunkEditProfile} from "../../redux/session";
+import { thunkEditProfile} from "../../redux/session";
 import './Profile.css';
 import { Link } from "react-router-dom";
 
@@ -18,6 +18,7 @@ const EditProfileModal = ({ payload }) => {
                .then(closeModal)
 
     }
+    console.log('----->', payload)
     return (
         <>
           <div className="modal">
