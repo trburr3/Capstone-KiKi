@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-// import logo from '../../../dist/logo'
+import logo from "../../images/Logo.png";
 
 function Navigation() {
 	// const user = useSelector((state) => state.session.user);
@@ -12,7 +12,7 @@ function Navigation() {
 			<ul className='nav-contents'>
 				<li className='icon-home'>
 					<NavLink to='/' className='kiki-icon-container'>
-            {/* <img className='kiki-icon' alt='kiki-icon' src='logo'/> */}
+            <img className='kiki-icon' alt='kiki-icon' src={logo}/>
               KIKI
             </NavLink>
 				</li>

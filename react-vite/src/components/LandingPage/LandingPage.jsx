@@ -7,7 +7,7 @@ const FADE_INTERVAL_MS = 2750
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 4
 const WORDS_TO_ANIMATE = ['Welcome', 'Bienvenue', 'Bienvenido', 'Benvenuto', 'Bem-vindo', 'いらっしゃいませ']
 
-const logo = require('../../../dist/')
+// const logo = require('../../../dist/assets/Logo.png')
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -39,6 +39,7 @@ const LandingPage = () => {
 
     return (
         <>
+        {/* {console.log(logo)} */}
         <div className="landing-page">
         <div className="landing-page-title">
             <h1 id='greeting' className={fadeProp.fade}>{WORDS_TO_ANIMATE[wordOrder]}</h1>
