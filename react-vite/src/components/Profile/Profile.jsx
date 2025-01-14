@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import OpenModalButton from "../Translator/OpenModalButton";
 import EditProfileModal from './EditProfileModal';
 import DeleteProfileModal from './DeleteProfileModal';
+import DeletePostModal from "../Posts/DeletePostModal";
 import AvatarSelectModal from "./AvatarSelectModal";
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
@@ -304,6 +305,12 @@ const ProfilePage = ({ profileState }) => {
                         <li key={index} className="post-tile">
                             <p>{post.title}</p>
                             <button>🔍</button>
+                            <OpenModalButton
+                            buttonText='x'
+                            modalComponent={<DeletePostModal post={post}/>}
+                            onButtonClick
+                            onModalClose
+                            />
                         </li>
                     ))}
                     </ul>
@@ -313,6 +320,12 @@ const ProfilePage = ({ profileState }) => {
                         <li key={index} className="post-tile">
                             <p>{post.title}</p>
                             <button>🔍</button>
+                            <OpenModalButton
+                            buttonText='x'
+                            modalComponent={<DeletePostModal post={post}/>}
+                            onButtonClick
+                            onModalClose
+                            />
                         </li>
                     ))}
                     </ul>

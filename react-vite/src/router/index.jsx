@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import LandingPage from '../components/LandingPage';
 import ProfilePage from '../components/Profile/Profile';
+import CreatePostForm from '../components/Posts/CreatePostForm/CreatePostForm';
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
         element: <h1>Explore Page</h1>
       },
       {
-        path: "forum",
+        path: "posts",
         element: <h1>Forum Page</h1>
       },
       {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element:<ProfilePage />
+      },
+      {
+        path: "posts/new",
+        element:<CreatePostForm />
       },
     ],
   },

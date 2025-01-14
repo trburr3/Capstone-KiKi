@@ -43,6 +43,6 @@ def translate():
     body = [{ 'text': original_text }]
     translator_request = requests.post(constructed_url, params=params, headers=headers, json=body)
     translator_response = translator_request.json()
-    translated_text = translator_response[0]['translations'][0]['text']
+    translated_text = translator_response[0]['translations'][0]
     # return json.dumps(translator_response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
     return translated_text

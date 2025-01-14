@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_POSTS = 'friends/LOAD_POSTS';
-const SINGLE_POST = 'friends/SINGLE_POST';
+const LOAD_POSTS = 'posts/LOAD_POSTS';
+const SINGLE_POST = 'posts/SINGLE_POST';
 
 const getAllPosts = (payload) => ({
     type: LOAD_POSTS,
@@ -15,7 +15,7 @@ const getSinglePost = (payload) => ({
 
 
 export const thunkGetAllPosts = () => async dispatch => {
-    const res = await csrfFetch("/api/friends/");
+    const res = await csrfFetch("/api/posts/");
 
     if (res.ok) {
         const posts = await res.json();
@@ -36,7 +36,7 @@ export const thunkSinglePost = (postId) => async dispatch => {
 }
 
 export const thunkCreatePost = (request) => async dispatch => {
-    const res = await csrfFetch(`/api/posts`, methods={
+    const res = await csrfFetch(`/api/posts/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -45,15 +45,15 @@ export const thunkCreatePost = (request) => async dispatch => {
     });
 
     if(res.ok) {
-        const posts = await csrfFetch(`api/posts`);
-        if(posts.errors) { return; }
-
-        dispatch(getAllPosts(posts));
+        const post = await res.json();
+        if(post.errors) { return; }
+        // console.log(post)
+        // dispatch(getSinglePost(post));
     }
 }
 
 export const thunkEditPost = (postId) => async dispatch => {
-    const res = await csrfFetch(`/api/posts/${postId}`, methods={
+    const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -69,18 +69,18 @@ export const thunkEditPost = (postId) => async dispatch => {
 }
 
 export const thunkDeletePost = (postId) => async dispatch => {
-    const res = await csrfFetch(`/api/posts/${postId}`, methods={
+    const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(request)
+        }
     });
 
     if(res.ok) {
-        const posts = await csrfFetch(`api/posts`);
-        if(posts.errors) { return; }
-        dispatch(getAllPosts(posts))
+        // const posts = await csrfFetch(`api/posts`);
+        // if(posts.errors) { return; }
+        // dispatch(getAllPosts(posts))
+        window.location.reload()
     }
 }
 
