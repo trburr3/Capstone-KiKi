@@ -8,18 +8,18 @@ function Footer() {
     const user = useSelector(state => state.session.user)
     const [disabled, setDisabled] = useState(true)
 
-    if (user) setDisabled(false)
+    // if (user) setDisabled(false)
 
   return (
     <>
     <div className="footer-container">
-        <button className="footer-button" id="forum-button" disabled={disabled} onClick={navigate('/')}>
+        <button className="footer-button" id="forum-button" disabled={disabled}>
             FORUM
         </button>
-        <button className="footer-button" id="explore-button" disabled={disabled} onClick={navigate('/')}>
+        <button className="footer-button" id="explore-button" disabled={disabled}>
             EXLPORE
         </button>
-        <button className="footer-button" id="inbox-button" disabled={disabled} onClick={navigate('/')}>
+        <button className="footer-button" id="inbox-button" disabled={disabled}>
             INBOX
         </button>
     </div>

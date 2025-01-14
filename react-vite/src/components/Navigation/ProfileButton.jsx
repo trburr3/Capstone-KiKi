@@ -5,6 +5,7 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { CgNotifications } from "react-icons/cg";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -48,8 +49,18 @@ function ProfileButton() {
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
+              <li>Hey, {user.username}!</li>
               <li>{user.email}</li>
+              <li>Dashboard</li>
+              <li>Friends</li>
+              <li>Explore</li>
+              <li>Manage Posts</li>
+              <li className="menu-item inbox">
+                Inbox
+                <div id='inbox-icon'>
+                <CgNotifications />
+                </div>
+                </li>
               <li>
                 <button onClick={logout}>Log Out</button>
               </li>
