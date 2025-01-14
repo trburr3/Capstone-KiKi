@@ -32,7 +32,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="English"
-                            check={language == "Enlgish"}
+                            checked={language == "Enlgish"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -41,7 +41,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="English"
-                            check={language == "Enlgish"}
+                            checked={language == "Enlgish"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -50,7 +50,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="French"
-                            check={language == "French"}
+                            checked={language == "French"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -59,7 +59,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="Italian"
-                            check={language == "Italian"}
+                            checked={language == "Italian"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -68,7 +68,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="Japanese"
-                            check={language == "Japanese"}
+                            checked={language == "Japanese"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -77,7 +77,7 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="Portuguese"
-                            check={language == "Portuguese"}
+                            checked={language == "Portuguese"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
@@ -86,13 +86,13 @@ const TranslatorModal = () => {
                             <input
                             type="radio"
                             value="Spanish"
-                            check={language == "Spanish"}
+                            checked={language == "Spanish"}
                             onChange={(e) => setLanguage(e.target.value)}
                             required>
                             </input>
                         </label>
                     </div>
-                <div classname='translator-input-box'>
+                <div className='translator-input-box'>
                     <label>
                         <input
                         type="textarea"
