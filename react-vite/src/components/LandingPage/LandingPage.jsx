@@ -59,6 +59,7 @@ const LandingPage = () => {
                 <li className="li-landing-page-flag">🇩🇴</li>
                 <li className="li-landing-page-flag">🇧🇷</li>
                 <li className="li-landing-page-flag">🇫🇷</li>
+                <li className="li-landing-page-flag">🇮🇹</li>
                 <li className="li-landing-page-flag">🇲🇽</li>
                 <li className="li-landing-page-flag">🇨🇴</li>
             </ul>

@@ -5,11 +5,13 @@ import OpenModalButton from "../Translator/OpenModalButton";
 import EditProfileModal from './EditProfileModal';
 import DeleteProfileModal from './DeleteProfileModal';
 import AvatarSelectModal from "./AvatarSelectModal";
-import avatar1 from '../../images/Avatar 1.png'
-import avatar2 from '../../images/Avatar 2.png'
-import avatar3 from '../../images/Avatar 3.png'
-import avatar4 from '../../images/Avatar 4.png'
-import avatar5 from '../../images/Avatar 5.png'
+import avatar1 from '../../images/Avatar 1.png';
+import avatar2 from '../../images/Avatar 2.png';
+import avatar3 from '../../images/Avatar 3.png';
+import avatar4 from '../../images/Avatar 4.png';
+import avatar5 from '../../images/Avatar 5.png';
+import { thunkAllFriends } from '../../redux/friends'
+import { thunkGetAchievements } from "../../redux/session";
 
 const ProfilePage = ({ profileState }) => {
     const dispatch = useDispatch();
@@ -30,7 +32,10 @@ const ProfilePage = ({ profileState }) => {
         if(profileState) setActiveSection(profileState)
     }, [profileState]);
 
-    // useEffect(() => {}, [dispatch]);
+    useEffect(() => {
+        dispatch(thunkAllFriends())
+        dispatch(thunkGetAchievements())
+    }, [dispatch]);
 
     const payload = {
         first_name,
@@ -48,7 +53,18 @@ const ProfilePage = ({ profileState }) => {
         e.preventDefault();
     };
 
-    let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5]
+    const {allFriends, friend} = useSelector(state => state.friends);
+
+    const achievements = useSelector(state => state.session.achievements);
+
+
+    let friendsArr = Object.values(allFriends);
+
+    let achievementsArr = Object.values(achievements);
+
+    let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
+    let learningFlags = {"English": '🇺🇸', "French": '🇫🇷', "Italian": '🇮🇹', "Japanese": '🇯🇵', "Portuguese": '🇧🇷', "Spanish": '🇲🇽' };
+    let levelArr = ['🥉', '🥈', '🥇'];
 
     const renderSection = () => {
         switch (activeSection) {
@@ -205,7 +221,18 @@ const ProfilePage = ({ profileState }) => {
             }
             case 'friends':{
                 return(
+                    <>
                     <h3>Friends</h3>
+                    <ul>
+                    {friendsArr.map((friend, index) => (
+                        <li key={index} className="friend-tile">
+                            <img src={avatarArr[(friend.prof_pic - 1 )]} alt="friend-avatar" />
+                            <p>{friend.username}</p>
+                            <button>x</button>
+                        </li>
+                    ))}
+                    </ul>
+                    </>
                 )
             }
             case 'posts':{
@@ -224,7 +251,7 @@ const ProfilePage = ({ profileState }) => {
 				<div className='profile-picture'>
 					<img
 						src={avatarArr[(user.prof_pic - 1 )]}
-						alt='Profile'
+						alt='profile-pic'
 					/>
 					<button onClick={() => setActiveSection('edit-profile')}>
 						Edit Profile
@@ -237,6 +264,10 @@ const ProfilePage = ({ profileState }) => {
 					<p>
 						{user?.city}, {user?.state}
 					</p>
+                    <p>{learningFlags[user?.learning]} Learning</p>
+                    <p>{levelArr[(user?.level - 1)]} Level</p>
+                    <p> # Achievements</p>
+                    <p>{user?.bio}</p>
 					<nav>
 						<button
 							className={activeSection === 'achievements' ? 'active' : ''}

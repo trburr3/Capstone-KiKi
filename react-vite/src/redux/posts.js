@@ -2,7 +2,6 @@ import { csrfFetch } from "./csrf";
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-const LOAD_ACHIEVMENTS = 'session/loadAchievements';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -12,11 +11,6 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER
 });
-
-const getAchievements = (payload) => ({
-  type: LOAD_ACHIEVMENTS,
-  payload
-})
 
 export const thunkAuthenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/");
@@ -71,21 +65,7 @@ export const thunkLogout = () => async (dispatch) => {
   dispatch(removeUser());
 };
 
-export const thunkGetAchievements = () => async dispatch => {
-  const response = await fetch("/api/profile/achievements");
-
-  if(response.ok) {
-    const data = await response.json();
-    dispatch(getAchievements(data));
-  } else if (response.status < 500) {
-    const errorMessages = await response.json();
-    return errorMessages
-  } else {
-    return { server: "Something went wrong. Please try again" }
-  }
-};
-
-const initialState = { user: null, achievements: {} };
+const initialState = { user: null };
 
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
@@ -93,8 +73,6 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
-    case LOAD_ACHIEVMENTS:
-      return { ...state, achievements: action.payload };
     default:
       return state;
   }
