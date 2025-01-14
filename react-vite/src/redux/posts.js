@@ -52,7 +52,7 @@ export const thunkCreatePost = (request) => async dispatch => {
     }
 }
 
-export const thunkEditPost = (postId) => async dispatch => {
+export const thunkEditPost = (request, postId) => async dispatch => {
     const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'PUT',
         headers: {
