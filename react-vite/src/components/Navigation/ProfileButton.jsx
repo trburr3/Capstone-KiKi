@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
@@ -7,9 +8,11 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { CgNotifications } from "react-icons/cg";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
+import OpenModalButton from "../Translator/OpenModalButton";
 
 function ProfileButton() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
@@ -39,6 +42,7 @@ function ProfileButton() {
     e.preventDefault();
     dispatch(thunkLogout());
     closeMenu();
+    navigate('/')
   };
 
   return (
@@ -53,7 +57,7 @@ function ProfileButton() {
             <>
               <li>Hey, {user.username}!</li>
               <li>{user.email}</li>
-              <li>Dashboard</li>
+              <li><Link to={'/profile'}>Dashboard</Link></li>
               <li>Friends</li>
               <li>Explore</li>
               <li>Manage Posts</li>
@@ -69,14 +73,14 @@ function ProfileButton() {
             </>
           ) : (
             <>
-              <OpenModalMenuItem
-                itemText="Log In"
-                onItemClick={closeMenu}
+              <OpenModalButton
+                buttonText="Log In"
+                onButtonClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
-              <OpenModalMenuItem
-                itemText="Sign Up"
-                onItemClick={closeMenu}
+              <OpenModalButton
+                buttonText="Sign Up"
+                onButtonClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
             </>

@@ -9,6 +9,7 @@ def userNormalizer(user):
         'id': user.id,
         'first_name': user.first_name,
         'last_name': user.last_name,
+        'username': user.username,
         'email': user.email,
         'city': user.city,
         'state': user.state,
@@ -30,23 +31,6 @@ def users():
     Query for all users and returns them in a list of user dictionaries
     """
     users = User.query.all()
-    # def userNormalizer(user):
-    #     normalUser = {
-    #         'id': user.id,
-    #         'first_name': user.first_name,
-    #         'last_name': user.last_name,
-    #         'email': user.email,
-    #         'city': user.city,
-    #         'state': user.state,
-    #         'native': user.native,
-    #         'learning': user.learning,
-    #         'level': user.level,
-    #         'bio': user.bio,
-    #         'prof_pic': user.prof_pic,
-    #         "pref_chatroom": user.pref_chatroom,
-    #         "pref_theme": user.pref_theme,
-    #     }
-    #     return normalUser
     return {'users': [userNormalizer(user) for user in users]}
 
 

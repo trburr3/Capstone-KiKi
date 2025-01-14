@@ -6,6 +6,24 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
 
+def userNormalizer(user):
+    normalUser = {
+        'id': user.id,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'username': user.username,
+        'email': user.email,
+        'city': user.city,
+        'state': user.state,
+        'native': user.native,
+        'learning': user.learning,
+        'level': user.level,
+        'bio': user.bio,
+        'prof_pic': user.prof_pic,
+        "pref_chatroom": user.pref_chatroom,
+        "pref_theme": user.pref_theme,
+    }
+    return normalUser
 
 @auth_routes.route('/')
 def authenticate():
@@ -13,7 +31,7 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        return current_user.to_dict()
+        return userNormalizer(current_user)
     return {'errors': {'message': 'Unauthorized'}}, 401
 
 
@@ -30,7 +48,7 @@ def login():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
-        return user.to_dict()
+        return userNormalizer(user)
     return form.errors, 401
 
 
@@ -59,7 +77,7 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return user.to_dict()
+        return userNormalizer(user)
     return form.errors, 401
 
 
