@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { CgNotifications } from "react-icons/cg";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function ProfileButton() {
     <>
       <button onClick={toggleMenu}>
         <FaUserCircle />
+        <IoIosArrowDropdownCircle />
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>

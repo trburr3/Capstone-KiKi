@@ -1,11 +1,12 @@
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import OpenModalButton from "../Translator/OpenModalButton";
 import "./Navigation.css";
 import logo from "../../images/Logo.png";
 
 function Navigation() {
-	// const user = useSelector((state) => state.session.user);
+	const user = useSelector((state) => state.session.user);
 
 	return (
 		<nav className='nav'>
@@ -17,6 +18,7 @@ function Navigation() {
             </NavLink>
 				</li>
 				<div className='profile-button'>
+					{user && <li><button>🗒️</button></li>}
 					<li>
 						<ProfileButton />
 					</li>
