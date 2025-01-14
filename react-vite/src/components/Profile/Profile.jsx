@@ -12,7 +12,6 @@ import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import { thunkAllFriends } from '../../redux/friends'
 import { thunkGetAchievements, thunkGetAllUserPosts } from "../../redux/session";
-import { GiAngelWings } from "react-icons/gi";
 import { FaChampagneGlasses } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa6";
 import { FaGlobe } from "react-icons/fa6";
