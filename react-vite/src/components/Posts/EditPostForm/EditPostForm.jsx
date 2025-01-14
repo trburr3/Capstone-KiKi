@@ -6,7 +6,7 @@ const EditPostForm = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const params = useParams();
+    const { postId } = useParams();
     const postData = useSelector(state => state.posts.post)
     const post = Object.values(postData)
     const [body, setBody] = useState(post?.body);
@@ -16,8 +16,8 @@ const EditPostForm = () => {
 	const [privated, setPrivated] = useState(post?.private);
 
     useEffect(() => {
-        dispatch(thunkSinglePost(params.postId))
-    }, [params.postId])
+        dispatch(thunkSinglePost(postId))
+    }, [postId])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const EditPostForm = () => {
             private: privated
         }
 
-       dispatch(thunkEditPost(payload, params.postId))
+       dispatch(thunkEditPost(payload, postId))
        navigate('/profile')
     };
 

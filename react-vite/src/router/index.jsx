@@ -5,6 +5,8 @@ import Layout from './Layout';
 import LandingPage from '../components/LandingPage';
 import ProfilePage from '../components/Profile/Profile';
 import CreatePostForm from '../components/Posts/CreatePostForm/CreatePostForm';
+import EditPostForm from '../components/Posts/EditPostForm';
+import PostDetails from '../components/Posts/PostDetails';
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
       {
         path: "posts/new",
         element:<CreatePostForm />
+      },
+      {
+        path: "posts/:postId",
+        element:<PostDetails />
+      },
+      {
+        path: "posts/:postId/edit",
+        element:<EditPostForm />
       },
     ],
   },
