@@ -114,7 +114,7 @@ export const thunkCreateComment = (request, postId) => async dispatch => {
         if(post.errors) { return; }
         // console.log(post)
         // dispatch(getSinglePost(post));
-        // window.location.reload();
+        window.location.reload();
     }
 }
 

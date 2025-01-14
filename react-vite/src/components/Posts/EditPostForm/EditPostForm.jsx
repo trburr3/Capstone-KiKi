@@ -17,7 +17,7 @@ const EditPostForm = () => {
 
     useEffect(() => {
         dispatch(thunkSinglePost(postId))
-    }, [postId])
+    }, [dispatch, postId])
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -10,7 +10,7 @@ import avatar5 from '../../images/Avatar 5.png';
 import { BiSolidBookHeart } from "react-icons/bi";
 import { BiSolidBookmarkHeart } from "react-icons/bi";
 import DeletePostModal from "./DeletePostModal";
-import OpenModalButton from "../Translator/OpenModalButton";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
 
 const PostDetails = () => {
     const dispatch = useDispatch();
@@ -39,11 +39,22 @@ const PostDetails = () => {
 
     let likesArr = post?.likes
 
-    const handleSubmit = () => {}
+    const handleClick = () => {
+        navigate(`/posts/${postId}/edit`)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const payload = {
+            comment
+        };
+
+        dispatch(postActions.thunkCreateComment(payload, postId));
+    }
 
     return (
         <>
-        {/* {console.log('HAVE WE MADE IT ?', '---->', post , '-------->', commentsArr)} */}
         <div className="post">
             <div className="post-details">
                 <h1>{post?.title}</h1>
@@ -59,13 +70,13 @@ const PostDetails = () => {
                         <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''}/></button>
                         {likesArr ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
                         {
-                        user.id == post.author_id ?
+                        post && user.id == post.author_id ?
                             <>
-                            <button onClick={navigate(`/posts/${postId}/edit`)}>Edit</button>
+                            <button onClick={handleClick}>Edit</button>
                             <OpenModalButton
                             modalComponent={<DeletePostModal />}
                             onButtonClick
-                            onModalClose={navigate('/posts')}
+                            onModalClose
                             buttonText='Delete'/>
                             </>
                         :
@@ -74,13 +85,15 @@ const PostDetails = () => {
                     </div>
                 </section>
                 <section className="post-comment-box">
+                    <form onSubmit={e => handleSubmit(e)}>
                     <input
                     type="textarea"
                     placeholder="Write a comment..."
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     ></input>
-                    <button disabled={comment ? true : false} onSubmit={handleSubmit}>Post</button>
+                    <button disabled={comment ? false : true}>Post</button>
+                    </form>
                 </section>
                 <section className="post-comments">
                     <ul>
