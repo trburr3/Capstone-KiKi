@@ -1,81 +1,110 @@
 import { csrfFetch } from "./csrf";
 
-const SET_USER = 'session/setUser';
-const REMOVE_USER = 'session/removeUser';
+const LOAD_POSTS = 'friends/LOAD_POSTS';
+const SINGLE_POST = 'friends/SINGLE_POST';
 
-const setUser = (user) => ({
-  type: SET_USER,
-  payload: user
+const getAllPosts = (payload) => ({
+    type: LOAD_POSTS,
+    payload
 });
 
-const removeUser = () => ({
-  type: REMOVE_USER
+const getSinglePost = (payload) => ({
+    type: SINGLE_POST,
+    payload
 });
 
-export const thunkAuthenticate = () => async (dispatch) => {
-	const response = await fetch("/api/auth/");
-	if (response.ok) {
-		const data = await response.json();
-		if (data.errors) {
-			return;
-		}
 
-		dispatch(setUser(data));
-	}
-};
+export const thunkGetAllPosts = () => async dispatch => {
+    const res = await csrfFetch("/api/friends/");
 
-export const thunkLogin = (credentials) => async dispatch => {
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(credentials)
-  });
-
-  if(response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data));
-  } else if (response.status < 500) {
-    const errorMessages = await response.json();
-    return errorMessages
-  } else {
-    return { server: "Something went wrong. Please try again" }
-  }
-};
-
-export const thunkSignup = (user) => async (dispatch) => {
-  const response = await fetch("/api/auth/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
-  });
-
-  if(response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data));
-  } else if (response.status < 500) {
-    const errorMessages = await response.json();
-    return errorMessages
-  } else {
-    return { server: "Something went wrong. Please try again" }
-  }
-};
-
-export const thunkLogout = () => async (dispatch) => {
-  await fetch("/api/auth/logout");
-  dispatch(removeUser());
-};
-
-const initialState = { user: null };
-
-function sessionReducer(state = initialState, action) {
-  switch (action.type) {
-    case SET_USER:
-      return { ...state, user: action.payload };
-    case REMOVE_USER:
-      return { ...state, user: null };
-    default:
-      return state;
-  }
+    if (res.ok) {
+        const posts = await res.json();
+        if(posts.errors) { return; }
+        dispatch(getAllPosts(posts));
+    }
 }
 
-export default sessionReducer;
+export const thunkSinglePost = (postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`);
+
+    if(res.ok) {
+        const post = await res.json();
+        if(post.errors) { return; }
+
+        dispatch(getSinglePost(post));
+    }
+}
+
+export const thunkCreatePost = (request) => async dispatch => {
+    const res = await csrfFetch(`/api/posts`, methods={
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    });
+
+    if(res.ok) {
+        const posts = await csrfFetch(`api/posts`);
+        if(posts.errors) { return; }
+
+        dispatch(getAllPosts(posts));
+    }
+}
+
+export const thunkEditPost = (postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`, methods={
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    });
+
+    if(res.ok) {
+        const posts = await csrfFetch(`api/posts`);
+        if(posts.errors) { return; }
+        dispatch(getAllPosts(posts))
+    }
+}
+
+export const thunkDeletePost = (postId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/${postId}`, methods={
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    });
+
+    if(res.ok) {
+        const posts = await csrfFetch(`api/posts`);
+        if(posts.errors) { return; }
+        dispatch(getAllPosts(posts))
+    }
+}
+
+const initialState = { allPosts: {}, post: {} };
+
+export default function postReducer(state = initialState, action) {
+    switch (action.type){
+        case LOAD_POSTS: {
+            const newState = { ...state, allPosts: {} };
+            const postsArray = action.payload;
+            postsArray.forEach((post) => {
+                newState.allPosts[post.id] = post;
+            });
+            return newState;
+        }
+        case SINGLE_POST: {
+            const newState = { ...state, post: {} };
+            const post = action.payload;
+            post.forEach((post) => {
+                newState.post[post.id] = post;
+            })
+            return newState;
+        }
+        default:
+            return state;
+    }
+}

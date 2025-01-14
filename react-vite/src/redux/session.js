@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 const LOAD_ACHIEVMENTS = 'session/loadAchievements';
+const LOAD_POSTS = 'session/loadPosts';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -16,6 +17,12 @@ const removeUser = () => ({
 const getAchievements = (payload) => ({
   type: LOAD_ACHIEVMENTS,
   payload
+})
+
+const getPosts = (published, drafts) => ({
+  type: LOAD_POSTS,
+  published,
+  drafts
 })
 
 export const thunkAuthenticate = () => async (dispatch) => {
@@ -85,7 +92,31 @@ export const thunkGetAchievements = () => async dispatch => {
   }
 };
 
-const initialState = { user: null, achievements: {} };
+export const thunkGetAllUserPosts = () => async dispatch => {
+  const response = await fetch("/api/profile/posts");
+
+  if(response.ok) {
+    const data = await response.json();
+    const {Public, Private} = data
+    dispatch(getPosts(Public, Private));
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages
+  } else {
+    return { server: "Something went wrong. Please try again" }
+  }
+};
+
+const normalData = (data) => {
+  const normalData = {}
+  data.forEach((event) => {
+      normalData[event.id] = event
+  })
+
+  return normalData
+}
+
+const initialState = { user: null, achievements: {}, posts: { published: {}, privated: {} } };
 
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
@@ -95,6 +126,18 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: null };
     case LOAD_ACHIEVMENTS:
       return { ...state, achievements: action.payload };
+    case LOAD_POSTS:{
+      const newState = {...state}
+      let publicPostArr = action.published
+      let privatePostArr = action.drafts
+
+      if(publicPostArr) newState.posts.published = normalData(publicPostArr)
+
+      if(privatePostArr) newState.posts.privated = normalData(privatePostArr)
+
+      return newState
+
+    }
     default:
       return state;
   }

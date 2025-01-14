@@ -11,7 +11,13 @@ import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import { thunkAllFriends } from '../../redux/friends'
-import { thunkGetAchievements } from "../../redux/session";
+import { thunkGetAchievements, thunkGetAllUserPosts } from "../../redux/session";
+import { GiAngelWings } from "react-icons/gi";
+import { FaChampagneGlasses } from "react-icons/fa6";
+import { FaDiscord } from "react-icons/fa6";
+import { FaGlobe } from "react-icons/fa6";
+import { FaHeartCircleBolt } from "react-icons/fa6";
+import { FaLightbulb } from "react-icons/fa6";
 
 const ProfilePage = ({ profileState }) => {
     const dispatch = useDispatch();
@@ -35,6 +41,7 @@ const ProfilePage = ({ profileState }) => {
     useEffect(() => {
         dispatch(thunkAllFriends())
         dispatch(thunkGetAchievements())
+        dispatch(thunkGetAllUserPosts())
     }, [dispatch]);
 
     const payload = {
@@ -57,10 +64,16 @@ const ProfilePage = ({ profileState }) => {
 
     const achievements = useSelector(state => state.session.achievements);
 
+    const {published, privated} = useSelector(state => state.session.posts);
+
 
     let friendsArr = Object.values(allFriends);
 
-    let achievementsArr = Object.values(achievements);
+    let achievementsArr = Object.values(achievements)[0];
+
+    let publicPostArr = Object.values(published);
+
+    let privatePostArr = Object.values(privated);
 
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
     let learningFlags = {"English": '🇺🇸', "French": '🇫🇷', "Italian": '🇮🇹', "Japanese": '🇯🇵', "Portuguese": '🇧🇷', "Spanish": '🇲🇽' };
@@ -70,7 +83,56 @@ const ProfilePage = ({ profileState }) => {
         switch (activeSection) {
             case 'achievements':{
                 return(
+                    <>
                     <h3>Achievements</h3>
+                    <ul className="achievement-list">
+                    {
+                        achievementsArr?.includes(1) &&
+                        <>
+                        <li className="li-achievement">
+                        <FaChampagneGlasses />
+                        <p>Make 3 Friends</p>
+                        </li>
+                        </>
+                    }
+                    {
+                        achievementsArr?.includes(2) &&
+                        <>
+                        <li className="li-achievement">
+                        <FaDiscord />
+                        <p>Send 5 Messages</p>
+                        </li>
+                        </>
+                    }
+                    {
+                        achievementsArr?.includes(3) &&
+                        <>
+                        <li className="li-achievement">
+                        <FaGlobe />
+                        <p>Make a Public Post</p>
+                        </li>
+                        </>
+                    }
+                    {
+                        achievementsArr?.includes(4) &&
+                        <>
+                        <li className="li-achievement">
+                        <FaLightbulb />
+                        <p>Write 3 Comments</p>
+                        </li>
+                        </>
+                    }
+                    {
+                        achievementsArr?.includes(5) &&
+                        <>
+                        <li className="li-achievement">
+                        <FaHeartCircleBolt />
+                        <p>Like 5 Posts</p>
+                        </li>
+                        </>
+                    }
+                    </ul>
+                    </>
                 )
             }
             case 'edit-profile':{
@@ -223,8 +285,8 @@ const ProfilePage = ({ profileState }) => {
                 return(
                     <>
                     <h3>Friends</h3>
-                    <ul>
-                    {friendsArr.map((friend, index) => (
+                    <ul className="friends-list">
+                    {friendsArr?.map((friend, index) => (
                         <li key={index} className="friend-tile">
                             <img src={avatarArr[(friend.prof_pic - 1 )]} alt="friend-avatar" />
                             <p>{friend.username}</p>
@@ -237,7 +299,27 @@ const ProfilePage = ({ profileState }) => {
             }
             case 'posts':{
                 return(
+                    <>
                     <h3>Posts</h3>
+                    <h4>Public</h4>
+                    <ul className="posts-list">
+                    {publicPostArr?.map((post, index) => (
+                        <li key={index} className="post-tile">
+                            <p>{post.title}</p>
+                            <button>🔍</button>
+                        </li>
+                    ))}
+                    </ul>
+                    <h4>Private</h4>
+                    <ul className="posts-list">
+                    {privatePostArr?.map((post, index) => (
+                        <li key={index} className="post-tile">
+                            <p>{post.title}</p>
+                            <button>🔍</button>
+                        </li>
+                    ))}
+                    </ul>
+                    </>
                 )
             }
             default:{
@@ -266,7 +348,7 @@ const ProfilePage = ({ profileState }) => {
 					</p>
                     <p>{learningFlags[user?.learning]} Learning</p>
                     <p>{levelArr[(user?.level - 1)]} Level</p>
-                    <p> # Achievements</p>
+                    <p> {achievementsArr?.length} Achievements</p>
                     <p>{user?.bio}</p>
 					<nav>
 						<button
