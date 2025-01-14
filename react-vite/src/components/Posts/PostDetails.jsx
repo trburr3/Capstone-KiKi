@@ -53,6 +53,10 @@ const PostDetails = () => {
         dispatch(postActions.thunkCreateComment(payload, postId));
     }
 
+    const deleteComment = (commentId) => {
+        dispatch(postActions.thunkDeleteComment(commentId))
+    }
+
     return (
         <>
         <div className="post">
@@ -106,6 +110,7 @@ const PostDetails = () => {
                                 <p>{comment.comment}</p>
                                 <div className="comment-likes">
                                 <button><BiSolidBookmarkHeart className={likesArr?.includes(user.username) ? 'filled' : ''} /></button> {comment.likes.length}
+                                {comment.author_id == user.id ? <button onClick={() => deleteComment(comment.id)}>X</button> : ''}
                                 </div>
                             </li>
                             </>

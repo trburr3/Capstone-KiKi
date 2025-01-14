@@ -135,8 +135,8 @@ export const thunkEditComment = (request, postId, commentId) => async dispatch =
     }
 }
 
-export const thunkDeleteComment = (postId, commentId) => async dispatch => {
-    const res = await csrfFetch(`/api/posts/${postId}/comments/${commentId}`, {
+export const thunkDeleteComment = (commentId) => async dispatch => {
+    const res = await csrfFetch(`/api/posts/comments/${commentId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

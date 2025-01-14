@@ -7,8 +7,9 @@ const EditPostForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { postId } = useParams();
-    const postData = useSelector(state => state.posts.post)
-    const post = Object.values(postData)
+    const posts = useSelector(state => state.posts.allPosts)
+    let post;
+    if (posts) post = posts[postId]
     const [body, setBody] = useState(post?.body);
 	const [level, setLevel] = useState(post?.level);
 	const [language, setLanguage] = useState(post?.language);
@@ -31,7 +32,7 @@ const EditPostForm = () => {
         }
 
        dispatch(thunkEditPost(payload, postId))
-       navigate('/profile')
+       navigate(`/posts/${postId}`)
     };
 
    return (
