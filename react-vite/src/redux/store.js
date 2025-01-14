@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import friendReducer from "./friends";
 import postReducer from "./posts";
+import translationReducer from "./translate";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   friends: friendReducer,
   posts: postReducer,
+  translation: translationReducer,
 });
 
 let enhancer;

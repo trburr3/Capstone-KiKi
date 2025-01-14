@@ -4,15 +4,15 @@ import TranslatorModal from './TranslatorModal';
 
 const Translator = () => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    // }
     return(
         <div id='translator-modal-button'>
         <OpenModalButton
         modalComponent={<TranslatorModal />}
         buttonText='+'
-        onButtonClick={(e) => handleSubmit(e)}
+        onButtonClick
         onModalClose />
         </div>
     )

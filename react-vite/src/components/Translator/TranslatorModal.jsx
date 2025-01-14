@@ -1,27 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useModal } from '../../context/Modal';
+import { thunkTranslate } from '../../redux/translate';
 
 const TranslatorModal = () => {
-    const {closeModal} = useModal()
+    // const {closeModal} = useModal()
     const dispatch = useDispatch();
     const [originalText, setOriginalText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
     const [language, setLanguage] = useState('English');
 
+    const res = useSelector(state => state.translation)
+
+    useEffect(() => {
+        setTranslatedText(res.translation[0])
+    }, [res])
+
     const handleSubmit = async (e) => {
-        e.stopPropagation()
+        e.preventDefault()
 
-        console.log(originalText)
-        console.log(language)
+        // console.log(originalText)
+        // console.log(language)
+        const payload = {
+            text: originalText,
+            language
+        }
 
-        // res = await dispatch(thunkTranslate(originalText))
+        const response = await dispatch(thunkTranslate(payload))
 
-        // setTranslatedText(res)
-        closeModal
-
-        return
     }
+
+    // console.log(res.translation[0])
 
     return (
         <>
@@ -32,67 +41,37 @@ const TranslatorModal = () => {
                 <div className='translator-input-buttons'>
                     <label>
                     Language:
-                    <select>
-                        {/* <label> */}
+                    <select value={language} onChange={(e) => setLanguage(e.target.value)}>
                             <option
-                            // type="radio"
                             value="English"
-                            // checked={language == ""}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 Enlgish
                             </option>
-                        {/* </label> */}
-                        {/* <label> */}
                             <option
-                            // type="radio"
                             value="French"
-                            // checked={language == "French"}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 French
                             </option>
-                        {/* </label> */}
-                        {/* <label> */}
                             <option
-                            // type="radio"
                             value="Italian"
-                            // checked={language == "Italian"}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 Italian
                             </option>
-                        {/* </label> */}
-                        {/* <label> */}
                             <option
-                            // type="radio"
                             value="Japanese"
-                            // checked={language == "Japanese"}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 Japanese
                             </option>
-                        {/* </label> */}
-                        {/* <label> */}
                             <option
-                            // type="radio"
                             value="Portuguese"
-                            // checked={language == "Portuguese"}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 Portuguese
                             </option>
-                        {/* </label> */}
-                        {/* <label> */}
                             <option
-                            // type="radio"
                             value="Spanish"
-                            // checked={language == "Spanish"}
-                            onChange={(e) => setLanguage(e.target.value)}
                             required>
                                 Spanish
                             </option>
-                        {/* </label> */}
                         </select>
                         </label>
                     </div>

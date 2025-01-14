@@ -45,10 +45,7 @@ export const thunkAddFriend = (request) => async dispatch => {
     });
 
     if(res.ok) {
-        const friends = await csrfFetch(`/api/friends`);
-        if(friends.errors) { return; }
-
-        dispatch(getAllFriends(friends));
+        window.location.reload()
     }
 }
 
@@ -62,9 +59,6 @@ export const thunkRemoveFriend = (friendId) => async dispatch => {
     });
 
     if(res.ok) {
-        // const friends = await csrfFetch(`/api/friends`);
-        // if(friends.errors) { return; }
-        // dispatch(getAllFriends(friends))
         window.location.reload()
     }
 }
