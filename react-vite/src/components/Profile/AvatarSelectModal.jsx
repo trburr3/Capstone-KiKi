@@ -1,29 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-// import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 import './Profile.css';
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
 import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
-// import { Link } from "react-router-dom";
+
 
 const AvatarSelectModal = ({prof_pic, setProfPic}) => {
     const { closeModal } = useModal();
 
-    // const dispatch = useDispatch();
-
-    // const navigate = useNavigate();
-
     const user = useSelector(state => state.session.user);
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     return dispatch(thunkDeleteProfile(user))
-    //            .then(closeModal)
-    // }
     return (
         <>
           <div className="modal">

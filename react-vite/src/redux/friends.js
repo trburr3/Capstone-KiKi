@@ -36,7 +36,7 @@ export const thunkSingleFriend = (friendId) => async dispatch => {
 }
 
 export const thunkAddFriend = (request) => async dispatch => {
-    const res = await csrfFetch(`/api/friends`, methods={
+    const res = await csrfFetch(`/api/friends`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export const thunkAddFriend = (request) => async dispatch => {
     });
 
     if(res.ok) {
-        const friends = await csrfFetch(`api/friends`);
+        const friends = await csrfFetch(`/api/friends`);
         if(friends.errors) { return; }
 
         dispatch(getAllFriends(friends));
@@ -53,18 +53,19 @@ export const thunkAddFriend = (request) => async dispatch => {
 }
 
 export const thunkRemoveFriend = (friendId) => async dispatch => {
-    const res = await csrfFetch(`/api/friends/${friendId}`, methods={
+    const res = await csrfFetch(`/api/friends/${friendId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(request)
+            'Access-Control-Allow-Credentials': 'true'
+        }
     });
 
     if(res.ok) {
-        const friends = await csrfFetch(`api/friends`);
-        if(friends.errors) { return; }
-        dispatch(getAllFriends(friends))
+        // const friends = await csrfFetch(`/api/friends`);
+        // if(friends.errors) { return; }
+        // dispatch(getAllFriends(friends))
+        window.location.reload()
     }
 }
 

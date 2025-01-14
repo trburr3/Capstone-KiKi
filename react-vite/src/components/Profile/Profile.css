@@ -1,0 +1,9 @@
+.avatar-options{
+    list-style: none;
+}
+
+.avatar-options>.selected{
+    border: solid 3px lime;
+    border-radius: 100px;
+    width: fit-content;
+}

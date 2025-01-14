@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkEditProfile} from "../../redux/session";
+import { thunkRemoveFriend } from "../../redux/friends";
 import './Profile.css';
 import { Link } from "react-router-dom";
 
-const EditProfileModal = ({ payload }) => {
+const RemoveFriendModal = ({ friend }) => {
     const { closeModal } = useModal();
 
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const EditProfileModal = ({ payload }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        return dispatch(thunkEditProfile(payload))
+        return dispatch(thunkRemoveFriend(friend.id))
                .then(closeModal)
 
     }
@@ -23,11 +23,11 @@ const EditProfileModal = ({ payload }) => {
           <div className="modal">
           <div className="modal-content">
           <div className="modal-header">
-		    <h1>Edit Profile</h1>
+		    <h1>Remove Friend</h1>
 
-          <p>Are you sure you want to make this change?</p>
+          <p>Are you sure you want to remove {friend.username} as a friend?</p>
 
-          <button type="Submit" className='button-yes' onClick={handleSubmit}>Save Edit</button>
+          <button type="Submit" className='button-yes' onClick={handleSubmit}>Yes, Remove.</button>
           <Link to={'/profile'} onClick={closeModal}>No, Go Back.</Link>
 
           </div>
@@ -38,4 +38,4 @@ const EditProfileModal = ({ payload }) => {
 
 };
 
-export default EditProfileModal;
+export default RemoveFriendModal;

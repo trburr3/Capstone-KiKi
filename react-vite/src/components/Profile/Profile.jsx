@@ -17,6 +17,7 @@ import { FaDiscord } from "react-icons/fa6";
 import { FaGlobe } from "react-icons/fa6";
 import { FaHeartCircleBolt } from "react-icons/fa6";
 import { FaLightbulb } from "react-icons/fa6";
+import RemoveFriendModal from "./RemoveFriendModal";
 
 const ProfilePage = ({ profileState }) => {
     const dispatch = useDispatch();
@@ -280,7 +281,13 @@ const ProfilePage = ({ profileState }) => {
                         <li key={index} className="friend-tile">
                             <img src={avatarArr[(friend.prof_pic - 1 )]} alt="friend-avatar" />
                             <p>{friend.username}</p>
-                            <button>x</button>
+                            {/* <button>x</button> */}
+                            <OpenModalButton
+                            buttonText='x'
+                            modalComponent={<RemoveFriendModal friend={friend}/>}
+                            onButtonClick
+                            onModalClose
+                            />
                         </li>
                     ))}
                     </ul>
