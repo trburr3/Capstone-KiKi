@@ -151,6 +151,40 @@ export const thunkDeleteComment = (commentId) => async dispatch => {
     }
 }
 
+export const thunkAddLike = (request) => async dispatch => {
+    const res = await csrfFetch(`/api/likes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    });
+
+    if(res.ok) {
+        const response = await res.json();
+        if(response.errors) { return; }
+        // console.log(post)
+        // dispatch(getSinglePost(post));
+        window.location.reload();
+    }
+}
+
+export const thunkRemoveLike = (likeId) => async dispatch => {
+    const res = await csrfFetch(`/api/likes/${likeId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if(res.ok) {
+        // const posts = await csrfFetch(`api/posts`);
+        // if(posts.errors) { return; }
+        // dispatch(getAllPosts(posts))
+        window.location.reload();
+    }
+}
+
 
 const initialState = { allPosts: {}, post: {}, comments:{} };
 

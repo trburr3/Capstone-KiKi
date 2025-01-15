@@ -14,7 +14,7 @@ export default function AllPosts(){
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts())
-    })
+    }, [dispatch])
 
     if(postData) postsArr = Object.values(postData)
 

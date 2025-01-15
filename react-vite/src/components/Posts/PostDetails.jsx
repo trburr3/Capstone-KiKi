@@ -18,6 +18,7 @@ const PostDetails = () => {
     const { postId } = useParams();
     const user = useSelector(state => state.session.user);
     const [comment, setComment] = useState('');
+    const [liked, setLiked] = useState(false)
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
@@ -39,6 +40,10 @@ const PostDetails = () => {
 
     let likesArr = post?.likes
 
+    useEffect(() => {
+        if (likesArr.includes(user.username)) setLiked(true)
+    }, [likesArr, user])
+
     const handleClick = () => {
         navigate(`/posts/${postId}/edit`)
     }
@@ -57,6 +62,16 @@ const PostDetails = () => {
         dispatch(postActions.thunkDeleteComment(commentId))
     }
 
+    const handleLike = (postId, commentId) => {
+        const payload = {
+            post_id: postId,
+            comment_id: commentId
+        }
+        if (liked) dispatch(postActions.thunkRemoveLike())
+
+        dispatch(postActions.thunkAddLike(payload))
+    }
+
     return (
         <>
         <div className="post">
@@ -71,7 +86,7 @@ const PostDetails = () => {
                 <section className="post-body">
                     <span>{post?.body}</span>
                     <div className="post-like">
-                        <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''}/></button>
+                        <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={handleLike(post.id)}/></button>
                         {likesArr ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
                         {
                         post && user.id == post.author_id ?
