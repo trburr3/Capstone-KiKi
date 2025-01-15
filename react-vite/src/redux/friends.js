@@ -42,20 +42,6 @@ export const thunkSingleFriend = (friendId) => async dispatch => {
     }
 }
 
-export const thunkAddFriend = (request) => async dispatch => {
-    const res = await csrfFetch(`/api/friends`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(request)
-    });
-
-    if(res.ok) {
-        window.location.reload()
-    }
-}
-
 export const thunkRemoveFriend = (friendId) => async dispatch => {
     const res = await csrfFetch(`/api/friends/${friendId}`, {
         method: 'DELETE',
@@ -70,14 +56,43 @@ export const thunkRemoveFriend = (friendId) => async dispatch => {
     }
 }
 
+export const thunkRequestResponse = (response) => async dispatch => {
+    const res = await csrfFetch(`/api/requests/${response.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(response)
+    });
+
+    if(res.ok) {
+        window.location.reload()
+    }
+}
+
 export const thunkGetAllRequests = () => async dispatch => {
-    const res = await csrfFetch("/api/friends/");
+    const res = await csrfFetch(`/api/requests`);
 
     if (res.ok) {
         const requests = await res.json();
         if(requests.errors) { return; }
         const {Sent, Received} = requests
+        console.log(requests)
         dispatch(getAllRequests(Sent, Received));
+    }
+}
+
+export const thunkDeleteRequest = (requestId) => async dispatch => {
+    const res = await csrfFetch(`/api/requests/${requestId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': 'true'
+        }
+    });
+
+    if(res.ok) {
+        window.location.reload()
     }
 }
 

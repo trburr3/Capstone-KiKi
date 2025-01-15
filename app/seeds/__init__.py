@@ -6,6 +6,7 @@ from .friends import seed_friends, undo_friends
 from .comments import seed_comments, undo_comments
 from .posts import seed_posts, undo_posts
 from .likes import seed_likes, undo_likes
+from .conversations import seed_conversations, undo_conversations
 
 from app.models.db import db, environment, SCHEMA
 
@@ -29,6 +30,7 @@ def seed():
         undo_comments()
         undo_posts()
         undo_likes()
+        undo_conversations()
     seed_users()
     seed_messages()
     seed_requests()
@@ -36,6 +38,7 @@ def seed():
     seed_comments()
     seed_posts()
     seed_likes()
+    seed_conversations()
 
 
 # Creates the `flask seed undo` command
@@ -48,3 +51,4 @@ def undo():
     undo_comments()
     undo_posts()
     undo_likes()
+    undo_conversations()

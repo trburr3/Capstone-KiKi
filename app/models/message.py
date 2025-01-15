@@ -10,6 +10,7 @@ class Message(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('conversations.id')), nullable=False)
     recipient_id = db.Column(db.Integer, nullable=False)
     message = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.String(255), default=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
@@ -19,6 +20,7 @@ class Message(db.Model):
         return {
             'id': self.id,
             'sender_id': self.sender_id,
+            'conversation_id': self.conversation_id,
             'recipient_id': self.recipient_id,
             'message': self.message,
             'created_at': self.created_at,

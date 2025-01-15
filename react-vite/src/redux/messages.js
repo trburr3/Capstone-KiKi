@@ -83,6 +83,14 @@ const loadAllMessages = (payload) => ({
     }
   };
 
+  const normalData = (data) => {
+    const normalData = {}
+    data.forEach((event) => {
+        normalData[event.id] = event
+    })
+
+    return normalData
+  };
 
   const initialState = { messages: {} }
 

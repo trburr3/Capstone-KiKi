@@ -30,19 +30,19 @@ def seed_requests():
     )
     request7 = Request(
         sender_id=8,
-        recipient_id=3,
+        recipient_id=1,
     )
     request8 = Request(
         sender_id=10,
-        recipient_id=3,
+        recipient_id=1,
     )
     request9 = Request(
         sender_id=16,
-        recipient_id=3,
+        recipient_id=1,
     )
     request10 = Request(
         sender_id=20,
-        recipient_id=4,
+        recipient_id=1,
     )
     request11 = Request(
         sender_id=5,

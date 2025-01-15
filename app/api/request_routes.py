@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models.db import db
-from app.models import User, Request
+from app.models import User, Request, Friend
 from flask_login import current_user, login_required
 from sqlalchemy import or_
 
@@ -56,8 +56,15 @@ def edit_request(request_id):
         return { 'errors': { 'request': 'No request found.' } }, 404
 
     data = request.get_json()
-    target_request.pending = data.get('response')
+    if data.get('response'):
+        newFriend = Friend(
+        user_id = user_id,
+        friend_id = data.get('sender_id'),
+        )
+        db.session.add(newFriend)
+        target_request.pending = False
 
+    target_request.pending = False
     db.session.commit()
     return target_request.to_dict()
 

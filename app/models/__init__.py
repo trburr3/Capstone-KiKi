@@ -6,4 +6,5 @@ from .friend import Friend
 from .post import Post
 from .comment import Comment
 from .like import Like
+from .conversation import Conversation
 from .db import environment, SCHEMA

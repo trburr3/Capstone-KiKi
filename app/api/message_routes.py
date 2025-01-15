@@ -13,6 +13,15 @@ def get_all_messages():
     messages = Message.query.filter(Message.sender_id == user_id or Message.recipient_id == user_id)
     if not messages :
         return { 'errors': { 'Messages': 'No messages found.' } }, 404
+    def messageNormalizer(message):
+        formattedMessage: {
+            'id': message.id,
+            'to': User.query.get(message.recipient_id).first_name,
+            'from': User.query.get(message.sender_id).first_name,
+            'message': message.message,
+            'updated_at': message.updated_at
+        }
+        return formattedMessage
     return {'Messages': [message.to_dict() for message in messages]}
 
 @message_routes.route('/', methods=['POST'])
