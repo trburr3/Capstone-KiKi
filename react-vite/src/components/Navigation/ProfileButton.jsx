@@ -58,13 +58,15 @@ function ProfileButton() {
               <li>{user.email}</li>
               <li><Link to={'/profile'}>Dashboard</Link></li>
               <li><Link to={'/profile/friends'}>Friends</Link></li>
-              <li>Explore</li>
+              <li><Link to={'/explore'}>Explore</Link></li>
               <li><Link to={'/profile/posts'}>Manage Posts</Link></li>
               <li className="menu-item inbox">
+              <Link to={'/inbox'}>
                 Inbox
                 <div id='inbox-icon'>
                 <CgNotifications />
                 </div>
+              </Link>
                 </li>
               <li>
                 <button onClick={logout}>Log Out</button>
