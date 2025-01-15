@@ -9,6 +9,7 @@ import EditPostForm from '../components/Posts/EditPostForm';
 import PostDetails from '../components/Posts/PostDetails';
 import AllPosts from '../components/Posts/AllPosts';
 import AllLearners from '../components/Explore';
+import Inbox from '../components/Inbox/Inbox';
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "inbox",
-        element: <h1>Inbox Page</h1>
+        element: <Inbox />
       },
       {
         path: "profile",

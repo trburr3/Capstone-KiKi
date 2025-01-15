@@ -21,7 +21,7 @@ function Footer() {
         <button className="footer-button" id="explore-button" disabled={disabled} onClick={() => navigate('/explore')}>
             EXLPORE
         </button>
-        <button className="footer-button" id="inbox-button" disabled={disabled} onClick={() => navigate('/')}>
+        <button className="footer-button" id="inbox-button" disabled={disabled} onClick={() => navigate('/inbox')}>
             INBOX
         </button>
     </div>

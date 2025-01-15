@@ -4,7 +4,6 @@ const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 const LOAD_ACHIEVMENTS = 'session/loadAchievements';
 const LOAD_POSTS = 'session/loadPosts';
-const LOAD_USERS = 'session/loadUsers';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -18,18 +17,13 @@ const removeUser = () => ({
 const getAchievements = (payload) => ({
   type: LOAD_ACHIEVMENTS,
   payload
-})
+});
 
 const getPosts = (published, drafts) => ({
   type: LOAD_POSTS,
   published,
   drafts
-})
-
-const getAllUsers = (payload) => ({
-  type: LOAD_USERS,
-  payload
-})
+});
 
 export const thunkAuthenticate = () => async (dispatch) => {
 	const response = await fetch("/api/users/current");
@@ -148,20 +142,6 @@ export const thunkEditProfile = (user) => async dispatch => {
   }
 };
 
-export const thunkGetAllUsers = () => async dispatch => {
-  const response = await csrfFetch("/api/users/");
-
-  if(response.ok) {
-    const data = await response.json();
-    dispatch(getAllUsers(data['Users']));
-  } else if (response.status < 500) {
-    const errorMessages = await response.json();
-    return errorMessages
-  } else {
-    return { server: "Something went wrong. Please try again" }
-  }
-};
-
 const normalData = (data) => {
   const normalData = {}
   data.forEach((event) => {
@@ -169,7 +149,7 @@ const normalData = (data) => {
   })
 
   return normalData
-}
+};
 
 const initialState = { user: null, achievements: {}, posts: { published: {}, privated: {} }, learners: {} };
 
@@ -190,15 +170,6 @@ function sessionReducer(state = initialState, action) {
       if(publicPostArr) newState.posts.published = normalData(publicPostArr)
 
       if(privatePostArr) newState.posts.privated = normalData(privatePostArr)
-
-      return newState
-
-    }
-    case LOAD_USERS:{
-      const newState = {...state}
-      let learnersArr = action.payload
-
-      if(learnersArr) newState.learners = normalData(learnersArr)
 
       return newState
 

@@ -40,7 +40,7 @@ def edit_messages(message_id):
         return { 'errors': { 'Message': 'No message found.' } }, 404
 
     data = request.get_json()
-    editedMessage = data.get("message")
+    editedMessage = data.get("message") + ' ' + '((edited))'
 
     message.message = editedMessage
     message.updated_at = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")

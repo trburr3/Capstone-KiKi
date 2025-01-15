@@ -9,12 +9,16 @@ import sessionReducer from "./session";
 import friendReducer from "./friends";
 import postReducer from "./posts";
 import translationReducer from "./translate";
+import messageReducer from "./messages";
+import learnerReducer from "./learners";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   friends: friendReducer,
   posts: postReducer,
   translation: translationReducer,
+  messages: messageReducer,
+  learners:learnerReducer,
 });
 
 let enhancer;

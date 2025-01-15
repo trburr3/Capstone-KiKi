@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import { useEffect } from "react";
-import { thunkGetAllUsers } from "../../redux/session";
+import { thunkGetAllUsers } from "../../redux/learners";
 import './Explore.css';
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
@@ -13,7 +13,7 @@ import avatar5 from '../../images/Avatar 5.png';
 const AllLearners = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
-    const learnersData = useSelector(state => state.session.learners)
+    const learnersData = useSelector(state => state.learners.learners)
     let learnersArr;
 
     if(learnersData) learnersArr = Object.values(learnersData)
