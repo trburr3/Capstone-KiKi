@@ -8,6 +8,7 @@ import CreatePostForm from '../components/Posts/CreatePostForm/CreatePostForm';
 import EditPostForm from '../components/Posts/EditPostForm';
 import PostDetails from '../components/Posts/PostDetails';
 import AllPosts from '../components/Posts/AllPosts';
+import AllLearners from '../components/Explore';
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "explore",
-        element: <h1>Explore Page</h1>
+        element: <AllLearners />
       },
       {
         path: "posts",
