@@ -78,9 +78,9 @@ const PostDetails = () => {
                             <>
                             <button onClick={handleClick}>Edit</button>
                             <OpenModalButton
-                            modalComponent={<DeletePostModal />}
+                            modalComponent={<DeletePostModal post={post}/>}
                             onButtonClick
-                            onModalClose
+                            onModalClose={() => navigate('/posts')}
                             buttonText='Delete'/>
                             </>
                         :
@@ -100,6 +100,7 @@ const PostDetails = () => {
                     </form>
                 </section>
                 <section className="post-comments">
+                    <h3>Comments {commentsArr ? ' ⋅ ' + commentsArr.length : ''}</h3>
                     <ul>
                         {commentsArr ?
                         commentsArr.map((comment, index) => (

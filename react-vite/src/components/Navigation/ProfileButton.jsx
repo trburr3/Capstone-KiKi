@@ -57,9 +57,9 @@ function ProfileButton() {
               <li>Hey, {user.username}!</li>
               <li>{user.email}</li>
               <li><Link to={'/profile'}>Dashboard</Link></li>
-              <li>Friends</li>
+              <li><Link to={'/profile/friends'}>Friends</Link></li>
               <li>Explore</li>
-              <li>Manage Posts</li>
+              <li><Link to={'/profile/posts'}>Manage Posts</Link></li>
               <li className="menu-item inbox">
                 Inbox
                 <div id='inbox-icon'>

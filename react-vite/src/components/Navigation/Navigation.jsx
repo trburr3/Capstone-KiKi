@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
-import OpenModalButton from "../Translator/OpenModalButton";
 import "./Navigation.css";
 import logo from "../../images/Logo.png";
 
@@ -18,7 +17,7 @@ function Navigation() {
             </NavLink>
 				</li>
 				<div className='profile-button'>
-					{user && <li><button>🗒️</button></li>}
+					{user && <NavLink to='/posts/new'>🗒️</NavLink>}
 					<li>
 						<ProfileButton />
 					</li>

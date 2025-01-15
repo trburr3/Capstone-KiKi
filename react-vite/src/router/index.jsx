@@ -7,6 +7,7 @@ import ProfilePage from '../components/Profile/Profile';
 import CreatePostForm from '../components/Posts/CreatePostForm/CreatePostForm';
 import EditPostForm from '../components/Posts/EditPostForm';
 import PostDetails from '../components/Posts/PostDetails';
+import AllPosts from '../components/Posts/AllPosts';
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "posts",
-        element: <h1>Forum Page</h1>
+        element: <AllPosts />
       },
       {
         path: "inbox",
@@ -39,6 +40,14 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element:<ProfilePage />
+      },
+      {
+        path: "profile/friends",
+        element:<ProfilePage profileState={'friends'} />
+      },
+      {
+        path: "profile/posts",
+        element:<ProfilePage profileState={'posts'} />
       },
       {
         path: "posts/new",

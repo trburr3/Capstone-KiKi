@@ -1,6 +1,6 @@
 import {useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Footer.css";
 
 function Footer() {
@@ -8,18 +8,20 @@ function Footer() {
     const user = useSelector(state => state.session.user)
     const [disabled, setDisabled] = useState(true)
 
-    // if (user) setDisabled(false)
+    useEffect(() => {
+        if (user) setDisabled(false)
+    }, [user])
 
   return (
     <>
     <div className="footer-container">
-        <button className="footer-button" id="forum-button" disabled={disabled}>
+        <button className="footer-button" id="forum-button" disabled={disabled} onClick={() => navigate('/posts')}>
             FORUM
         </button>
-        <button className="footer-button" id="explore-button" disabled={disabled}>
+        <button className="footer-button" id="explore-button" disabled={disabled} onClick={() => navigate('/')}>
             EXLPORE
         </button>
-        <button className="footer-button" id="inbox-button" disabled={disabled}>
+        <button className="footer-button" id="inbox-button" disabled={disabled} onClick={() => navigate('/')}>
             INBOX
         </button>
     </div>
