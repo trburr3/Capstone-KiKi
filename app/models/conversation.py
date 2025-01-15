@@ -9,6 +9,8 @@ class Conversation(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     archived = db.Column(db.Boolean, default=False)
+    user_one = db.Column(db.Integer, nullable=False)
+    user_two = db.Column(db.Integer, nullable=False)
 
     #Relationship
     messages = db.relationship('Message', backref='collection', cascade='all, delete-orphan', lazy=True)
@@ -18,4 +20,6 @@ class Conversation(db.Model):
         return {
             'id': self.id,
             'archived': self.archived,
+            'user_one': self.user_one,
+            'user_two': self.user_two,
         }

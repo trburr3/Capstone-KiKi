@@ -8,8 +8,9 @@ import AllRequests from "./AllRequests";
 const Inbox = ({ profileState }) => {
     const dispatch = useDispatch();
     let [activeSection, setActiveSection] = useState('messages');
-    const messageData = useSelector(state => state.messages.messages);
+    const conversationsData = useSelector(state => state.messages.conversations);
     const {sent, received} = useSelector(state => state.friends.requests);
+    let conversationsArr;
     let messagesArr;
 
     useEffect(() => {
@@ -17,7 +18,7 @@ const Inbox = ({ profileState }) => {
     },[profileState]);
     useEffect(() => {
         dispatch(friendActions.thunkGetAllRequests())
-        dispatch(messageActions.thunkGetAllMessages())
+        dispatch(messageActions.thunkGetAllConversations())
     },[dispatch]);
 
     const renderSection = () => {
@@ -31,10 +32,10 @@ const Inbox = ({ profileState }) => {
         }
     }
 
-    if (messageData) messagesArr = Object.values(messageData);
+    if (conversationsData) conversationsArr = Object.values(conversationsData);
     return (
         <>
-        {console.log('HOW WE LOOKIN?', '----->', messagesArr, '=====>', sent, '||||||||||', received)}
+        {/* {console.log('HOW WE LOOKIN?', '----->', conversationsArr, '=====>', sent, '||||||||||', received)} */}
         <h1>Inbox Page</h1>
         <div className="inbox-header">
             <nav>

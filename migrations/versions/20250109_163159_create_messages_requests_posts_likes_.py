@@ -104,6 +104,8 @@ def upgrade():
     op.create_table('conversations',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('archived', sa.Boolean(), nullable=True),
+    sa.Column('user_one', sa.Integer(), nullable=False),
+    sa.Column('user_two', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
