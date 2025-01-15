@@ -12,6 +12,7 @@ def messageNormalizer(message):
     'id': message.id,
     'to': User.query.get(message.recipient_id).first_name,
     'from': User.query.get(message.sender_id).first_name,
+    'sender_pic': User.query.get(message.sender_id).prof_pic,
     'message': message.message,
     'updated_at': message.updated_at
     }
@@ -19,9 +20,15 @@ def messageNormalizer(message):
 
 def conversationNormalizer(conversation):
     messages = Message.query.filter(Message.conversation_id == conversation.id)
+    if conversation.user_one == int(current_user.get_id()):
+        friend_pic = User.query.get(conversation.user_two).prof_pic
+    friend_pic = User.query.get(conversation.user_one).prof_pic
     formattedConversation = {
         'id':conversation.id,
-        'between': [User.query.get(conversation.user_one).username, User.query.get(conversation.user_two).username ],
+        'between': [User.query.get(conversation.user_one).first_name, User.query.get(conversation.user_two).first_name ],
+        'user_one': conversation.user_one,
+        'user_two': conversation.user_two,
+        'friend_pic': friend_pic,
         'messages': [messageNormalizer(message) for message in messages],
         'archived': conversation.archived
     }
@@ -88,14 +95,15 @@ def get_all_messages(conversation_id):
 
 @conversation_routes.route('/<int:conversation_id>/messages', methods=['POST'])
 @login_required
-def create_message():
+def create_message(conversation_id):
     user_id = int(current_user.get_id())
     data = request.get_json()
 
     newMessage = Message(
         sender_id = user_id,
         recipient_id = data.get('recipient_id'),
-        message = data.get('message')
+        message = data.get('message'),
+        conversation_id = conversation_id
     )
 
     db.session.add(newMessage)
@@ -104,7 +112,7 @@ def create_message():
 
 @conversation_routes.route('/<int:conversation_id>/messages/<int:message_id>', methods=['PUT'])
 @login_required
-def edit_messages(message_id):
+def edit_messages(conversation_id, message_id):
     message = Message.query.get(message_id)
     user_id = int(current_user.get_id())
     if not message or not message.sender_id == user_id:
@@ -120,7 +128,7 @@ def edit_messages(message_id):
 
 @conversation_routes.route('/<int:conversation_id>/messages/<int:message_id>', methods=['DELETE'])
 @login_required
-def delete_message(message_id):
+def delete_message(conversation_id, message_id):
     message = Message.query.get(message_id)
     user_id = int(current_user.get_id())
     if not message or not message.sender_id == user_id:

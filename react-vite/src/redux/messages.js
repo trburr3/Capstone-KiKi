@@ -121,17 +121,18 @@ const loadAllMessages = (payload) => ({
     }
   };
 
-  export const thunkEditMessage = (conversationId, message) => async dispatch => {
-    const response = await csrfFetch(`/api/conversations/${conversationId}/messages/${message .id}`, {
+  export const thunkEditMessage = (conversationId, messageId, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/conversations/${conversationId}/messages/${messageId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(message)
+      body: JSON.stringify(payload)
     });
 
     if(response.ok) {
       const newMessage = await response.json();
-      // console.log('WHO AM I?', newMessage)
-      dispatch(loadEdit(newMessage));
+      console.log('WHO AM I?', newMessage)
+      // dispatch(loadEdit(newMessage));
+      window.location.reload()
     } else if (response.status < 500) {
       const errorMessages = await response.text();
       return errorMessages

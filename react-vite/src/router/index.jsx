@@ -10,6 +10,7 @@ import PostDetails from '../components/Posts/PostDetails';
 import AllPosts from '../components/Posts/AllPosts';
 import AllLearners from '../components/Explore';
 import Inbox from '../components/Inbox/Inbox';
+import Conversation from '../components/Inbox/Conversation/Conversation';
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "inbox",
         element: <Inbox />
+      },
+      {
+        path: "inbox/:conversationId",
+        element: <Conversation />
       },
       {
         path: "profile",

@@ -11,7 +11,6 @@ const Inbox = ({ profileState }) => {
     const conversationsData = useSelector(state => state.messages.conversations);
     const {sent, received} = useSelector(state => state.friends.requests);
     let conversationsArr;
-    let messagesArr;
 
     useEffect(() => {
         if (profileState) setActiveSection(profileState)
@@ -21,10 +20,12 @@ const Inbox = ({ profileState }) => {
         dispatch(messageActions.thunkGetAllConversations())
     },[dispatch]);
 
+    if (conversationsData) conversationsArr = Object.values(conversationsData);
+
     const renderSection = () => {
         switch(activeSection) {
             case 'messages': {
-                return <AllMessages messagesArr={messagesArr}/>
+                return <AllMessages conversationsArr={conversationsArr}/>
             }
             case 'requests':{
                 return <AllRequests />
@@ -32,7 +33,6 @@ const Inbox = ({ profileState }) => {
         }
     }
 
-    if (conversationsData) conversationsArr = Object.values(conversationsData);
     return (
         <>
         {/* {console.log('HOW WE LOOKIN?', '----->', conversationsArr, '=====>', sent, '||||||||||', received)} */}
