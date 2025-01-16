@@ -7,16 +7,11 @@ const FADE_INTERVAL_MS = 2750
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 4
 const WORDS_TO_ANIMATE = ['Welcome', 'Bienvenue', 'Bienvenido', 'Benvenuto', 'Bem-vindo', 'いらっしゃいませ']
 
-// const logo = require('../../../dist/assets/Logo.png')
-
 const LandingPage = () => {
     const navigate = useNavigate();
     const [isAutoScroll, setIsAutoScroll] = useState(true);
-    const [fadeProp, setFadeProp] = useState({ fade: 'fade-in' })
-    const [wordOrder, setWordOrder] = useState(0)
-    // const user = useSelector(state => state.seesion.user)
-
-    // if (user) navigate('/explore')
+    const [fadeProp, setFadeProp] = useState({ fade: 'fade-in' });
+    const [wordOrder, setWordOrder] = useState(0);
 
     useEffect(() => {
         const fadeTimeout = setInterval(() => {
@@ -39,7 +34,6 @@ const LandingPage = () => {
 
     return (
         <>
-        {/* {console.log(logo)} */}
         <div className="landing-page">
         <div className="landing-page-title">
             <h1 id='greeting' className={fadeProp.fade}>{WORDS_TO_ANIMATE[wordOrder]}</h1>

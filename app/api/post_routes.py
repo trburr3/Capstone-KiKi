@@ -19,6 +19,7 @@ def get_all_posts():
             "author_id": post.author_id,
             "author_name": User.query.get(post.author_id).first_name + ' ' + User.query.get(post.author_id).last_name,
             "author_pic": User.query.get(post.author_id).prof_pic,
+            "author_city": User.query.get(post.author_id).city,
             "body": post.body,
             "language": post.language,
             "level": post.level,

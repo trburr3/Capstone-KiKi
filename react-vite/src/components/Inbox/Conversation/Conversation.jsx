@@ -60,7 +60,7 @@ const Conversation = () => {
 
         setNewMessage('')
         // setUpdated(false)
-        // window.location.reload();
+        window.location.reload();
     };
 
     const handleClick = () => {}
