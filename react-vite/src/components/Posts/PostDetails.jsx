@@ -100,7 +100,7 @@ const PostDetails = () => {
                     <span>{post?.body}</span>
                     <div className="post-like">
                         <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={() => handleLike('', post?.id)}/></button>
-                        {likesArr ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
+                        {likesArr?.length > 0 ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
                         {
                         post && user.id == post.author_id ?
                             <>
@@ -130,7 +130,7 @@ const PostDetails = () => {
                 <section className="post-comments">
                     <h3>Comments {commentsArr ? ' ⋅ ' + commentsArr.length : ''}</h3>
                     <ul>
-                        {commentsArr ?
+                        {commentsArr?.length > 0 ?
                         commentsArr.map((comment, index) => (
                             <>
                             <li key={index}>
