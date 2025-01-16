@@ -37,6 +37,10 @@ export const router = createBrowserRouter([
         element: <Inbox />
       },
       {
+        path: "requests",
+        element: <Inbox inboxState={'requests'}/>
+      },
+      {
         path: "inbox/:conversationId",
         element: <Conversation />
       },
