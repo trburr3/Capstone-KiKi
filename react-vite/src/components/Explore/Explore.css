@@ -1,0 +1,122 @@
+.learners-list{
+    width: 95%;
+    height: 10%;
+    justify-self: center;
+}
+.learners-list>ul{
+    display: grid;
+    grid-template-columns: repeat(4, .5fr);
+    grid-template-rows: repeat(9, .2fr);
+    grid-auto-flow: column;
+    gap: 15px 0px;
+    margin-top: 20px;
+}
+.learners-list div{
+    border: 8px solid #812d2d;
+    justify-self: center;
+    background-color: burlywood;
+    border-style: groove;
+}
+.learner-tile-img{
+    border: 10px solid rgba(222, 184, 135, 0.738);
+    border-style: groove;
+    background-color: burlywood;
+    width: 275px;
+    justify-self: center;
+}
+
+.learner-tile>h2{
+    text-align: center;
+    background-color: burlywood;
+    width: fit-content;
+    justify-self: center;
+    padding: 2px;
+}
+
+.learner-tile{
+    width: 90%;
+    display: grid;
+    justify-content: center;
+
+}
+
+.preview-modal>*{
+    background-color: white;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "avatar .  . info"
+        "bio "
+        "message"
+        "friend";
+
+}
+
+
+#preview-header>h1{
+    background-color: #812d2d;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#preview-header{
+    background-color: #812d2d;
+    border-bottom: solid black 5px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    grid-area: header;
+}
+#learner-name{
+    color: white;
+    background-color: #812d2d;
+    text-decoration: underline;
+    text-decoration-color: black;
+    letter-spacing: 2px;
+    text-underline-offset: 10px;
+}
+
+#modal-content .preview-modal{
+    border: solid 8px black;
+    border-radius: 20px 20px 3px 3px;
+    max-width: 600px;
+}
+
+.preview-image>img, .preview-info>p, span{
+    background-color: white;
+}
+
+.preview-image>img{
+    width: 150px;
+}
+
+.preview-info>p, .preview-info>span{
+    text-align: center;
+    justify-self: left;
+    font-size: larger;
+}
+
+.preview-info>p span{
+    font-weight: 900;
+}
+
+.preview-image{
+    width: fit-content;
+    background-color: white;
+}
+
+.preview-info{
+    background-color: white;
+}
+
+.preview-middle{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.preview-message{
+    width: 400px;
+}
+
+.preview-buttons>button{
+    font-size: 25px;
+}

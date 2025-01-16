@@ -11,6 +11,7 @@ import { thunkAllFriends, thunkCreateRequest, thunkGetAllRequests } from '../../
 import { FaUserPlus } from "react-icons/fa";
 import { thunkCreateConversation } from '../../redux/messages';
 import { useModal } from '../../context/Modal';
+import './Explore.css';
 
 const PreviewModal = ({ learner }) => {
     const [visible, setVisible] = useState(false);
@@ -82,9 +83,10 @@ const PreviewModal = ({ learner }) => {
         <>
         {/* {console.log(friendsArr.includes(learner.username))} */}
         <div className='modal preview-modal'>
-            <div className='modal-header'>
-                <h1>HI MY NAME IS: {learner.first_name}!</h1>
+            <div id='preview-header' className='modal-header'>
+                <h1>HI MY NAME IS: <span id='learner-name'>{learner.first_name}</span>!</h1>
             </div>
+            <div className='preview-middle'>
             <div className='preview-image'>
                 <img src={avatarArr[(learner.prof_pic - 1)]} alt='avatar' />
             </div>
@@ -93,6 +95,7 @@ const PreviewModal = ({ learner }) => {
                 <p><span>Level:</span> {levelArr[(learner.level - 1)]}</p>
                 <p><span>Native:</span> {learningFlags[learner.native]}</p>
                 <p><span>Bio:</span> {learner.bio}</p>
+            </div>
             </div>
             <div className='preview-buttons'>
                 <button onClick={() => setVisible(!visible)}>💌</button>
@@ -103,6 +106,7 @@ const PreviewModal = ({ learner }) => {
                         placeholder="Say hello!"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
+                        className='preview-message'
                         />
                         <button disabled={disabled} onSubmit={handleSubmit}><LiaLongArrowAltRightSolid /></button>
                     </form>

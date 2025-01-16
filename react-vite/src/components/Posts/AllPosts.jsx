@@ -88,19 +88,21 @@ export default function AllPosts(){
 
     return(
         <>
+        <h1 className="page-title">Forum Page</h1>
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
-        <h1>Forum Page</h1>
-        <div className="posts-list">
+        <div className="posts-list list">
             <ul>
                 {filteredPosts ? filteredPosts.map((post, index) => (
                     <>
                     <li key={index}>
+                        <div className="posts-tile">
                         <h2>{post.title} {learningFlags[post.language]} {levelArr[(post.level - 1)]}</h2>
                         <p>{post.body}</p>
                         <button>
                             <BiSolidBookHeart className={post.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (post?.likes.includes(user.username)) {handleLike('remove', post.id)} else {handleLike('', post.id)}}}/>
                         </button>{post.likes.length}
                         <button><LiaLongArrowAltRightSolid className="post-list-arrow" onClick={() => navigate(`/posts/${post.id}`)} /></button>
+                        </div>
                     </li>
                     </>
                 ))

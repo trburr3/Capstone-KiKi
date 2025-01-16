@@ -5,7 +5,93 @@
 }
 
 #translator-modal-button{
-    position: absolute;
-    right: 10px;
-    bottom: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    position: sticky;
+    display: flex;
+    justify-self: right;
+    bottom: 5px;
+    padding: 10px;
+}
+
+#modal .tranlator-container {
+    border: solid 5px black;
+    border-radius: 10px 10px 0px 0px;
+    /* padding: 15px; */
+    width: 500px;
+    height: 300px;;
+}
+
+.tranlator-container>h1 {
+    border: solid 3px black;
+    text-align: center;
+    background-color: #812d2d;
+    border-bottom: solid black 5px;
+    border-radius: 5px 5px 0px 0px;
+    padding: 10px;
+}
+
+.tranlator-container span{
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: black;
+    letter-spacing: 2px;
+    text-underline-offset: 10px;
+}
+
+#translator-input-field{
+    width: 425px;
+    height: 75px;
+    background-color: white;
+}
+
+.translator-form{
+    display: grid;
+    grid-template-columns: .5fr 2fr;
+    grid-template-areas:
+        "lang"
+        "input";
+}
+
+.translator-input-box{
+    grid-area: input;
+    /* border: 10px dashed magenta */
+    padding: 15px 0 2px;
+    margin-left: 5px;
+    display: flex;
+}
+
+.translator-input-buttons{
+    grid-area: lang;
+    margin: 10px 0  0 5px;
+}
+
+.translator-input-buttons .language-select{
+    background-color: white;
+    /* border: solid 10px red; */
+}
+
+.line{
+    background-color: black;
+    height: 3px;
+    width: 100%;
+    margin: 15px 0 10px 0;
+    display: flex;
+    justify-self: left;
+}
+
+.translator-output>p{
+    font-size: 25px;
+    margin-left: 5px;
+    height: 100px;
+}
+
+.translator-input-box>button{
+    justify-self: right;
+}
+
+.translator-input-box>button:hover{
+    background-color: #812d2d;
+    font-weight: 300;
+    color: white
 }

@@ -1,4 +1,22 @@
-.active-filter{
-    background-color:  rgba(246, 252, 126, 0.852);
-    color: brown
+.filters-container>.active-filter{
+    background-color:  #812d2d;
+    color: white
+}
+.filters-container>button{
+    background-color: rgba(128, 128, 128, 0.334);
+    border-radius: 35%;
+    width: 5%;
+    padding: 5px;
+    margin: 15px;
+}
+.filters-container>button:hover{
+    background-color: white;
+    box-shadow: 3px 3px 2px 1px black;
+    font-size: 14px;
+    color:black;
+}
+
+.filters-container{
+    display: flex;
+    justify-content: space-around;
 }

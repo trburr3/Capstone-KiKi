@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useModal } from '../../context/Modal';
 import { thunkTranslate } from '../../redux/translate';
 
 const TranslatorModal = () => {
-    // const {closeModal} = useModal()
     const dispatch = useDispatch();
     const [originalText, setOriginalText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
@@ -19,8 +17,6 @@ const TranslatorModal = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // console.log(originalText)
-        // console.log(language)
         const payload = {
             text: originalText,
             language
@@ -30,18 +26,18 @@ const TranslatorModal = () => {
 
     }
 
-    // console.log(res.translation[0])
-
     return (
         <>
         <div className='tranlator-container modal'>
-            <h1>Ask AzureAI!</h1>
+            {/* <div className='translator-header'> */}
+            <h1>Ask <span>AzureAI</span>!</h1>
+            {/* </div> */}
             <div className='translator-input'>
             <form className='translator-form' onSubmit={handleSubmit}>
                 <div className='translator-input-buttons'>
                     <label>
-                    Language:
-                    <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+                    {/* Language: */}
+                    <select className="language-select"value={language} onChange={(e) => setLanguage(e.target.value)}>
                             <option
                             value="English"
                             required>
@@ -81,17 +77,18 @@ const TranslatorModal = () => {
                         type="textarea"
                         placeholder='Type here...'
                         value={originalText}
+                        id='translator-input-field'
                         onChange={(e) => setOriginalText(e.target.value)}
                         required
                         ></input>
                     </label>
                     <button>Submit</button>
                 </div>
-                <br />
-                <div className='translator-output'>
-                    {translatedText ? <p>{translatedText}</p> : <p>Translating...</p>}
-                </div>
             </form>
+            </div>
+            <div className='line'/>
+            <div className='translator-output'>
+                {translatedText ? <p>{translatedText}</p> : <p>Translating...</p>}
             </div>
         </div>
         </>

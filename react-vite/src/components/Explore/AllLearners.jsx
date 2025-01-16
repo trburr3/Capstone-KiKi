@@ -76,28 +76,30 @@ const AllLearners = () => {
     }
 
 
-    // let learningFlags = {"English": '🇺🇸', "French": '🇫🇷', "Italian": '🇮🇹', "Japanese": '🇯🇵', "Portuguese": '🇧🇷', "Spanish": '🇲🇽' };
-    // let levelArr = ['🥉', '🥈', '🥇'];
+    let learningFlags = {"English": '🇺🇸', "French": '🇫🇷', "Italian": '🇮🇹', "Japanese": '🇯🇵', "Portuguese": '🇧🇷', "Spanish": '🇲🇽' };
+    let levelArr = ['🥉', '🥈', '🥇'];
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
 
     return (
         <>
         {/* {console.log(learnersData)} */}
+        <h1 className="page-title">Explore Page</h1>
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
-        <h1>Explore Page</h1>
+
         <div className="learners-list list">
             <ul>
                 {filteredLearners ? filteredLearners.map((learner, index) => (
                     <OpenModalMenuItem
                     key={index}
-                    className="learner-tile"
                     modalComponent={<PreviewModal learner={learner}/>}
                     itemText={
                     <>
 
-                        <div>
-                            <img src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
-                            <h2>{learner.first_name} {learner.last_name}</h2>
+                        <div className="learner-tile">
+                            <img className='learner-tile-img' src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
+                            {/* <div className="learner-name"> */}
+                            <h2>{learningFlags[learner.learning]} {learner.first_name} {learner.last_name} {levelArr[(learner.level -1)]}</h2>
+                            {/* </div> */}
                         </div>
                     </>
                     }
