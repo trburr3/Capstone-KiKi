@@ -2,19 +2,39 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkEditPost, thunkSinglePost } from "../../../redux/posts";
+import { thunkGetAllUserPosts } from "../../../redux/session";
+
 const EditPostForm = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { postId } = useParams();
-    const posts = useSelector(state => state.posts.allPosts)
-    let post;
-    if (posts) post = posts[postId]
+    const postData = useSelector(state => state.posts.post)
+    const [post, setPost] = useState();
+    // let post;
+    // if(postData) setPost(postData[postId])
+
+    // useEffect(() => {
+    //     if(postData) setPost(postData[postId])
+    //     setBody(post.body)
+    // },[postData])
+
     const [body, setBody] = useState(post?.body);
 	const [level, setLevel] = useState(post?.level);
 	const [language, setLanguage] = useState(post?.language);
 	const [title, setTitle] = useState(post?.title);
-	const [privated, setPrivated] = useState(post?.private);
+	const [privated, setPrivated] = useState(post?.privated);
+
+    useEffect(() => {
+        if(postData) setPost(postData[postId])
+        setBody(post?.body)
+        setTitle(post?.title)
+        setLanguage(post?.language)
+        setLevel(post?.level)
+        setPrivated(post?.privated)
+    },[postData])
+
+    // console.log('--->', body)
 
     useEffect(() => {
         dispatch(thunkSinglePost(postId))
@@ -28,11 +48,15 @@ const EditPostForm = () => {
             level,
             language,
             title,
-            private: privated
+            privated
         }
 
-       dispatch(thunkEditPost(payload, postId))
-       navigate(`/posts/${postId}`)
+        dispatch(thunkEditPost(payload, postId))
+        console.log(payload.privated, privated)
+        if(!privated) navigate(`/posts/${postId}`)
+
+        if(privated) navigate('/profile/posts')
+
     };
 
    return (
@@ -66,7 +90,7 @@ const EditPostForm = () => {
                             <option
                                 value="English"
                                 required>
-                                Enlgish
+                                English
                             </option>
                             <option
                                 value="French"
@@ -115,7 +139,7 @@ const EditPostForm = () => {
                             </option>
                         </select>
 					</div>
-				<button>Private</button>
+				<button onClick={() => setPrivated(true)}>Private</button>
                 <button onClick={() => setPrivated(false)}>Publish</button>
 			</div>
 		</form>

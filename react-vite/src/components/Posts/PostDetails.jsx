@@ -20,19 +20,22 @@ const PostDetails = () => {
     const user = useSelector(state => state.session.user);
     const [comment, setComment] = useState('');
     const [likedPost, setLikedPost] = useState(false);
-    const [likedComment, setLikedComment] = useState(false)
+    // const [likedComment, setLikedComment] = useState(false)
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
         dispatch(postActions.thunkGetAllComments(postId));
+        dispatch(postActions.thunkSinglePost(postId))
     }, [dispatch, postId])
 
-    const posts = useSelector(state => state.posts.allPosts);
+    // const posts = useSelector(state => state.posts.allPosts);
+    const postData = useSelector(state => state.posts.post)
     const comments = useSelector(state => state.posts.comments);
     let post;
     let commentsArr;
 
-    if (posts) post = posts[postId]
+    // if (posts) post = posts[postId]
+    if(postData) post = postData[postId]
 
     if (comments) commentsArr = Object.values(comments)
 
@@ -83,7 +86,7 @@ const PostDetails = () => {
 
     return (
         <>
-        {console.log(likedComment)}
+        {/* {console.log(likedComment)} */}
         <div className="post">
             <div className="post-details">
                 <h1>{post?.title}</h1>

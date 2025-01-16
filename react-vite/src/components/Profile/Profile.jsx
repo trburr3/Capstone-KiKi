@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../Translator/OpenModalButton";
 import EditProfileModal from './EditProfileModal';
 import DeleteProfileModal from './DeleteProfileModal';
@@ -304,7 +304,7 @@ const ProfilePage = ({ profileState }) => {
                     {publicPostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
                             <p>{post.title}</p>
-                            <button>🔍</button>
+                            <button onClick={() => navigate(`/posts/${post.id}`)}>🔍</button>
                             <OpenModalButton
                             buttonText='x'
                             modalComponent={<DeletePostModal post={post}/>}
@@ -319,7 +319,7 @@ const ProfilePage = ({ profileState }) => {
                     {privatePostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
                             <p>{post.title}</p>
-                            <button>🔍</button>
+                            <button onClick={() => navigate(`/posts/${post.id}/edit`)}>🔍</button>
                             <OpenModalButton
                             buttonText='x'
                             modalComponent={<DeletePostModal post={post}/>}

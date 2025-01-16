@@ -17,6 +17,7 @@ def get_user_requests():
     def requestNormalizer(request):
         formattedRequest = {
             "id": request.id,
+            "pending": request.pending
         }
         if request.sender_id == user_id:
             formattedRequest['username'] = User.query.get(request.recipient_id).username
@@ -38,7 +39,7 @@ def create_request():
     user_id = int(current_user.get_id())
     data = request.get_json()
 
-    newRequest = request(
+    newRequest = Request(
         sender_id = user_id,
         recipient_id = data.get('recipient_id'),
     )

@@ -33,10 +33,6 @@ export const router = createBrowserRouter([
         element: <AllLearners />
       },
       {
-        path: "posts",
-        element: <AllPosts />
-      },
-      {
         path: "inbox",
         element: <Inbox />
       },
@@ -55,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "profile/posts",
         element:<ProfilePage profileState={'posts'} />
+      },
+      {
+        path: "posts",
+        element: <AllPosts />
       },
       {
         path: "posts/new",

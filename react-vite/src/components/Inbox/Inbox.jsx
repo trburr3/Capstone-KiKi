@@ -9,7 +9,7 @@ const Inbox = ({ inboxState }) => {
     const dispatch = useDispatch();
     let [activeSection, setActiveSection] = useState('messages');
     const conversationsData = useSelector(state => state.messages.conversations);
-    // const {sent, received} = useSelector(state => state.friends.requests);
+    const {sent, received} = useSelector(state => state.friends.requests);
     let conversationsArr = [];
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const Inbox = ({ inboxState }) => {
                 return <AllMessages conversationsArr={conversationsArr}/>
             }
             case 'requests':{
-                return <AllRequests />
+                return <AllRequests sent={Object.values(sent)} received={Object.values(received)}/>
             }
         }
     }
@@ -41,7 +41,7 @@ const Inbox = ({ inboxState }) => {
     return (
         <>
         {/* {console.log('HOW WE LOOKIN?', '----->', conversationsArr, '=====>', sent, '||||||||||', received)} */}
-        {console.log(conversationsArr)}
+        {/* {console.log(conversationsArr)} */}
         <h1>Inbox Page</h1>
         <div className="inbox-header">
             <nav>

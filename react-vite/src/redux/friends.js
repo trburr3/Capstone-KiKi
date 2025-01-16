@@ -70,14 +70,28 @@ export const thunkRequestResponse = (response) => async dispatch => {
     }
 }
 
+export const thunkCreateRequest = (request) => async dispatch => {
+    const res = await csrfFetch(`/api/requests/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+    });
+
+    if(res.ok) {
+        window.location.reload()
+    }
+}
+
 export const thunkGetAllRequests = () => async dispatch => {
-    const res = await csrfFetch(`/api/requests`);
+    const res = await csrfFetch(`/api/requests/`);
 
     if (res.ok) {
         const requests = await res.json();
         if(requests.errors) { return; }
         const {Sent, Received} = requests
-        console.log(requests)
+        // console.log(requests)
         dispatch(getAllRequests(Sent, Received));
     }
 }
@@ -87,7 +101,7 @@ export const thunkDeleteRequest = (requestId) => async dispatch => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Credentials': 'true'
+            // 'Access-Control-Allow-Credentials': 'true'
         }
     });
 
@@ -98,8 +112,8 @@ export const thunkDeleteRequest = (requestId) => async dispatch => {
 
 const normalData = (data) => {
     const normalData = {}
-    data.forEach((event) => {
-        normalData[event.id] = event
+    data.forEach((element) => {
+        normalData[element.id] = element
     })
 
     return normalData
@@ -125,12 +139,13 @@ export default function friendReducer(state = initialState, action) {
         }
         case LOAD_REQUESTS:{
             const newState = {...state}
-            let sentMessagesArr = action.sent
-            let receivedMessagesArr = action.received
+            let sentRequaestsArr = action.sent
+            let receivedRequaestsArr = action.received
+            // console.log('do we make it', normalData(sentMessagesArr), '|||||', receivedMessagesArr)
 
-            if(sentMessagesArr) newState.messages.sent = normalData(sentMessagesArr);
+            if(sentRequaestsArr) newState.requests.sent = normalData(sentRequaestsArr);
 
-            if(receivedMessagesArr) newState.messages.received = normalData(receivedMessagesArr);
+            if(receivedRequaestsArr) newState.requests.received = normalData(receivedRequaestsArr);
 
             return newState
 

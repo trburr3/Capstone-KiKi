@@ -30,6 +30,31 @@ def get_all_posts():
         }
         return formattedPost
     return {'Posts': [postNormalizer(post) for post in posts]}
+@post_routes.route('/<int:post_id>')
+@login_required
+def get_single_post(post_id):
+    post = Post.query.get(post_id)
+    if not post :
+        return { 'errors': { 'Posts': 'No posts found.' } }, 404
+    def postNormalizer(post):
+        likes = Like.query.filter(Like.post_id == post.id)
+        formattedPost = {
+            "id": post.id,
+            "author_id": post.author_id,
+            "author_name": User.query.get(post.author_id).first_name + ' ' + User.query.get(post.author_id).last_name,
+            "author_pic": User.query.get(post.author_id).prof_pic,
+            "author_city": User.query.get(post.author_id).city,
+            "body": post.body,
+            "language": post.language,
+            "level": post.level,
+            "title": post.title,
+            "created_at": post.created_at,
+            "updated_at": post.updated_at,
+            "privated": post.private,
+            "likes": [User.query.get(like.user_id).username for like in likes if like.comment_id is None ]
+        }
+        return formattedPost
+    return postNormalizer(post)
 
 @post_routes.route('/', methods=['POST'])
 @login_required
@@ -63,10 +88,12 @@ def edit_post(post_id):
         post.body = data.get("body")
     if data.get("title"):
         post.title = data.get("title")
-    if data.get("private"):
-        post.private  = data.get("private")
+    if data.get("privated"):
+        post.private  = data.get("privated")
     if data.get("level"):
         post.level  = data.get("level")
+    if data.get("language"):
+        post.language  = data.get("language")
     post.updated_at = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
     db.session.commit()
     return post.to_dict()

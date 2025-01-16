@@ -70,7 +70,9 @@ export const thunkEditPost = (request, postId) => async dispatch => {
     if(res.ok) {
         const posts = await csrfFetch(`api/posts`);
         if(posts.errors) { return; }
-        dispatch(getAllPosts(posts))
+        // dispatch(getAllPosts(posts))
+        // console.log('IHAVE DONE IT')
+        // window.location.reload()
     }
 }
 
@@ -202,9 +204,8 @@ export default function postReducer(state = initialState, action) {
         case SINGLE_POST: {
             const newState = { ...state, post: {} };
             const post = action.payload;
-            post.forEach((post) => {
-                newState.post[post.id] = post;
-            })
+            newState.post[post.id] = post;
+
             return newState;
         }
         case LOAD_COMMENTS: {

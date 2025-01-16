@@ -162,8 +162,8 @@ const loadAllMessages = (payload) => ({
 
   const normalData = (data) => {
     const normalData = {}
-    data.forEach((event) => {
-        normalData[event.id] = event
+    data.forEach((element) => {
+        normalData[element.id] = element
     })
 
     return normalData
