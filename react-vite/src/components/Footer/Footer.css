@@ -5,13 +5,13 @@
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    background-color: grey;
+    background-color: #812d2d;
     border-top: solid black 5px;
     height: 50px;
 }
 
 .footer-container>button{
-    background-color: grey;
+    background-color: #812d2d;
     color: white;
     border: grey;
 }

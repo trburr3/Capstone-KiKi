@@ -9,6 +9,7 @@
   background-color: white;
   width: 200px;
   list-style: none;
+  z-index: 3;
 }
 
 .profile-dropdown li {
@@ -58,7 +59,7 @@
   justify-content: space-between;
   margin: none;
   padding: 0px 20px;
-  height: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
   list-style: none;
@@ -89,8 +90,9 @@
   font-size: 24px;
 }
 
-.nav {
+#nav>* {
   border-bottom: lightgray 1px solid;
+  background-color: #812d2d;
 }
 
 .dropdown-li#home-icon a {
@@ -99,8 +101,40 @@
   column-gap: 4px;
 }
 
-.kiki-icon-container {
+.kiki-icon-container{
   display: flex;
   align-items: center;
   column-gap: 8px;
+  background-color: #812d2d;
+  color: white;
+  width: 830px;
+  height: 20px;
+  justify-content: space-between;
+  padding-left: 30px;
+}
+.kiki-icon{
+  height: 50px;
+  background-color: #812d2d;
+  /* border: 2px solid green; */
+  padding: 0;
+  animation-play-state: paused;
+  margin: 0;
+
+}
+
+.kiki-icon-container>*{
+  background-color: #812d2d;
+
+}
+
+#profile-button>*{
+  background-color: #812d2d;
+  display: inline-block;
+  width: 60px;
+  font-size: 25px;
+  align-content: center;
+}
+
+#profile-button, .prof-button{
+  background-color: #812d2d;
 }

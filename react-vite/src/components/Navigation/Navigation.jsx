@@ -8,18 +8,18 @@ function Navigation() {
 	const user = useSelector((state) => state.session.user);
 
 	return (
-		<nav className='nav'>
+		<nav id='nav'>
 			<ul className='nav-contents'>
 				<li className='icon-home'>
-					<NavLink to='/' className='kiki-icon-container'>
-            <img className='kiki-icon' alt='kiki-icon' src={logo}/>
-              KIKI
+					<NavLink to='/' id='home-link'className='kiki-icon-container'>
+            <img className='kiki-icon pause' alt='kiki-icon' src={logo}/>
+              <h1>KIKI</h1>
             </NavLink>
 				</li>
-				<div className='profile-button'>
-					{user && <NavLink to='/posts/new'>🗒️</NavLink>}
+				<div id='profile-button'>
+					{user && <NavLink id='create-post-button' to='/posts/new'>🗒️</NavLink>}
 					<li>
-						<ProfileButton />
+						<ProfileButton className='prof-button' />
 					</li>
 				</div>
 			</ul>
