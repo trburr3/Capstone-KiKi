@@ -86,6 +86,7 @@ const Conversation = () => {
                 <img className='message-sender-avatar' src={avatarArr[(message.sender_pic - 1)]} alt="avatar" />
                 <div className="message-bubble" onClick={() => user.first_name == message.from ? setVisible(!visible) : ''}>
                     <p>{message.from}: {message.message}</p>
+                    <p className='message-timestamp'>{message.updated_at}</p>
                     {visible && user.first_name == message.from ?
                     <>
                     <button onClick={() => {handleDelete(message.id)}}>X</button>

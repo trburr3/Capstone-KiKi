@@ -38,7 +38,7 @@ def conversationNormalizer(conversation):
 @login_required
 def get_all_conversations():
     user_id = int(current_user.get_id())
-    conversations = Conversation.query.filter(or_(Conversation.user_one == user_id, Conversation.user_two == user_id))
+    conversations = Conversation.query.filter(or_(Conversation.user_one == user_id, Conversation.user_two == user_id)).order_by(Conversation.id.desc())
     if not conversations :
         return { 'errors': { 'Conversations': 'No conversations found.' } }, 404
     return {'Conversations': [conversationNormalizer(conversation) for conversation in conversations]}
@@ -49,14 +49,24 @@ def create_conversation():
     user_id = int(current_user.get_id())
     data = request.get_json()
 
-    newConversation = conversation(
+    newConversation = Conversation(
         user_one = user_id,
         user_two = data.get('recipient_id'),
     )
 
     db.session.add(newConversation)
     db.session.commit()
-    return newConversation.to_dict(), 201
+
+    newMessage = Message(
+        sender_id = user_id,
+        recipient_id = data.get('recipient_id'),
+        message = data.get('message'),
+        conversation_id = newConversation.id
+    )
+    db.session.add(newMessage)
+    db.session.commit()
+
+    return conversationNormalizer(newConversation), 201
 
 @conversation_routes.route('/<int:conversation_id>', methods=['DELETE'])
 @login_required

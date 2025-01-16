@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import PreviewModal from "./PreviewModal";
 import { useEffect } from "react";
 import { thunkGetAllUsers } from "../../redux/learners";
 import './Explore.css';
@@ -9,6 +10,7 @@ import avatar2 from '../../images/Avatar 2.png';
 import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
 const AllLearners = () => {
     const dispatch = useDispatch();
@@ -33,14 +35,28 @@ const AllLearners = () => {
         <div className="learners-list list">
             <ul>
                 {learnersArr ? learnersArr.map((learner, index) => (
+                    // <>
+                    // <li key={index} className="learner-tile">
+                    //     <div>
+                    //         <img src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
+                    //         <h2>{learner.first_name} {learner.last_name}</h2>
+                    //     </div>
+                    // </li>
+                    // </>
+                    <OpenModalMenuItem
+                    key={index}
+                    className="learner-tile"
+                    modalComponent={<PreviewModal learner={learner}/>}
+                    itemText={
                     <>
-                    <li key={index} className="learner-tile">
+
                         <div>
                             <img src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
                             <h2>{learner.first_name} {learner.last_name}</h2>
                         </div>
-                    </li>
                     </>
+                    }
+                    />
                 )) : <p>No Learners Found 🫥</p>}
             </ul>
         </div>
