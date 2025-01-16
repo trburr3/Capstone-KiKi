@@ -11,6 +11,7 @@ import { BiSolidBookHeart } from "react-icons/bi";
 import { BiSolidBookmarkHeart } from "react-icons/bi";
 import DeletePostModal from "./DeletePostModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import './Posts.css';
 
 const PostDetails = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,8 @@ const PostDetails = () => {
     const { postId } = useParams();
     const user = useSelector(state => state.session.user);
     const [comment, setComment] = useState('');
-    const [liked, setLiked] = useState(false)
+    const [likedPost, setLikedPost] = useState(false);
+    const [likedComment, setLikedComment] = useState(false)
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
@@ -41,7 +43,7 @@ const PostDetails = () => {
     let likesArr = post?.likes
 
     useEffect(() => {
-        if (likesArr.includes(user.username)) setLiked(true)
+        if (likesArr?.includes(user.username)) setLikedPost(true)
     }, [likesArr, user])
 
     const handleClick = () => {
@@ -62,18 +64,26 @@ const PostDetails = () => {
         dispatch(postActions.thunkDeleteComment(commentId))
     }
 
-    const handleLike = (postId, commentId) => {
+    const handleLike = (type, postId, commentId) => {
         const payload = {
             post_id: postId,
             comment_id: commentId
         }
-        if (liked) dispatch(postActions.thunkRemoveLike())
+        if (likedPost || type == 'remove'){
+            dispatch(postActions.thunkRemoveLike(payload))
+            setLikedPost(false)
+            // console.log('I TRIED')
+            return
+        }
 
         dispatch(postActions.thunkAddLike(payload))
+        // setLikedPost(true)
+        return
     }
 
     return (
         <>
+        {console.log(likedComment)}
         <div className="post">
             <div className="post-details">
                 <h1>{post?.title}</h1>
@@ -86,7 +96,7 @@ const PostDetails = () => {
                 <section className="post-body">
                     <span>{post?.body}</span>
                     <div className="post-like">
-                        <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={handleLike(post.id)}/></button>
+                        <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={() => handleLike('', post?.id)}/></button>
                         {likesArr ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
                         {
                         post && user.id == post.author_id ?
@@ -125,8 +135,8 @@ const PostDetails = () => {
                                 <h4>{comment.author_name}</h4>
                                 <p>{comment.comment}</p>
                                 <div className="comment-likes">
-                                <button><BiSolidBookmarkHeart className={likesArr?.includes(user.username) ? 'filled' : ''} /></button> {comment.likes.length}
-                                {comment.author_id == user.id ? <button onClick={() => deleteComment(comment.id)}>X</button> : ''}
+                                <button><BiSolidBookmarkHeart className={comment?.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (comment?.likes.includes(user.username)) {handleLike('remove', postId, comment.id)} else {handleLike('', postId, comment.id)}}}/></button> {comment.likes.length}
+                                {comment.author_id == user.id ? <button onClick={() => deleteComment(comment?.id)}>X</button> : ''}
                                 </div>
                             </li>
                             </>

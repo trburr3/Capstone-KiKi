@@ -152,7 +152,7 @@ export const thunkDeleteComment = (commentId) => async dispatch => {
 }
 
 export const thunkAddLike = (request) => async dispatch => {
-    const res = await csrfFetch(`/api/likes`, {
+    const res = await csrfFetch(`/api/likes/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -169,12 +169,13 @@ export const thunkAddLike = (request) => async dispatch => {
     }
 }
 
-export const thunkRemoveLike = (likeId) => async dispatch => {
-    const res = await csrfFetch(`/api/likes/${likeId}`, {
+export const thunkRemoveLike = (request) => async dispatch => {
+    const res = await csrfFetch(`/api/likes/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(request)
     });
 
     if(res.ok) {
