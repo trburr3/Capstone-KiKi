@@ -38,10 +38,10 @@ export default function AllPosts(){
 
     useEffect(() => {
         if(postData) setFilterPosts(Object.values(postData))
-        setLevelFilter(!levelFilter)
-        setLanguageFilter(!languageFilter)
-        setLocalFilter(!localFilter)
-        setFriendFilter(!friendFilter)
+        setLevelFilter(() => !levelFilter)
+        setLanguageFilter(() => !languageFilter)
+        setLocalFilter(() => !localFilter)
+        setFriendFilter(() => !friendFilter)
     }, [postData])
 
     let learningFlags = {"English": '🇺🇸', "French": '🇫🇷', "Italian": '🇮🇹', "Japanese": '🇯🇵', "Portuguese": '🇧🇷', "Spanish": '🇲🇽' };
@@ -88,7 +88,6 @@ export default function AllPosts(){
 
     return(
         <>
-        {/* {console.log(friendsArr)} */}
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
         <h1>Forum Page</h1>
         <div className="posts-list">

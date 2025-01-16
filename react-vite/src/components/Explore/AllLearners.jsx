@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
+// import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import PreviewModal from "./PreviewModal";
 import { useEffect, useState } from "react";
 import { thunkGetAllUsers } from "../../redux/learners";
@@ -25,16 +25,16 @@ const AllLearners = () => {
     const[friendFilter, setFriendFilter] = useState(false);
     const[filteredLearners, setFilterLearners] = useState();
     let friendsArr = [];
-    let learnersArr;
+    // let learnersArr;
 
-    if(learnersData) learnersArr = Object.values(learnersData);
+    // if(learnersData) learnersArr = Object.values(learnersData);
 
     if(friendsData){
         const copy = Object.values(friendsData)
         for(let i = 0; i < copy.length; i++){
             friendsArr.push(copy[i].id)
         }
-    };
+    }
 
     useEffect(() => {
         dispatch(thunkGetAllUsers())
@@ -43,11 +43,11 @@ const AllLearners = () => {
 
     useEffect(() => {
         if(learnersData) setFilterLearners(Object.values(learnersData))
-        setLevelFilter(!levelFilter)
-        setLanguageFilter(!languageFilter)
-        setLocalFilter(!localFilter)
-        setFriendFilter(!friendFilter)
-    }, [learnersData, levelFilter, languageFilter, localFilter, friendFilter])
+        setLevelFilter(() => !levelFilter)
+        setLanguageFilter(() => !languageFilter)
+        setLocalFilter(() => !localFilter)
+        setFriendFilter(() => !friendFilter)
+    }, [learnersData])
 
     const handleClick = (type) => {
 
