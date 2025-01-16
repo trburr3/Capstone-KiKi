@@ -88,8 +88,10 @@ def edit_post(post_id):
         post.body = data.get("body")
     if data.get("title"):
         post.title = data.get("title")
-    if data.get("privated"):
-        post.private  = data.get("privated")
+    if data.get("privated") == True:
+        post.private  = True
+    if data.get("privated") == False:
+        post.private  = False
     if data.get("level"):
         post.level  = data.get("level")
     if data.get("language"):
