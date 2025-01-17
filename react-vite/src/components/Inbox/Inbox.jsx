@@ -41,8 +41,6 @@ const Inbox = ({ inboxState }) => {
 
     return (
         <>
-        {/* {console.log('HOW WE LOOKIN?', '----->', conversationsArr, '=====>', sent, '||||||||||', received)} */}
-        {/* {console.log(conversationsArr)} */}
         <h1 className="page-title">Inbox Page</h1>
         <div className="inbox-header">
             <nav>

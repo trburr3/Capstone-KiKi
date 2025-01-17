@@ -90,10 +90,12 @@ const ProfilePage = ({ profileState }) => {
                     {
                         achievementsArr?.includes(1) &&
                         <>
+                        {/* <div className="outer-frame"> */}
                         <li className="li-achievement">
                         <FaChampagneGlasses />
                         <p>Make 3 Friends</p>
                         </li>
+                        {/* </div> */}
                         </>
                     }
                     {
@@ -298,8 +300,12 @@ const ProfilePage = ({ profileState }) => {
             case 'posts':{
                 return(
                     <>
+                    {!publicPostArr && !privatePostArr ?
+                    <>
                     <h3>Posts</h3>
-                    <h4>Public</h4>
+                    </>
+                    : <p>Write your first post to see it here!</p>}
+                    {!publicPostArr ? <h4>Public</h4> : ''}
                     <ul className="posts-list">
                     {publicPostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
@@ -314,7 +320,7 @@ const ProfilePage = ({ profileState }) => {
                         </li>
                     ))}
                     </ul>
-                    <h4>Private</h4>
+                    {!privatePostArr? <h4>Private</h4> : ''}
                     <ul className="posts-list">
                     {privatePostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
@@ -356,10 +362,15 @@ const ProfilePage = ({ profileState }) => {
 					<p>
 						{user?.city}, {user?.state}
 					</p>
+                    <p className="user-bio">{user?.bio}</p>
+                </div>
+                <div className="user-stats">
                     <p>{learningFlags[user?.learning]} Learning</p>
                     <p>{levelArr[(user?.level - 1)]} Level</p>
                     <p> {achievementsArr?.length} Achievements</p>
-                    <p>{user?.bio}</p>
+                    {/* <p>{user?.bio}</p> */}
+                </div>
+                <div className="nav-elements">
 					<nav>
 						<button
 							className={activeSection === 'achievements' ? 'active' : ''}
@@ -382,7 +393,8 @@ const ProfilePage = ({ profileState }) => {
 							Posts
 						</button>
 					</nav>
-				</div>
+                </div>
+				{/* </div> */}
 			</section>
 			{renderSection()}
 		</div>

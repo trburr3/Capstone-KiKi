@@ -1,5 +1,3 @@
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
@@ -14,7 +12,6 @@ const AllMessages = ({ conversationsArr }) => {
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
     const conversationTile = (conversation) => (
         <>
-        {/* {console.log(conversation.messages[(conversation.messages.length-1)])} */}
         <div className='convo-tile'>
         <div className='convo-image'>
         <img src={avatarArr[ (conversation?.friend_pic - 1 )]} alt='avatar' />
@@ -29,7 +26,6 @@ const AllMessages = ({ conversationsArr }) => {
     )
     return(
         <>
-        {/* <h2>Your messages:</h2> */}
         {conversationsArr ? conversationsArr.map((conversation) => (
             conversationTile(conversation)
         )): <p>No messages yet!</p>}

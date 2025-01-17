@@ -33,8 +33,6 @@ export default function AllPosts(){
         dispatch(thunkAllFriends())
     }, [dispatch])
 
-    // if(postData) setFilterPosts(Object.values(postData))
-
     useEffect(() => {
         if(postData) setFilterPosts(Object.values(postData))
         setLevelFilter(() => !levelFilter)
@@ -61,7 +59,6 @@ export default function AllPosts(){
 
     const handleClick = (type) => {
 
-        // console.log('BEFORE', levelFilter)
         if (type == 'level') {
             if(levelFilter) setFilterPosts(filteredPosts.filter((post) => post.level == user.level))
             if(!levelFilter)setFilterPosts(Object.values(postData))

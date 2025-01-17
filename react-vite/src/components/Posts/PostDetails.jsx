@@ -20,7 +20,6 @@ const PostDetails = () => {
     const user = useSelector(state => state.session.user);
     const [comment, setComment] = useState('');
     const [likedPost, setLikedPost] = useState(false);
-    // const [likedComment, setLikedComment] = useState(false)
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
@@ -28,13 +27,11 @@ const PostDetails = () => {
         dispatch(postActions.thunkSinglePost(postId))
     }, [dispatch, postId])
 
-    // const posts = useSelector(state => state.posts.allPosts);
     const postData = useSelector(state => state.posts.post)
     const comments = useSelector(state => state.posts.comments);
     let post;
     let commentsArr;
 
-    // if (posts) post = posts[postId]
     if(postData) post = postData[postId]
 
     if (comments) commentsArr = Object.values(comments)
@@ -75,18 +72,15 @@ const PostDetails = () => {
         if (likedPost || type == 'remove'){
             dispatch(postActions.thunkRemoveLike(payload))
             setLikedPost(false)
-            // console.log('I TRIED')
             return
         }
 
         dispatch(postActions.thunkAddLike(payload))
-        // setLikedPost(true)
         return
     }
 
     return (
         <>
-        {/* {console.log(likedComment)} */}
         <div className="post">
             <div className="post-details">
                 <h1>{post?.title}</h1>

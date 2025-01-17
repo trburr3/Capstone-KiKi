@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-// import { useEffect } from "react";
 import * as friendActions from '../../redux/friends';
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
@@ -11,18 +10,10 @@ import { FaXmark } from "react-icons/fa6";
 
 const AllRequests = ({ sent , received}) => {
     const dispatch = useDispatch();
-    // const {sent, received} = useSelector(state => state.friends.requests);
-
-    // useEffect(() => {
-    //     dispatch(friendActions.thunkGetAllRequests())
-    // },[dispatch]);
 
     const handleClick = (action, request) => {
         switch(action){
             case 'delete':{
-                // const payload = {
-                //     id: request?.id
-                // }
                 dispatch(friendActions.thunkDeleteRequest(request))
                 return
             }
@@ -49,8 +40,6 @@ const AllRequests = ({ sent , received}) => {
 
     return(
         <>
-        {/* {console.log(sent, received)} */}
-        {/* <h2>Your requests:</h2> */}
         <div className="requests-list list">
             <div className="sent-requests-list list">
                 <h2>Sent:</h2>

@@ -1,3 +1,45 @@
+.friends-list>li{
+    display: grid;
+    grid-template-columns: .1fr 1fr .2fr;
+    grid-template-areas:
+        "avatar text arrow";
+    align-items: center;
+    padding: 5px;
+    font-size: larger;
+    margin: 10px;
+    background-color: grey;
+    /* border: aqua 10px solid; */
+}
+
+.friends-list>li img, .friends-list>li p{
+    background-color: grey;
+    padding: 15px;
+}
+
+.friends-list>li p{
+    font-weight: 400;
+    font-size: larger;
+}
+
+.friends-list>li button{
+    /* font-weight: 400; */
+    font-size: 20px;
+    width: 50px;
+}
+
+.friends-list>li button:hover{
+    /* font-weight: 400; */
+    /* font-size: 20px;
+    width: 50px; */
+    background-color: #812d2d;
+    color: white;
+}
+
+.friends-list{
+    list-style: none;
+    padding: 0;
+}
+
 .avatar-options{
     list-style: none;
 }
@@ -7,3 +49,94 @@
     border-radius: 100px;
     width: fit-content;
 }
+
+.achievement-list{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    /* border: 10px green ridge; */
+    display: grid;
+    grid-template-columns: repeat(5, .5fr);
+    height: 400px;
+    /* margin: 10px; */
+    padding: 10px;
+    align-items: center;
+}
+
+.li-achievement>*:first-child{
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding-left: 50px;
+    background-color: #812d2d00;
+    margin: 5px;
+    position: relative;
+    align-self: center;
+}
+
+.li-achievement{
+    border: 10px salmon ridge;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 300px;
+
+}
+
+/* .li-achievement{
+    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+} */
+
+.li-achievement::before {
+    content: "";
+    display: block;
+    background: linear-gradient(
+      90deg,
+      hsla(197, 100%, 64%, 1) 0%,
+      hsla(339, 100%, 55%, 1) 100%
+    );
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    animation: rotate 8s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .user-info{
+    display: grid;
+    grid-template-columns: .2fr 1fr .2fr;
+    grid-template-rows: 1fr, .2fr;
+    grid-template-areas:
+        "avatar bio stats"
+        "button-1 button-2 button-3";
+  }
+
+  .nav-elements{
+    grid-area: button-2;
+    display: flex;
+    justify-content: space-around;
+    /* padding: 10px */
+  }
+
+  .user-stats{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+  }

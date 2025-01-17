@@ -9,6 +9,7 @@ import avatar4 from '../../../images/Avatar 4.png';
 import avatar5 from '../../../images/Avatar 5.png';
 import OpenModalButton from "../../Translator/OpenModalButton";
 import EditMessageModal from "../EditMessageModal";
+import './Conversation.css';
 
 const Conversation = () => {
     const dispatch = useDispatch();
@@ -17,8 +18,7 @@ const Conversation = () => {
     const messageData = useSelector(state => state.messages.conversations);
     const [newMessage, setNewMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
-    const [visible, setVisible] = useState(false)
-    // const [updated, setUpdated] = useState(true)
+    const [visible, setVisible] = useState(false);
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
     let messagesArr = [];
 
@@ -35,12 +35,6 @@ const Conversation = () => {
     useEffect(() => {
         if (newMessage) setDisabled(false)
     }, [newMessage])
-
-    // useEffect(() => {
-    //     if(messagesArr.length>0){
-    //         setUpdated(true)
-    //     }
-    // }, [messagesArr])
 
 
 
@@ -59,26 +53,17 @@ const Conversation = () => {
         dispatch(messageActions.thunkCreateMessage(conversationId, payload))
 
         setNewMessage('')
-        // setUpdated(false)
         window.location.reload();
-    };
-
-    const handleClick = () => {}
+    }
 
     const handleDelete = (messageId) => {
         dispatch(messageActions.thunkDeleteMessage(conversationId, messageId))
     }
 
-    // const handleMouseHover = () => {
-    //     return (
-    //         <button onClick={() => {handleDelete(message.id)}}>X</button>
-    //     )
-    // }
-
     return(
         <>
-        {/* {console.log('---->', messagesArr)} */}
-        <h1>Conversation #{conversationId}</h1>
+        <div className="convo-container">
+        <h1 className="page-title">Conversation #{conversationId}</h1>
         <div className="message-list">
         <ul>
         {messagesArr ? messagesArr.map((message, index) => (
@@ -86,6 +71,7 @@ const Conversation = () => {
                 <img className='message-sender-avatar' src={avatarArr[(message.sender_pic - 1)]} alt="avatar" />
                 <div className="message-bubble" onClick={() => user.first_name == message.from ? setVisible(!visible) : ''}>
                     <p>{message.from}: {message.message}</p>
+                    <br />
                     <p className='message-timestamp'>{message.updated_at}</p>
                     {visible && user.first_name == message.from ?
                     <>
@@ -113,6 +99,7 @@ const Conversation = () => {
                 />
                 <button disabled={disabled}>Send</button>
             </form>
+        </div>
         </div>
         </>
     )
