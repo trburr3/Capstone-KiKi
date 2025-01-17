@@ -85,17 +85,15 @@ const ProfilePage = ({ profileState }) => {
             case 'achievements':{
                 return(
                     <>
-                    <h3>Achievements</h3>
+                    <h3 className="subtitle">Achievements</h3>
                     <ul className="achievement-list">
                     {
                         achievementsArr?.includes(1) &&
                         <>
-                        {/* <div className="outer-frame"> */}
                         <li className="li-achievement">
                         <FaChampagneGlasses />
                         <p>Make 3 Friends</p>
                         </li>
-                        {/* </div> */}
                         </>
                     }
                     {
@@ -141,9 +139,9 @@ const ProfilePage = ({ profileState }) => {
             case 'edit-profile':{
                 return (
 					<section id='edit-profile'>
-					<h3>Edit Profile</h3>
+					<h3 className="subtitle">Edit Profile</h3>
 					<form onSubmit={handleSubmit}>
-						<div className='form-info'>
+						<div className='form-info edit'>
 						<div>
 							<label>First Name</label>
 							<input
@@ -239,7 +237,7 @@ const ProfilePage = ({ profileState }) => {
                                 </option>
                             </select>
 						</div>
-                        <div>
+                        <div id='edit-bio'>
 							<label>Bio</label>
 							<input
 								type='textarea'
@@ -278,13 +276,12 @@ const ProfilePage = ({ profileState }) => {
             case 'friends':{
                 return(
                     <>
-                    <h3>Friends</h3>
+                    <h3 className="subtitle">Friends</h3>
                     <ul className="friends-list">
                     {friendsArr?.map((friend, index) => (
                         <li key={index} className="friend-tile">
                             <img src={avatarArr[(friend.prof_pic - 1 )]} alt="friend-avatar" />
                             <p>{friend.username}</p>
-                            {/* <button>x</button> */}
                             <OpenModalButton
                             buttonText='x'
                             modalComponent={<RemoveFriendModal friend={friend}/>}
@@ -300,16 +297,17 @@ const ProfilePage = ({ profileState }) => {
             case 'posts':{
                 return(
                     <>
-                    {!publicPostArr && !privatePostArr ?
+                    {publicPostArr.length > 0 || privatePostArr.length > 0 ?
                     <>
-                    <h3>Posts</h3>
+                    <h3 className="subtitle">Posts</h3>
                     </>
-                    : <p>Write your first post to see it here!</p>}
-                    {!publicPostArr ? <h4>Public</h4> : ''}
+                    : <p className="subtitle">Write your first post to see it here!</p>}
+                    {publicPostArr.length > 0 ? <h4 className="subtitle">Public</h4> : ''}
                     <ul className="posts-list">
                     {publicPostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
-                            <p>{post.title}</p>
+                            <p>📃 ⋅ {post.title}</p>
+                            <div className="post-tile-buttons">
                             <button onClick={() => navigate(`/posts/${post.id}`)}>🔍</button>
                             <OpenModalButton
                             buttonText='x'
@@ -317,14 +315,16 @@ const ProfilePage = ({ profileState }) => {
                             onButtonClick
                             onModalClose
                             />
+                            </div>
                         </li>
                     ))}
                     </ul>
-                    {!privatePostArr? <h4>Private</h4> : ''}
+                    {privatePostArr.length > 0? <h4 className="subtitle">Private</h4> : ''}
                     <ul className="posts-list">
                     {privatePostArr?.map((post, index) => (
                         <li key={index} className="post-tile">
-                            <p>{post.title}</p>
+                            <p>📃 ⋅ {post.title}</p>
+                            <div className="post-tile-buttons">
                             <button onClick={() => navigate(`/posts/${post.id}/edit`)}>🔍</button>
                             <OpenModalButton
                             buttonText='x'
@@ -332,6 +332,7 @@ const ProfilePage = ({ profileState }) => {
                             onButtonClick
                             onModalClose
                             />
+                            </div>
                         </li>
                     ))}
                     </ul>
@@ -368,20 +369,14 @@ const ProfilePage = ({ profileState }) => {
                     <p>{learningFlags[user?.learning]} Learning</p>
                     <p>{levelArr[(user?.level - 1)]} Level</p>
                     <p> {achievementsArr?.length} Achievements</p>
-                    {/* <p>{user?.bio}</p> */}
                 </div>
                 <div className="nav-elements">
 					<nav>
 						<button
 							className={activeSection === 'achievements' ? 'active' : ''}
 							onClick={() => setActiveSection('achievements')}>
-							Achievemnts
+							Achievements
 						</button>
-						{/* <button
-							className={activeSection === 'edit-profile' ? 'active' : ''}
-							onClick={() => setActiveSection('edit-profile')}>
-							Edit Profile
-						</button> */}
 						<button
 							className={activeSection === 'friends' ? 'active' : ''}
 							onClick={() => setActiveSection('friends')}>
@@ -394,7 +389,6 @@ const ProfilePage = ({ profileState }) => {
 						</button>
 					</nav>
                 </div>
-				{/* </div> */}
 			</section>
 			{renderSection()}
 		</div>

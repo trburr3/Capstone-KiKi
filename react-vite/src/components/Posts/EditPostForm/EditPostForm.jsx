@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkEditPost, thunkSinglePost } from "../../../redux/posts";
-import { thunkGetAllUserPosts } from "../../../redux/session";
+import '../Posts.css';
 
 const EditPostForm = () => {
 
@@ -11,13 +11,6 @@ const EditPostForm = () => {
     const { postId } = useParams();
     const postData = useSelector(state => state.posts.post)
     const [post, setPost] = useState();
-    // let post;
-    // if(postData) setPost(postData[postId])
-
-    // useEffect(() => {
-    //     if(postData) setPost(postData[postId])
-    //     setBody(post.body)
-    // },[postData])
 
     const [body, setBody] = useState(post?.body);
 	const [level, setLevel] = useState(post?.level);
@@ -33,8 +26,6 @@ const EditPostForm = () => {
         setLevel(post?.level)
         setPrivated(post?.privated)
     },[postData])
-
-    // console.log('--->', body)
 
     useEffect(() => {
         dispatch(thunkSinglePost(postId))
@@ -62,10 +53,10 @@ const EditPostForm = () => {
    return (
     <>
     <div className="form create-form">
-        <h1>Edit Post</h1>
+        <h1 className="page-title">Edit Post</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='form-info'>
-                    <div>
+                    <div className="form-text-input">
 						<label>What would you like to share with the class ?</label>
 						<input
 							type='textarea'
@@ -74,6 +65,7 @@ const EditPostForm = () => {
 							onChange={(e) => setBody(e.target.value)}
 						/>
 					</div>
+                    <div className="details-section">
                     <h2>More Details:</h2>
 					<div>
 						<label>Title:</label>
@@ -139,8 +131,11 @@ const EditPostForm = () => {
                             </option>
                         </select>
 					</div>
+                    </div>
+                <div className="form-buttons">
 				<button onClick={() => setPrivated(true)}>Private</button>
                 <button onClick={() => setPrivated(false)}>Publish</button>
+                </div>
 			</div>
 		</form>
     </div>

@@ -13,13 +13,13 @@ function Navigation() {
 				<li className='icon-home'>
 					<NavLink to='/' id='home-link'className='kiki-icon-container'>
             <img className='kiki-icon pause' alt='kiki-icon' src={logo}/>
-              <h1>KIKI</h1>
+              <h1 class='site-title'>KIKI</h1>
             </NavLink>
 				</li>
 				<div id='profile-button'>
 					{user && <NavLink id='create-post-button' to='/posts/new'>🗒️</NavLink>}
 					<li>
-						<ProfileButton className='prof-button' />
+						<ProfileButton />
 					</li>
 				</div>
 			</ul>

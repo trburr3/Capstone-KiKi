@@ -30,7 +30,8 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
+      <div className="modal login-modal">
+      <h1 className="page-title">Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Email
@@ -54,6 +55,7 @@ function LoginFormModal() {
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
       </form>
+      </div>
     </>
   );
 }

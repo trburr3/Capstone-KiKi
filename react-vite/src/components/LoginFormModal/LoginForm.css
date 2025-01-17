@@ -1,0 +1,19 @@
+.login-modal{
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.login-modal>* button, input{
+    font-size: large;
+    margin: 10px;
+}
+
+.login-modal>* button{
+    width: 100px;
+}
+
+.login-modal>* button:hover{
+    color: white;
+    background-color: #812d2d;
+}

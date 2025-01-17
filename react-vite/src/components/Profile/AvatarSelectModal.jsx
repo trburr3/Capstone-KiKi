@@ -12,12 +12,13 @@ const AvatarSelectModal = ({prof_pic, setProfPic}) => {
 
     return (
         <>
-          <div className="modal">
+          <div className="modal avatar-modal">
             <button onClick={closeModal}>X</button>
-          <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-content avatar-modal">
+          <div className="modal-header avatar-modal">
 			      <h1>Change Avatar</h1>
             <p>Please select from one of the following:</p>
+            <div>
             <ul className="avatar-options">
               <li className={prof_pic == 1? 'selected' : ''} onClick={() => setProfPic(1)}><img src={avatar1} alt="avatar1" /></li>
               <li className={prof_pic == 2? 'selected' : ''} onClick={() => setProfPic(2)}><img src={avatar2} alt="avatar2" /></li>
@@ -25,6 +26,7 @@ const AvatarSelectModal = ({prof_pic, setProfPic}) => {
               <li className={prof_pic == 4? 'selected' : ''} onClick={() => setProfPic(4)}><img src={avatar4} alt="avatar4" /></li>
               <li className={prof_pic == 5? 'selected' : ''} onClick={() => setProfPic(5)}><img src={avatar5} alt="avatar5" /></li>
             </ul>
+            </div>
           </div>
           </div>
           </div>

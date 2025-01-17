@@ -54,9 +54,11 @@ function SignupFormModal() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <div className="modal signup-modal">
+      <h1 className="page-title">Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
+      <div className="top">
         <label>First Name
 					<input
 						type='text'
@@ -221,8 +223,10 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        </div>
+        <div className="middle">
         <label>
-          <h1>Pick an avatar!</h1>
+          <h1 className="pick">Pick an avatar!</h1>
         <div>
         <ul className="avatar-options">
             <li className={prof_pic == 1? 'selected' : ''} onClick={() => setProfPic(1)}><img src={avatar1} alt="avatar1" /></li>
@@ -233,8 +237,12 @@ function SignupFormModal() {
           </ul>
         </div>
         </label>
+        </div>
+        <div className="bottom">
         <button type="submit">Sign Up</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }

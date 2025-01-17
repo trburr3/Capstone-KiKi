@@ -23,9 +23,9 @@ const DeleteProfileModal = () => {
     }
     return (
         <>
-          <div className="modal">
-          <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal delete-modal">
+          <div className="modal-content delete-modal">
+          <div className="modal-header delete-modal">
 			<h1>Delete Profile</h1>
           <p>Are you sure you want to make this change?</p>
           <p>This action cannot be undone.</p>

@@ -28,15 +28,12 @@ const TranslatorModal = () => {
 
     return (
         <>
-        <div className='tranlator-container modal'>
-            {/* <div className='translator-header'> */}
+        <div className='tranlator-container'>
             <h1>Ask <span>AzureAI</span>!</h1>
-            {/* </div> */}
             <div className='translator-input'>
             <form className='translator-form' onSubmit={handleSubmit}>
                 <div className='translator-input-buttons'>
                     <label>
-                    {/* Language: */}
                     <select className="language-select"value={language} onChange={(e) => setLanguage(e.target.value)}>
                             <option
                             value="English"

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { thunkCreatePost } from "../../../redux/posts";
+import '../Posts.css';
+
 const CreatePostForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -28,18 +30,20 @@ const CreatePostForm = () => {
    return (
     <>
     <div className="form create-form">
-        <h1>Create Post</h1>
+        <h1 className="page-title">Create Post</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='form-info'>
-                    <div>
+                    <div className="form-text-input">
 						<label>What would you like to share with the class ?</label>
 						<input
 							type='textarea'
 							placeholder='Share your thoughts here...'
                             value={body}
+                            // cols="30" rows="10"
 							onChange={(e) => setBody(e.target.value)}
 						/>
 					</div>
+                    <div className="details-section">
                     <h2>More Details:</h2>
 					<div>
 						<label>Title:</label>
@@ -105,8 +109,11 @@ const CreatePostForm = () => {
                             </option>
                         </select>
 					</div>
+                    </div>
+                <div className="form-buttons">
 				<button>Save</button>
                 <button onClick={() => setPrivated(false)}>Post</button>
+                </div>
 			</div>
 		</form>
     </div>

@@ -8,7 +8,6 @@
     font-size: larger;
     margin: 10px;
     background-color: grey;
-    /* border: aqua 10px solid; */
 }
 
 .friends-list>li img, .friends-list>li p{
@@ -22,15 +21,11 @@
 }
 
 .friends-list>li button{
-    /* font-weight: 400; */
     font-size: 20px;
     width: 50px;
 }
 
 .friends-list>li button:hover{
-    /* font-weight: 400; */
-    /* font-size: 20px;
-    width: 50px; */
     background-color: #812d2d;
     color: white;
 }
@@ -38,6 +33,7 @@
 .friends-list{
     list-style: none;
     padding: 0;
+    min-height: 500px;
 }
 
 .avatar-options{
@@ -54,13 +50,12 @@
     list-style: none;
     padding: 0;
     text-align: center;
-    /* border: 10px green ridge; */
     display: grid;
     grid-template-columns: repeat(5, .5fr);
-    height: 400px;
-    /* margin: 10px; */
+    min-height: 500px;
     padding: 10px;
     align-items: center;
+    justify-content: center;
 }
 
 .li-achievement>*:first-child{
@@ -75,7 +70,7 @@
 }
 
 .li-achievement{
-    border: 10px salmon ridge;
+    border: 10px #812d2d ridge;
     margin: 10px;
     padding: 10px;
     position: relative;
@@ -86,14 +81,6 @@
     width: 300px;
 
 }
-
-/* .li-achievement{
-    position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-} */
 
 .li-achievement::before {
     content: "";
@@ -127,16 +114,286 @@
     grid-template-areas:
         "avatar bio stats"
         "button-1 button-2 button-3";
+    border-bottom: 2px solid;
+  }
+
+  .dashboard-title>*{
+    margin: 5px
   }
 
   .nav-elements{
     grid-area: button-2;
     display: flex;
     justify-content: space-around;
-    /* padding: 10px */
   }
+
+  .nav-elements>* button{
+    font-size: large;
+    padding: 10px;
+    border: none;
+  }
+
+  .nav-elements>* button:hover{
+    color: white;
+  }
+
 
   .user-stats{
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr; */
+    margin: 5px;
+  }
+
+  .user-stats>p{
+    font-weight: 600;
+  }
+
+  .profile-picture{
+    display: grid;
+  }
+
+  .profile-picture>img{
+    justify-self: center;
+  }
+
+  .profile-picture>button{
+    width: 100px;
+    justify-self: center;
+  }
+
+  .profile-picture>*{
+    margin:5px;
+  }
+
+  .profile-picture>button:hover{
+   background-color: #812d2d;
+   color: white;
+  }
+
+  .posts-list{
+    padding: 0;
+    display: grid;
+    font-size: larger;
+    min-height: 300px;
+    margin-left: 10px;
+  }
+
+  .posts-list>li{
+    display: grid;
+    grid-template-columns: 1fr .2fr;
+    margin: 5px;
+  }
+
+  .post-tile-buttons>*{
+    font-size: large;
+    margin: 5px;
+    width: 50px;
+    height: 30px;
+  }
+
+  .post-tile-buttons>*:hover{
+    color: white;
+    background-color: #812d2d;
+  }
+
+  .subtitle{
+    margin: 5px;
+  }
+
+  .form-info{
+    display: grid;
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .form-text-input{
+    display: grid;
+  }
+
+  .form-text-input>input{
+    min-height: 400px;
+    text-align: center;
+  }
+
+  .form-text-input>input::placeholder, .details-section>div input::placeholder,   .details-section>div select{
+    color: #812d2d;
+    font-size: large;
+  }
+
+  .form-text-input>label, .details-section>* label{
+    padding-bottom: 10px;
+    font-size: larger;
+  }
+
+  .details-section{
+    display: grid;
+    grid-template-rows: .2fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "header"
+        "details";
+    margin-top: 5px;
+  }
+
+  .details-section>div{
+    display: grid;
+    grid-template-columns: .2fr 1fr;
+    margin: 5px 0 5px 0;
+
+  }
+
+  .details-section>div input, .details-section>div select{
+    padding: 5px;
+  }
+
+  .form-buttons>button:hover{
+    background-color: #812d2d;
+    color: white;
+  }
+
+  .form-buttons{
+    display: flex;
+    justify-content: right;
+  }
+
+  .form-buttons>button{
+    margin: 10px;
+    font-size: large;
+    width: 80px;
+  }
+
+  .form-text-input>input, .details-section>div input{
+    color: #812d2d;
+    font-size: large;
+  }
+
+ .edit>div{
+    display: grid;
+    grid-template-columns: .2, 1fr;
+    grid-template-areas:
+        "label input";
+  }
+
+  .edit>div label, .edit>div h4{
+    grid-area: label;
+  }
+
+  .edit>div label{
+    font-weight: 600;
+  }
+
+  .edit>div input, .edit>div select{
+    grid-area: input;
+    padding: 5px 15px 5px 5px;
+    margin: 15px;
+    text-align: right;
+  }
+
+  .edit-profile-pic{
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  .edit-profile-pic>button{
+    position: absolute;
+    right: 25px;
+    width: 90px;
+  }
+
+  .edit>div input, .edit-profile-pic>button, .edit>button, .edit>div select{
+    font-size: large;
+  }
+
+  .edit-profile-pic>button:hover, .edit>button:hover{
+    color:white;
+    background-color: #812d2d;
+  }
+
+  .edit>button{
+    margin: 5px;
+  }
+
+ #edit-bio>input{
+    min-height: 200px;
+    overflow-wrap: normal;
+    line-break: auto;
+    display: flex;
+    flex-wrap: row;
+  }
+
+  #edit-bio>label{
+    align-self: center;
+  }
+
+  .avatar-modal{
+    border-radius: 8px;
+    min-width: 500px;
+    display: grid;
+    grid-template-areas:
+        "close"
+        "header"
+        "select";
+  }
+
+  .avatar-modal>button{
+    width: 40px;
+    font-size: large;
+    justify-self: right;
+    margin: 10px;
+  }
+
+.modal-header{
+    text-align: center;
+    display: grid;
+    grid-template-rows: .2fr 1fr;
+    grid-template-areas:
+        "bold"
+        "regular";
+  }
+
+  .modal-content .avatar-modal{
+    display: grid;
+    grid-template-rows: .2fr 1fr;
+    grid-template-areas:
+        "bold"
+        "regular";
+  }
+
+  .avatar-options{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 30px;
+    margin-right: 30px;
+  }
+
+  .edit-modal, .delete-modal{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .edit-modal>button, .delete-modal>button{
+    font-size: large;
+  }
+
+  .delete-modal>button{
+    margin-top: 10px;
+  }
+
+  .edit-modal>div p, .delete-modal>div p{
+    font-size: x-large;
+  }
+
+  .edit-modal>button:hover,  .delete-modal>button:hover{
+    color: white;
+    background-color: #812d2d;
+  }
+
+  .edit-modal>a, .delete-modal>a{
+    margin-top: 10px;
+    color: #812d2d
+  }
+
+  .edit-modal>a:hover, .delete-modal>a:hover{
+    color: black;
   }

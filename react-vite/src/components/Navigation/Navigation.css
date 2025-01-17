@@ -2,11 +2,10 @@
   position: absolute;
   right: 30px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
   top: 80px;
   border: solid gray;
   border-radius: 8px;
-  background-color: white;
   width: 200px;
   list-style: none;
   z-index: 3;
@@ -40,7 +39,7 @@
   width: 100%;
   font-size: 1.2rem;
   font-weight: bold;
-  background-color: #6b8f71; /* Sage green */
+  background-color: #6b8f71;
   color: white;
   border: none;
   padding: 12px;
@@ -50,7 +49,7 @@
 }
 
 .profile-dropdown button:hover {
-  background-color: #557b5d; /* Darker sage green */
+  background-color: #557b5d;
 }
 
 
@@ -115,7 +114,6 @@
 .kiki-icon{
   height: 50px;
   background-color: #812d2d;
-  /* border: 2px solid green; */
   padding: 0;
   animation-play-state: paused;
   margin: 0;
@@ -137,4 +135,14 @@
 
 #profile-button, .prof-button{
   background-color: #812d2d;
+}
+
+.profile-button-one{
+  font-size: large;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.site-title{
+  color:white
 }

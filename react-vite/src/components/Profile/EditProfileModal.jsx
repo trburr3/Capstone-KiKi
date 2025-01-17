@@ -20,9 +20,9 @@ const EditProfileModal = ({ payload }) => {
     }
     return (
         <>
-          <div className="modal">
-          <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal edit-modal">
+          <div className="modal-content edit-modal">
+          <div className="modal-header edit-modal">
 		    <h1>Edit Profile</h1>
 
           <p>Are you sure you want to make this change?</p>

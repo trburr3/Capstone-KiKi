@@ -2,19 +2,13 @@
     color: rgb(201, 105, 121)
 }
 
-/* .posts-list{
-    border: solid 10px teal;
-} */
-
 .posts-tile{
-    /* border: dotted 10px salmon; */
     display: grid;
     grid-template-rows: .5fr 1fr .2fr;
     grid-template-areas:
         "title"
         "body"
         "buttons";
-    /* background-color: white; */
     text-align: center;
     margin: 10px 0 20px 0
 }
@@ -184,8 +178,8 @@
 }
 
 .post-comment-header{
-    border-top: 10px teal dotted;
-    border-bottom: 10px teal dotted;
+    border-top: 10px #812d2d dotted;
+    border-bottom: 10px #812d2d dotted;
     font-size: 25px;
     letter-spacing: 2px;
     padding:15px 0 15px 0;
@@ -193,7 +187,6 @@
 }
 
 .post-comment-tile{
-    /* border: 10px solid magenta; */
     display: grid;
     grid-template-columns: .1fr 1fr .2fr;
     grid-template-areas:
@@ -225,8 +218,6 @@
 
 .comment-likes>*{
     margin: 5px;
-    /* background-color: grey; */
-
 }
 
 .comment-likes>p{
