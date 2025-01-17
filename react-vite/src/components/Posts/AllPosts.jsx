@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import * as postActions from '../../redux/posts';
 import { BiSolidBookHeart } from "react-icons/bi";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
-import { thunkAddLike, thunkRemoveLike } from "../../redux/posts";
 import { thunkAllFriends } from "../../redux/friends";
 import Filter from "../Filters/Filter";
 import './Posts.css';
@@ -98,10 +97,13 @@ export default function AllPosts(){
                         <div className="posts-tile">
                         <h2>{post.title} {learningFlags[post.language]} {levelArr[(post.level - 1)]}</h2>
                         <p>{post.body}</p>
-                        <button>
+                        <div className="posts-tile-buttons">
+                        <button className="post-like">
                             <BiSolidBookHeart className={post.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (post?.likes.includes(user.username)) {handleLike('remove', post.id)} else {handleLike('', post.id)}}}/>
-                        </button>{post.likes.length}
-                        <button><LiaLongArrowAltRightSolid className="post-list-arrow" onClick={() => navigate(`/posts/${post.id}`)} /></button>
+                        </button><p>{post.likes.length}</p>
+                        <button className="post-view"><LiaLongArrowAltRightSolid className="post-list-arrow" onClick={() => navigate(`/posts/${post.id}`)} /></button>
+                        </div>
+                        <div className="line" />
                         </div>
                     </li>
                     </>

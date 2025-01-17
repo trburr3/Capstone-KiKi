@@ -4,6 +4,7 @@ import * as friendActions from '../../redux/friends';
 import * as messageActions from '../../redux/messages';
 import AllMessages from "./AllMessages";
 import AllRequests from "./AllRequests";
+import './Inbox.css';
 
 const Inbox = ({ inboxState }) => {
     const dispatch = useDispatch();

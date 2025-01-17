@@ -90,17 +90,24 @@ const PostDetails = () => {
         <div className="post">
             <div className="post-details">
                 <h1>{post?.title}</h1>
+                <div className="post-author-info">
                 <img src={avatarArr[(post?.author_pic - 1 )]} alt="avatar"/>
+                <div>
                 <h2>Written by: {post?.author_name}</h2>
                 <h3>Language: {post?.language}</h3>
                 <h3>Level: {levelsArr[(post?.level - 1)]}</h3>
                 <h3>Last Updated: {post?.updated_at.split(',')[0]}</h3>
+                </div>
+                </div>
             </div>
                 <section className="post-body">
                     <span>{post?.body}</span>
-                    <div className="post-like">
+                    <div className="post-details-like">
+                        <div className="post-likes-info">
                         <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={() => handleLike('', post?.id)}/></button>
                         {likesArr?.length > 0 ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
+                        </div>
+                        <div className="post-edit">
                         {
                         post && user.id == post.author_id ?
                             <>
@@ -114,38 +121,50 @@ const PostDetails = () => {
                         :
                             ''
                         }
+                        </div>
                     </div>
                 </section>
                 <section className="post-comment-box">
                     <form onSubmit={e => handleSubmit(e)}>
+                    <div>
                     <input
                     type="textarea"
                     placeholder="Write a comment..."
                     value={comment}
+                    id="comment-input"
                     onChange={(e) => setComment(e.target.value)}
                     ></input>
+                    </div>
                     <button disabled={comment ? false : true}>Post</button>
                     </form>
                 </section>
                 <section className="post-comments">
+                    <div className="post-comment-header">
                     <h3>Comments {commentsArr ? ' ⋅ ' + commentsArr.length : ''}</h3>
+                    </div>
                     <ul>
                         {commentsArr?.length > 0 ?
                         commentsArr.map((comment, index) => (
                             <>
                             <li key={index}>
+                                <div className="post-comment-tile">
+                                <div className="comment-img">
                                 <img src={avatarArr[(comment.author_pic - 1 )]} alt="avatar" />
+                                </div>
+                                <div className="comment">
                                 <h4>{comment.author_name}</h4>
                                 <p>{comment.comment}</p>
+                                </div>
                                 <div className="comment-likes">
-                                <button><BiSolidBookmarkHeart className={comment?.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (comment?.likes.includes(user.username)) {handleLike('remove', postId, comment.id)} else {handleLike('', postId, comment.id)}}}/></button> {comment.likes.length}
+                                <button><BiSolidBookmarkHeart className={comment?.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (comment?.likes.includes(user.username)) {handleLike('remove', postId, comment.id)} else {handleLike('', postId, comment.id)}}}/></button><p>{comment.likes.length}</p>
                                 {comment.author_id == user.id ? <button onClick={() => deleteComment(comment?.id)}>X</button> : ''}
+                                </div>
                                 </div>
                             </li>
                             </>
                         ))
                         :
-                            <p>Be the first to leave a comment!</p>
+                            <p className="like-text">Be the first to leave a comment!</p>
                         }
                     </ul>
                 </section>

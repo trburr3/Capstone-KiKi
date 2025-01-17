@@ -50,16 +50,16 @@ const AllRequests = ({ sent , received}) => {
     return(
         <>
         {/* {console.log(sent, received)} */}
-        <h2>Your requests:</h2>
+        {/* <h2>Your requests:</h2> */}
         <div className="requests-list list">
             <div className="sent-requests-list list">
-                <h4>Sent:</h4>
+                <h2>Sent:</h2>
                 <ul>
                     {sent.length > 0 ? sent.map((request, index) =>(
                         <>
                         <li key={index} className="request-tile">
                             <img src={avatarArr[( request.prof_pic - 1 )]} alt="avatar" />
-                            <p><span>{request.username}</span> has received your friend request!</p>
+                            <p><span id='request-sender'>{request.username}</span> has received your friend request!</p>
                             <button onClick={() => handleClick('delete', request?.id)}>X</button>
                         </li>
                         </>
@@ -67,17 +67,19 @@ const AllRequests = ({ sent , received}) => {
                 </ul>
             </div>
             <div className="received-requests-list list">
-                <h4>Received:</h4>
+                <h2>Received:</h2>
                 <ul>
                 {received.length > 0 ? received.map((request, index) =>(
                         <>
                         <li key={index} className="request-tile">
                             <img src={avatarArr[( request.prof_pic - 1 )]} alt="avatar" />
-                            <p><span>{request.username}</span> has sent you a friend request!</p>
+                            <p><span id='request-sender'>{request.username}</span> has sent you a friend request!</p>
                             {request.pending == true ?
                                 <>
+                                <div className="request-buttons">
                                 <button onClick={() => handleClick('accept', request)}><IoCheckmarkSharp className='button-yes accept' /></button>
                                 <button onClick={() => handleClick('decline', request)}><FaXmark className='button-no decline'/></button>
+                                </div>
                                 </>
                             :
                                 ''

@@ -1,0 +1,110 @@
+.inbox-header>nav{
+    /* border: 10px solid pink; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100px;
+}
+.inbox-header>nav button{
+    font-size: 30px;
+    /* display: flex; */
+    /* align-content: baseline; */
+    text-align: center;
+    border: none;
+    background-color: none;
+
+}
+
+.inbox-header>nav button:hover{
+    font-size: 40px;
+
+}
+
+.active{
+    color: #812d2d;
+
+}
+
+.convo-tile{
+    display: grid;
+    grid-template-columns: .1fr 1fr .2fr;
+    grid-template-areas:
+        "avatar text arrow";
+    align-items: center;
+    padding: 5px;
+    font-size: larger;
+    margin: 10px;
+    background-color: grey;
+}
+
+.convo-image>img, .convo-image, .convo-preview, .convo-desc>h4{
+    background-color: grey;
+}
+
+.convo-preview,.convo-desc>h4{
+    padding: 10px
+}
+
+.convo-tile>button{
+    width: 100px;
+    font-size: 20px;
+}
+
+.convo-image>img{
+    margin-left: 10px;
+}
+
+.request-tile{
+    display: grid;
+    grid-template-columns: .1fr 1fr .2fr;
+    grid-template-areas:
+        "avatar text arrow";
+    align-items: center;
+    padding: 5px;
+    font-size: larger;
+    margin: 10px;
+    background-color: grey;
+}
+
+.request-tile>p, .request-tile>img, #request-sender, .request-buttons{
+    background-color: gray;
+}
+
+.request-tile>img{
+    margin-left: 10px;
+}
+
+.request-tile>button, .request-buttons>button{
+    width: 100px;
+    font-size: 20px;
+}
+
+.request-buttons>*{
+    margin: 10px;
+}
+
+.request-tile>button{
+    justify-self: right;
+    margin-right: 35px;
+}
+
+.request-tile>p,  #request-sender{
+    padding: 10px;
+}
+
+.sent-requests-list>h2, .received-requests-list >h2{
+    padding: 5px;
+    margin-left: 10px;
+}
+
+#request-sender{
+    font-weight: 700;
+    padding: 0;
+}
+
+.request-tile>button:hover, .request-buttons>button:hover, .convo-tile>button:hover{
+    background-color: #812d2d;
+}
+
+.button-yes, .button-no{
+    background-color: #812d2d00;
+}
