@@ -42,6 +42,15 @@ function SignupFormModal() {
         email,
         username,
         password,
+        first_name,
+        last_name,
+        learning,
+        level,
+        native,
+        bio,
+        prof_pic,
+        city,
+        state
       })
     );
 
@@ -114,7 +123,7 @@ function SignupFormModal() {
             <option
                 value="English"
                 required>
-                 Enlgish
+                 English
             </option>
             <option
                 value="French"
