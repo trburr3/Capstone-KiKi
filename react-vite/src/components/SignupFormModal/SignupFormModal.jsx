@@ -148,7 +148,7 @@ function SignupFormModal() {
             <option
                 value="English"
                 required>
-                 Enlgish
+                 English
             </option>
             <option
                 value="French"
