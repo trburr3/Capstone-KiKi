@@ -397,3 +397,11 @@
   .edit-modal>a:hover, .delete-modal>a:hover{
     color: black;
   }
+
+  .done{
+    text-decoration: line-through;
+  }
+
+  .available-list{
+    list-style-type: circle;
+  }

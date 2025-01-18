@@ -20,6 +20,7 @@ const PostDetails = () => {
     const user = useSelector(state => state.session.user);
     const [comment, setComment] = useState('');
     const [likedPost, setLikedPost] = useState(false);
+    const [recentLike, setRecentLike] = useState('');
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
@@ -40,7 +41,7 @@ const PostDetails = () => {
 
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
 
-    let likesArr = post?.likes
+    let likesArr = post?.likes;
 
     useEffect(() => {
         if (likesArr?.includes(user.username)) setLikedPost(true)
@@ -79,6 +80,16 @@ const PostDetails = () => {
         return
     }
 
+    useEffect(() => {
+        if(likesArr?.length > 0){
+            if(likedPost){
+                setRecentLike('You')
+                return
+            }
+            setRecentLike(likesArr[(likesArr?.length -1)])
+        }
+    }, [likesArr])
+
     return (
         <>
         <div className="post">
@@ -99,7 +110,7 @@ const PostDetails = () => {
                     <div className="post-details-like">
                         <div className="post-likes-info">
                         <button><BiSolidBookHeart className={likesArr?.includes(user.username) ? 'filled' : ''} onClick={() => handleLike('', post?.id)}/></button>
-                        {likesArr?.length > 0 ? <p>{likesArr[0]} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
+                        {likesArr?.length > 0 ? <p>{recentLike} & {(likesArr.length - 1)} others have liked this!</p> : <p>Be the first to like this!</p>}
                         </div>
                         <div className="post-edit">
                         {

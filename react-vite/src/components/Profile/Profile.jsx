@@ -19,6 +19,7 @@ import { FaGlobe } from "react-icons/fa6";
 import { FaHeartCircleBolt } from "react-icons/fa6";
 import { FaLightbulb } from "react-icons/fa6";
 import RemoveFriendModal from "./RemoveFriendModal";
+import { Tooltip } from "react-tooltip";
 
 const ProfilePage = ({ profileState }) => {
     const dispatch = useDispatch();
@@ -91,7 +92,8 @@ const ProfilePage = ({ profileState }) => {
                         achievementsArr?.includes(1) &&
                         <>
                         <li className="li-achievement">
-                        <FaChampagneGlasses />
+                        <FaChampagneGlasses data-tooltip-id="achievement-one-tooltip" data-tooltip-content='Make 3 Friends'/>
+                        {/* <Tooltip id="achievement-one-tooltip"/> */}
                         <p>Make 3 Friends</p>
                         </li>
                         </>
@@ -99,7 +101,8 @@ const ProfilePage = ({ profileState }) => {
                     {
                         achievementsArr?.includes(2) &&
                         <>
-                        <li className="li-achievement">
+                        <li className="li-achievement" data-tooltip-id="achievement-two-tooltip" data-tooltip-content='Send 5 Messages'>
+                        {/* <Tooltip id="achievement-two-tooltip"/> */}
                         <FaDiscord />
                         <p>Send 5 Messages</p>
                         </li>
@@ -108,7 +111,8 @@ const ProfilePage = ({ profileState }) => {
                     {
                         achievementsArr?.includes(3) &&
                         <>
-                        <li className="li-achievement">
+                        <li className="li-achievement" data-tooltip-id="achievement-three-tooltip" data-tooltip-content='Make a Public Post'>
+                        {/* <Tooltip id="achievement-three-tooltip"/> */}
                         <FaGlobe />
                         <p>Make a Public Post</p>
                         </li>
@@ -117,7 +121,8 @@ const ProfilePage = ({ profileState }) => {
                     {
                         achievementsArr?.includes(4) &&
                         <>
-                        <li className="li-achievement">
+                        <li className="li-achievement" data-tooltip-id="achievement-four-tooltip" data-tooltip-content='Write 3 Comments'>
+                        {/* <Tooltip id="achievement-four-tooltip"/> */}
                         <FaLightbulb />
                         <p>Write 3 Comments</p>
                         </li>
@@ -126,13 +131,27 @@ const ProfilePage = ({ profileState }) => {
                     {
                         achievementsArr?.includes(5) &&
                         <>
-                        <li className="li-achievement">
+                        <li className="li-achievement" data-tooltip-id="achievement-five-tooltip" data-tooltip-content='Like 5 Posts'>
+                        {/* <Tooltip id="achievement-five-tooltip"/> */}
                         <FaHeartCircleBolt />
                         <p>Like 5 Posts</p>
                         </li>
                         </>
                     }
                     </ul>
+                    <>
+                    {achievementsArr?.length == 5? <h4>You have done it all</h4> :
+                    <>
+                    <h4>Available Achievemnts:</h4>
+                        <ul className="available-list">
+                            <li className={achievementsArr?.includes(1) ? 'done' : ''}>Make 3 Friends</li>
+                            <li className={achievementsArr?.includes(2) ? 'done' : ''}>Send 5 Message</li>
+                            <li className={achievementsArr?.includes(3) ? 'done' : ''}>Make a Public Post</li>
+                            <li className={achievementsArr?.includes(4) ? 'done' : ''}>Write 3 Comments</li>
+                            <li className={achievementsArr?.includes(5) ? 'done' : ''}>Like 5 Posts</li>
+                        </ul>
+                        </>}
+                    </>
                     </>
                 )
             }

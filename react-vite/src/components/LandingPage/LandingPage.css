@@ -1,15 +1,12 @@
 .landing-page{
     display: inline-flexbox;
-    /* justify-content: center;
-    align-content: center; */
     text-align: center;
     font-size: xx-large;
-    height: 750px;
+    height: 820px;
 }
 
 .landing-page-flags-container{
     max-width:800px;
-    /* width: max-content; */
     position: absolute;
     top:35%;
     left:25%;
@@ -26,14 +23,6 @@
     flex-wrap: nowrap;
     animation: scroll 20s linear infinite;
     width: fit-content;
-    /* position: relative;
-    animation-name: marquee;
-    animation-duration:  20s;
-    animation-iteration-count:  infinite;
-    animation-direction: alternate;
-    justify-content: space-between; */
-    /* overflow-x: scroll; */
-    /* overflow-y: hidden; */
 }
 
 .play{
@@ -43,15 +32,6 @@
 .pause{
     animation-play-state: paused;
 }
-
-/* @keyframes marquee {
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
-} */
 
 @keyframes scroll {
     to{

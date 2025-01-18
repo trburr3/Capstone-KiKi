@@ -26,9 +26,11 @@ const AllMessages = ({ conversationsArr }) => {
     )
     return(
         <>
-        {conversationsArr ? conversationsArr.map((conversation) => (
+        <div className='test'>
+        {conversationsArr.length > 0  ? conversationsArr.map((conversation) => (
             conversationTile(conversation)
-        )): <p>No messages yet!</p>}
+        )): <p className='no-message'>No messages yet!</p>}
+        </div>
         </>
     )
 }

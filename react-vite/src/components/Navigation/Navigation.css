@@ -146,3 +146,8 @@
 .site-title{
   color:white
 }
+
+#create-tooltip{
+  z-index: 5;
+  background-color: rgb(68, 65, 65);
+}

@@ -1,13 +1,10 @@
 .inbox-header>nav{
-    /* border: 10px solid pink; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100px;
 }
 .inbox-header>nav button{
     font-size: 30px;
-    /* display: flex; */
-    /* align-content: baseline; */
     text-align: center;
     border: none;
     background-color: none;
@@ -22,6 +19,10 @@
 .active{
     color: #812d2d;
 
+}
+
+.test, .requests-list{
+    min-height: 600px;
 }
 
 .convo-tile{
@@ -107,4 +108,10 @@
 
 .button-yes, .button-no{
     background-color: #812d2d00;
+}
+
+.no-message{
+    text-align: center;
+    font-size: x-large;
+    margin-top: 50px;
 }

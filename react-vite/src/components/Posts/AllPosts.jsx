@@ -7,6 +7,7 @@ import { LiaLongArrowAltRightSolid } from "react-icons/lia";
 import { thunkAllFriends } from "../../redux/friends";
 import Filter from "../Filters/Filter";
 import './Posts.css';
+import { Tooltip } from 'react-tooltip';
 
 export default function AllPosts(){
     const dispatch = useDispatch();
@@ -98,7 +99,8 @@ export default function AllPosts(){
                         <button className="post-like">
                             <BiSolidBookHeart className={post.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (post?.likes.includes(user.username)) {handleLike('remove', post.id)} else {handleLike('', post.id)}}}/>
                         </button><p>{post.likes.length}</p>
-                        <button className="post-view"><LiaLongArrowAltRightSolid className="post-list-arrow" onClick={() => navigate(`/posts/${post.id}`)} /></button>
+                        <button className="post-view" data-tooltip-id="comments-tooltip" data-tooltip-content='View Comments'><LiaLongArrowAltRightSolid className="post-list-arrow" onClick={() => navigate(`/posts/${post.id}`)} /></button>
+                        <Tooltip id="comments-tooltip" place="left"/>
                         </div>
                         <div className="line" />
                         </div>

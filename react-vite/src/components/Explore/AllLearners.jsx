@@ -13,6 +13,7 @@ import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import Filter from "../Filters/Filter";
+import { Tooltip } from 'react-tooltip';
 
 const AllLearners = () => {
     const dispatch = useDispatch();
@@ -25,9 +26,6 @@ const AllLearners = () => {
     const[friendFilter, setFriendFilter] = useState(false);
     const[filteredLearners, setFilterLearners] = useState();
     let friendsArr = [];
-    // let learnersArr;
-
-    // if(learnersData) learnersArr = Object.values(learnersData);
 
     if(friendsData){
         const copy = Object.values(friendsData)
@@ -82,7 +80,6 @@ const AllLearners = () => {
 
     return (
         <>
-        {/* {console.log(learnersData)} */}
         <h1 className="page-title">Explore Page</h1>
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
 
@@ -94,12 +91,10 @@ const AllLearners = () => {
                     modalComponent={<PreviewModal learner={learner}/>}
                     itemText={
                     <>
-
-                        <div className="learner-tile">
+                        <div className="learner-tile" data-tooltip-id="learner-tooltip" data-tooltip-content={learner.city}>
+                        <Tooltip id="learner-tooltip" />
                             <img className='learner-tile-img' src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
-                            {/* <div className="learner-name"> */}
                             <h2>{learningFlags[learner.learning]} {learner.first_name} {learner.last_name} {levelArr[(learner.level -1)]}</h2>
-                            {/* </div> */}
                         </div>
                     </>
                     }
