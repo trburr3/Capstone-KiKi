@@ -12,7 +12,7 @@ function Navigation() {
 		<nav id='nav'>
 			<ul className='nav-contents'>
 				<li className='icon-home'>
-					<NavLink to='/' id='home-link'className='kiki-icon-container'>
+					<NavLink to={user ? '/explore' : '/'} id='home-link'className='kiki-icon-container'>
             <img className='kiki-icon pause' alt='kiki-icon' src={logo}/>
               <h1 className='site-title'>KIKI</h1>
             </NavLink>

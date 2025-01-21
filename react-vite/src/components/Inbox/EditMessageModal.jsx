@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { thunkEditMessage } from "../../redux/messages";
 import { useModal } from "../../context/Modal";
 
-const EditMessageModal = ({ conversationId, message }) => {
+const EditMessageModal = ({ conversationId, message, setUpdate }) => {
     const [text, setText] = useState(message.message);
     const dispatch = useDispatch();
     const{closeModal} = useModal()
@@ -17,7 +17,8 @@ const EditMessageModal = ({ conversationId, message }) => {
         console.log(payload)
 
         dispatch(thunkEditMessage(conversationId, message.id, payload))
-        // window.location.reload()
+        // setUpdate(true).then(closeModal)
+        window.location.reload()
     }
 
     return(

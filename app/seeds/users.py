@@ -13,7 +13,7 @@ def seed_users():
         native = 'English',
         learning = 'Spanish',
         level = 3,
-        bio = 'This is a sample bio. But I need so badly to work with one that is large and in charge cus i would like to see how much space this make a differece or not if you so know what i mean so here is a word dump for the ages with zero punctuation cus who needs am i right? haha nerd ',
+        bio = 'This is a sample bio.',
         city = 'Miami',
         state = 'Florida',
         prof_pic = 1,

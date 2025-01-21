@@ -19,6 +19,7 @@ const PreviewModal = ({ learner }) => {
     const [message, setMessage] = useState('');
     const friendsData = useSelector(state => state.friends.allFriends);
     const {sent, received} = useSelector(state => state.friends.requests);
+    const [update, setUpdate] = useState(true)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
@@ -33,9 +34,12 @@ const PreviewModal = ({ learner }) => {
     }, [message]);
 
     useEffect(() => {
-        dispatch(thunkAllFriends())
-        dispatch(thunkGetAllRequests())
-    }, [dispatch]);
+        if(update){
+            dispatch(thunkAllFriends())
+            dispatch(thunkGetAllRequests())
+            setUpdate(false)
+        }
+    }, [dispatch, update]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,7 +52,7 @@ const PreviewModal = ({ learner }) => {
         dispatch(thunkCreateConversation(payload))
         setMessage('')
         setVisible(false)
-        closeModal
+        closeModal()
     }
 
     const handleClick = (learnerId) => {
@@ -56,6 +60,8 @@ const PreviewModal = ({ learner }) => {
             recipient_id: learnerId
         }
         dispatch(thunkCreateRequest(payload))
+        setUpdate(true)
+        closeModal()
     }
 
     if (friendsData){

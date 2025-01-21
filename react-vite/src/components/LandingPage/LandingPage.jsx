@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import './LandingPage.css';
 import { useState, useEffect } from "react";
+// import scene from '../../images/Landing-Scene.png';
 
 const FADE_INTERVAL_MS = 2750
 const WORD_CHANGE_INTERVAL_MS = FADE_INTERVAL_MS * 4
@@ -58,6 +59,7 @@ const LandingPage = () => {
                 <li className="li-landing-page-flag">🇨🇴</li>
             </ul>
         </div>
+        {/* <img src={scene} alt="scene"/> */}
         </div>
         </>
     )

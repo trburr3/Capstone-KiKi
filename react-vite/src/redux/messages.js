@@ -111,8 +111,8 @@ const loadAllMessages = (payload) => ({
     });
 
     if(response.ok) {
-        console.log('Delete successful :3')
-        window.location.reload()
+        // console.log('Delete successful :3')
+        // window.location.reload()
     } else if (response.status < 500) {
       const errorMessages = await response.text();
       console.error(errorMessages)
@@ -130,9 +130,9 @@ const loadAllMessages = (payload) => ({
 
     if(response.ok) {
       const newMessage = await response.json();
-      console.log('WHO AM I?', newMessage)
+      // console.log('WHO AM I?', newMessage)
       // dispatch(loadEdit(newMessage));
-      window.location.reload()
+      // window.location.reload()
     } else if (response.status < 500) {
       const errorMessages = await response.text();
       return errorMessages

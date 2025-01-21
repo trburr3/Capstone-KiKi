@@ -8,6 +8,7 @@ import { thunkAllFriends } from "../../redux/friends";
 import Filter from "../Filters/Filter";
 import './Posts.css';
 import { Tooltip } from 'react-tooltip';
+import anchor from '../../images/anchor.png';
 
 export default function AllPosts(){
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function AllPosts(){
     const[localFilter, setLocalFilter] = useState(false);
     const[friendFilter, setFriendFilter] = useState(false);
     const[filteredPosts, setFilterPosts] = useState()
+    const[update, setUpdate] = useState(true)
     const user = useSelector(state => state.session.user);
     const postData = useSelector(state => state.posts.allPosts);
     const friendsData = useSelector(state => state.friends.allFriends)
@@ -30,9 +32,16 @@ export default function AllPosts(){
     }
 
     useEffect(() => {
-        dispatch(postActions.thunkGetAllPosts())
+        // dispatch(postActions.thunkGetAllPosts())
         dispatch(thunkAllFriends())
     }, [dispatch])
+
+    useEffect(() => {
+        if(update){
+            dispatch(postActions.thunkGetAllPosts())
+            setUpdate(false)
+        }
+    }, [dispatch, update])
 
     useEffect(() => {
         if(postData) setFilterPosts(Object.values(postData))
@@ -51,10 +60,14 @@ export default function AllPosts(){
         }
         if (type == 'remove'){
             dispatch(postActions.thunkRemoveLike(payload))
+            setUpdate(true)
+            // dispatch(postActions.thunkGetAllPosts())
             return
         }
 
         dispatch(postActions.thunkAddLike(payload))
+        // dispatch(postActions.thunkGetAllPosts())
+        setUpdate(true)
         return
     }
 
@@ -85,7 +98,9 @@ export default function AllPosts(){
 
     return(
         <>
-        <h1 className="page-title">Forum Page</h1>
+        <div className="header-container">
+        <img src={anchor} alt="anchor" id='title-anchor'/><h1 className="page-title">Forum Page</h1> <img src={anchor} alt="anchor" id='title-anchor'/>
+        </div>
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
         <div className="posts-list list">
             <ul>

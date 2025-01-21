@@ -116,7 +116,7 @@ export const thunkCreateComment = (request, postId) => async dispatch => {
         if(post.errors) { return; }
         // console.log(post)
         // dispatch(getSinglePost(post));
-        window.location.reload();
+        // window.location.reload();
     }
 }
 
@@ -149,7 +149,7 @@ export const thunkDeleteComment = (commentId) => async dispatch => {
         // const posts = await csrfFetch(`api/posts`);
         // if(posts.errors) { return; }
         // dispatch(getAllPosts(posts))
-        window.location.reload()
+        // window.location.reload()
     }
 }
 
@@ -167,7 +167,7 @@ export const thunkAddLike = (request) => async dispatch => {
         if(response.errors) { return; }
         // console.log(post)
         // dispatch(getSinglePost(post));
-        window.location.reload();
+        // window.location.reload();
     }
 }
 
@@ -184,7 +184,7 @@ export const thunkRemoveLike = (request) => async dispatch => {
         // const posts = await csrfFetch(`api/posts`);
         // if(posts.errors) { return; }
         // dispatch(getAllPosts(posts))
-        window.location.reload();
+        // window.location.reload();
     }
 }
 

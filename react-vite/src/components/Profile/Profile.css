@@ -7,11 +7,14 @@
     padding: 5px;
     font-size: larger;
     margin: 10px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.483);
+    background-image: url('../../images/Chatroom.png');
+    background-position-y: 35%;
+    border-radius: 15px;
 }
 
 .friends-list>li img, .friends-list>li p{
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
     padding: 15px;
 }
 

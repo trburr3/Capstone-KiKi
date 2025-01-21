@@ -25,3 +25,18 @@ a {
     background-color: #6f683fa9;
     /* padding: 15px; */
 }
+
+#title-anchor{
+    height: 90px;
+    align-self: baseline;
+
+}
+
+.header-container{
+    display: flex;
+    justify-content: center;
+}
+
+select, input, button{
+    border-radius: 8px;
+}

@@ -30,7 +30,7 @@ const DeletePostModal = ({ post }) => {
           <p>This action cannot be undone.</p>
 
           <button type="Submit" className='button-yes' onClick={handleSubmit}>Delete</button>
-          <Link to={'/profile'} onClick={closeModal}>No, Go Back.</Link>
+          <Link to={'/profile/posts'} onClick={closeModal}>No, Go Back.</Link>
 
           </div>
           </div>

@@ -3,6 +3,10 @@
     text-align: center;
     font-size: xx-large;
     height: 820px;
+    /* background-image: url('../../images/Landing-Scene-1.png');
+    background-repeat: no-repeat;
+    background-position-y: 110%;
+    background-position-x: 110%; */
 }
 
 .landing-page-flags-container{

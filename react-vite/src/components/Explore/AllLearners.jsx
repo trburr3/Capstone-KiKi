@@ -1,6 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import PreviewModal from "./PreviewModal";
 import { useEffect, useState } from "react";
 import { thunkGetAllUsers } from "../../redux/learners";
@@ -14,6 +12,8 @@ import avatar5 from '../../images/Avatar 5.png';
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import Filter from "../Filters/Filter";
 import { Tooltip } from 'react-tooltip';
+import anchor from '../../images/anchor.png';
+import Pagination from "./Pagination";
 
 const AllLearners = () => {
     const dispatch = useDispatch();
@@ -25,7 +25,17 @@ const AllLearners = () => {
     const[localFilter, setLocalFilter] = useState(false);
     const[friendFilter, setFriendFilter] = useState(false);
     const[filteredLearners, setFilterLearners] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8;
     let friendsArr = [];
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+      };
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredLearners?.slice(indexOfFirstItem, indexOfLastItem);
 
     if(friendsData){
         const copy = Object.values(friendsData)
@@ -80,12 +90,15 @@ const AllLearners = () => {
 
     return (
         <>
-        <h1 className="page-title">Explore Page</h1>
+        <div className="page-container">
+        <div className="header-container">
+        <img src={anchor} alt="anchor" id='title-anchor'/><h1 className="page-title">Explore Page</h1><img src={anchor} alt="anchor" id='title-anchor'/>
+        </div>
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
 
         <div className="learners-list list">
             <ul>
-                {filteredLearners ? filteredLearners.map((learner, index) => (
+                {currentItems ? currentItems.map((learner, index) => (
                     <OpenModalMenuItem
                     key={index}
                     modalComponent={<PreviewModal learner={learner}/>}
@@ -101,6 +114,12 @@ const AllLearners = () => {
                     />
                 )) : <p>No Learners Found 🫥</p>}
             </ul>
+            <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={filteredLearners?.length}
+            onPageChange={handlePageChange}
+            />
+        </div>
         </div>
         </>
     )

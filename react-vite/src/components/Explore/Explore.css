@@ -1,15 +1,19 @@
+
 .learners-list{
     width: 95%;
     height: 10%;
     justify-self: center;
+    background-color: #812d2d00;
 }
 .learners-list>ul{
     display: grid;
     grid-template-columns: repeat(4, .5fr);
-    grid-template-rows: repeat(9, .2fr);
+    /* grid-template-rows: repeat(9, .2fr); */
+    grid-template-rows: repeat(2, .2fr);
     grid-auto-flow: column;
     gap: 15px 0px;
     margin-top: 20px;
+    background-color: #812d2d00;
 }
 .learners-list div{
     border: 8px solid #812d2d;
@@ -124,5 +128,26 @@
 #learner-tooltip{
     padding: 20px;
     letter-spacing: 3px;
+}
+
+.pagination{
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 5px;
     /* margin: 5px; */
+}
+
+.pagination>* button:hover{
+    background-color: #812d2d;
+    color: white
+}
+
+.pagination>.active{
+    background-color: #812d2d;
+}
+
+.pagination-container{
+    margin: 20px;
 }

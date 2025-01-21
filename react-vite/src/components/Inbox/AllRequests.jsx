@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as friendActions from '../../redux/friends';
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
@@ -7,14 +7,28 @@ import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { thunkGetAllRequests } from "../../redux/friends";
 
-const AllRequests = ({ sent , received}) => {
+const AllRequests = () => {
     const dispatch = useDispatch();
+    const [update, setUpdate] = useState(true);
+    let {sent, received} = useSelector(state => state.friends.requests);
+    sent = Object.values(sent)
+    received = Object.values(received)
+
+    useEffect(() => {
+        if(update){
+            dispatch(thunkGetAllRequests())
+            setUpdate(false)
+        }
+    }, [dispatch, update])
 
     const handleClick = (action, request) => {
         switch(action){
             case 'delete':{
                 dispatch(friendActions.thunkDeleteRequest(request))
+                setUpdate(true)
                 return
             }
             case 'accept':{
@@ -24,6 +38,7 @@ const AllRequests = ({ sent , received}) => {
                     response: true
                 }
                 dispatch(friendActions.thunkRequestResponse(payload))
+                setUpdate(true)
                 return
             }
             case 'decline':{
@@ -31,6 +46,7 @@ const AllRequests = ({ sent , received}) => {
                     id: request?.id
                 }
                 dispatch(friendActions.thunkRequestResponse(payload))
+                setUpdate(true)
                 return
             }
         }

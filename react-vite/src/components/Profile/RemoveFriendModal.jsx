@@ -4,7 +4,7 @@ import { thunkRemoveFriend } from "../../redux/friends";
 import './Profile.css';
 import { Link } from "react-router-dom";
 
-const RemoveFriendModal = ({ friend }) => {
+const RemoveFriendModal = ({ friend, update, setUpdate }) => {
     const { closeModal } = useModal();
 
     const dispatch = useDispatch();
@@ -14,8 +14,11 @@ const RemoveFriendModal = ({ friend }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        return dispatch(thunkRemoveFriend(friend.id))
-               .then(closeModal)
+        // return dispatch(thunkRemoveFriend(friend.id))
+        //        .then(setUpdate(false))
+        //        .then(closeModal)
+        dispatch(thunkRemoveFriend(friend.id))
+        closeModal()
 
     }
     return (
@@ -28,7 +31,7 @@ const RemoveFriendModal = ({ friend }) => {
           <p>Are you sure you want to remove {friend.username} as a friend?</p>
 
           <button type="Submit" className='button-yes' onClick={handleSubmit}>Yes, Remove.</button>
-          <Link to={'/profile'} onClick={closeModal}>No, Go Back.</Link>
+          <Link to={'/profile/friends'} onClick={closeModal}>No, Go Back.</Link>
 
           </div>
           </div>

@@ -66,7 +66,7 @@ export const thunkRequestResponse = (response) => async dispatch => {
     });
 
     if(res.ok) {
-        window.location.reload()
+        // window.location.reload()
     }
 }
 
@@ -80,7 +80,7 @@ export const thunkCreateRequest = (request) => async dispatch => {
     });
 
     if(res.ok) {
-        window.location.reload()
+        // window.location.reload()
     }
 }
 
@@ -106,7 +106,7 @@ export const thunkDeleteRequest = (requestId) => async dispatch => {
     });
 
     if(res.ok) {
-        window.location.reload()
+        // window.location.reload()
     }
 }
 

@@ -4,13 +4,14 @@ import * as friendActions from '../../redux/friends';
 import * as messageActions from '../../redux/messages';
 import AllMessages from "./AllMessages";
 import AllRequests from "./AllRequests";
+import anchor from '../../images/anchor.png'
 import './Inbox.css';
 
 const Inbox = ({ inboxState }) => {
     const dispatch = useDispatch();
     let [activeSection, setActiveSection] = useState('messages');
     const conversationsData = useSelector(state => state.messages.conversations);
-    const {sent, received} = useSelector(state => state.friends.requests);
+    // const {sent, received} = useSelector(state => state.friends.requests);
     let conversationsArr = [];
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const Inbox = ({ inboxState }) => {
     if (conversationsData) {
         let copy = Object.values(conversationsData)
         for (let i = copy.length - 1; i >= 0; i--){
-            conversationsArr.push(copy[i])
+            if(copy[i].messages.length > 0) conversationsArr.push(copy[i])
         }
     };
 
@@ -34,14 +35,16 @@ const Inbox = ({ inboxState }) => {
                 return <AllMessages conversationsArr={conversationsArr}/>
             }
             case 'requests':{
-                return <AllRequests sent={Object.values(sent)} received={Object.values(received)}/>
+                return <AllRequests />
             }
         }
     }
 
     return (
         <>
-        <h1 className="page-title">Inbox Page</h1>
+        <div className="header-container">
+        <img src={anchor} alt="anchor" id='title-anchor'/><h1 className="page-title">Inbox Page</h1><img src={anchor} alt="anchor" id='title-anchor'/>
+        </div>
         <div className="inbox-header">
             <nav>
 			    <button

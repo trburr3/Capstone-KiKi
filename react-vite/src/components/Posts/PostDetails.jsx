@@ -21,21 +21,36 @@ const PostDetails = () => {
     const [comment, setComment] = useState('');
     const [likedPost, setLikedPost] = useState(false);
     const [recentLike, setRecentLike] = useState('');
+    const[update, setUpdate] = useState(true)
 
     useEffect(() => {
         dispatch(postActions.thunkGetAllPosts());
-        dispatch(postActions.thunkGetAllComments(postId));
-        dispatch(postActions.thunkSinglePost(postId))
-    }, [dispatch, postId])
+        // dispatch(postActions.thunkGetAllComments(postId));
+        // dispatch(postActions.thunkSinglePost(postId))
+    }, [dispatch])
+
+    useEffect(() => {
+        if(update){
+            dispatch(postActions.thunkGetAllComments(postId));
+            dispatch(postActions.thunkSinglePost(postId))
+            setUpdate(false)
+        }
+    }, [dispatch, update, postId])
 
     const postData = useSelector(state => state.posts.post)
     const comments = useSelector(state => state.posts.comments);
     let post;
-    let commentsArr;
+    let commentsArr = [];
 
     if(postData) post = postData[postId]
 
-    if (comments) commentsArr = Object.values(comments)
+    if (comments){
+        const copy = Object.values(comments)
+        for( let i = (copy.length - 1); i >= 0; i-- ){
+            commentsArr.push(copy[i])
+        }
+        // commentsArr.push(copy[0])
+    }
 
     const levelsArr = ['Beginner', 'Intermediate', 'Expert'];
 
@@ -59,10 +74,13 @@ const PostDetails = () => {
         };
 
         dispatch(postActions.thunkCreateComment(payload, postId));
+        setComment('')
+        setUpdate(true)
     }
 
     const deleteComment = (commentId) => {
         dispatch(postActions.thunkDeleteComment(commentId))
+        setUpdate(true)
     }
 
     const handleLike = (type, postId, commentId) => {
@@ -72,11 +90,14 @@ const PostDetails = () => {
         }
         if (likedPost || type == 'remove'){
             dispatch(postActions.thunkRemoveLike(payload))
+            // setRecentLike('You')
             setLikedPost(false)
+            setUpdate(true)
             return
         }
 
         dispatch(postActions.thunkAddLike(payload))
+        setUpdate(true)
         return
     }
 
@@ -154,15 +175,15 @@ const PostDetails = () => {
                             <li key={index}>
                                 <div className="post-comment-tile">
                                 <div className="comment-img">
-                                <img src={avatarArr[(comment.author_pic - 1 )]} alt="avatar" />
+                                <img src={avatarArr[(comment?.author_pic - 1 )]} alt="avatar" />
                                 </div>
                                 <div className="comment">
-                                <h4>{comment.author_name}</h4>
-                                <p>{comment.comment}</p>
+                                <h4>{comment?.author_name}</h4>
+                                <p>{comment?.comment}</p>
                                 </div>
                                 <div className="comment-likes">
-                                <button><BiSolidBookmarkHeart className={comment?.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (comment?.likes.includes(user.username)) {handleLike('remove', postId, comment.id)} else {handleLike('', postId, comment.id)}}}/></button><p>{comment.likes.length}</p>
-                                {comment.author_id == user.id ? <button onClick={() => deleteComment(comment?.id)}>X</button> : ''}
+                                <button><BiSolidBookmarkHeart className={comment?.likes.includes(user.username) ? 'filled' : ''} onClick={() => { if (comment?.likes.includes(user.username)) {handleLike('remove', postId, comment.id)} else {handleLike('', postId, comment.id)}}}/></button><p>{comment?.likes.length}</p>
+                                {comment?.author_id == user.id ? <button onClick={() => deleteComment(comment?.id)}>X</button> : ''}
                                 </div>
                                 </div>
                             </li>

@@ -25,7 +25,7 @@ const CreatePostForm = () => {
         }
 
        dispatch(thunkCreatePost(payload))
-       navigate('/profile')
+       navigate('/profile/posts')
     };
    return (
     <>

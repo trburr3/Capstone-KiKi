@@ -34,6 +34,7 @@ const ProfilePage = ({ profileState }) => {
     const [level, setLevel] = useState(user?.level);
     const [prof_pic, setProfPic] = useState(user?.prof_pic);
     const [bio, setBio] = useState(user?.bio);
+    const [update, setUpdate] = useState(true);
     let [activeSection, setActiveSection] = useState('achievements');
 
     useEffect(() => {
@@ -41,10 +42,17 @@ const ProfilePage = ({ profileState }) => {
     }, [profileState]);
 
     useEffect(() => {
-        dispatch(thunkAllFriends())
+        // dispatch(thunkAllFriends())
         dispatch(thunkGetAchievements())
         dispatch(thunkGetAllUserPosts())
     }, [dispatch]);
+
+    useEffect(() => {
+        if(update) {
+            dispatch(thunkAllFriends())
+            setUpdate(false)
+        }
+    }, [dispatch, update])
 
     const payload = {
         first_name,
@@ -303,9 +311,9 @@ const ProfilePage = ({ profileState }) => {
                             <p>{friend.username}</p>
                             <OpenModalButton
                             buttonText='x'
-                            modalComponent={<RemoveFriendModal friend={friend}/>}
-                            onButtonClick
-                            onModalClose
+                            modalComponent={<RemoveFriendModal friend={friend} update={update} setUpdate={setUpdate}/>}
+                            onButtonClick={() => setUpdate(false)}
+                            onModalClose={() => setUpdate(false)}
                             />
                         </li>
                     ))}

@@ -34,16 +34,28 @@
     padding: 5px;
     font-size: larger;
     margin: 10px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.483);
+    background-image: url('../../images/Conversation-Tile-1.png');
+    background-repeat: round;
+    border-radius: 15px;
 }
 
-.convo-image>img, .convo-image, .convo-preview, .convo-desc>h4{
-    background-color: grey;
+.convo-image>img, .convo-image, .convo-preview, .convo-desc>h4, .convo-desc{
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .convo-preview,.convo-desc>h4{
-    padding: 10px
+    padding: 10px;
+    font-size: 30px;
 }
+
+.convo-preview{
+    color: white;
+}
+
+/* .convo-desc>h4{
+    color: #812d2d;
+} */
 
 .convo-tile>button{
     width: 100px;
@@ -63,11 +75,13 @@
     padding: 5px;
     font-size: larger;
     margin: 10px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.483);
+    background-image: url('../../images/Comment-Tile.png');
+    border-radius: 15px;
 }
 
 .request-tile>p, .request-tile>img, #request-sender, .request-buttons{
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .request-tile>img{

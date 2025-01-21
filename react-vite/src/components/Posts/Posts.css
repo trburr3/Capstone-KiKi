@@ -10,7 +10,7 @@
         "body"
         "buttons";
     text-align: center;
-    margin: 10px 0 20px 0
+    margin: 10px 0 20px 0;
 }
 
 .posts-tile>h2{
@@ -28,8 +28,9 @@
 .posts-tile-buttons>p{
     height: 70px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
     align-self: baseline;
+    background-color: #812d2d00;
 }
 
 .posts-tile-buttons{
@@ -37,6 +38,8 @@
     grid-template-columns: .2fr .1fr 1fr;
     grid-template-areas:
         "like . view";
+    background-image: url('../../images/Post-Tile.png');
+    background-color: #812d2d00;
 }
 
 .posts-tile-buttons>.post-like{
@@ -123,7 +126,6 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
         "likes edit";
-    /* margin: 5px; */
     padding-top: 25px;
 }
 
@@ -195,11 +197,13 @@
     padding: 5px;
     font-size: larger;
     margin: 5px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.499);
+    background-image: url("../../images/Comment-Tile.png");
+    border-radius: 32px;
 }
 
 .post-comment-tile>*{
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .comment{
@@ -207,7 +211,7 @@
 }
 
 .comment>*{
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .comment-likes{
@@ -222,7 +226,7 @@
 
 .comment-likes>p{
     text-align: center;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .comment-likes>button{
@@ -230,9 +234,13 @@
 }
 
 .comment-img>img{
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0);
 }
 
 .like-text{
     font-size: xx-large;
+}
+
+.line{
+    margin: 0;
 }

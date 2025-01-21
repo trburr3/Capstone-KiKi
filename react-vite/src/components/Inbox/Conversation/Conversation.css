@@ -31,12 +31,14 @@
 .message-list>ul{
     padding: 0;
     list-style: none;
+    background-color: #812d2d00;
 
 }
 
 
 .left, .right {
     margin: 10px;
+    background-color: #812d2d00;
 }
 
 .left{
@@ -58,7 +60,7 @@
 }
 
 .message-bubble {
-    --r: 1em;  /* the radius */
+    --r: .1em;  /* the radius */
     --t: 1.5em; /* the size of the tail */
 
     max-width: 300px;
@@ -69,7 +71,7 @@
       radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%)
         var(--_p) 100%/var(--t) var(--t) no-repeat,
       linear-gradient(#000 0 0) padding-box;
-    background: linear-gradient(135deg,#FE6D00,#1384C5) border-box;
+    background: linear-gradient(135deg,#812d2d,#13a4c5) border-box;
     color: #fff;
   }
   .left {
@@ -101,4 +103,14 @@
   .right>* button:hover{
     background-color: #812d2d;
     color: white;
+  }
+
+  .message-list{
+    background-image: url('../../../images/Chatroom.png');
+    background-repeat: space;
+    background-position: 30%;
+  }
+
+  .message-input>form{
+    background-color: #812d2d00;
   }

@@ -11,6 +11,20 @@ import OpenModalButton from "../../Translator/OpenModalButton";
 import EditMessageModal from "../EditMessageModal";
 import './Conversation.css';
 
+const timeFormat = (dateTime) => {
+    const time  = dateTime.split(',')[1].split(':')
+    const date = dateTime.split(',')[0]
+    if(time[0] > 12){
+        return date + ', ' + (+time[0] - 12) + ':' + time[1] + ' PM'
+    }
+    if(time[0] == 0){
+        return date + ', ' + ('12') + ':' + time[1] + ' AM'
+    }
+
+    return date + ', ' + (time[0]) + ':' + time[1] + ' AM'
+
+}
+
 const Conversation = () => {
     const dispatch = useDispatch();
     const {conversationId} = useParams();
@@ -19,6 +33,7 @@ const Conversation = () => {
     const [newMessage, setNewMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
     const [visible, setVisible] = useState(false);
+    const [update, setUpdate] = useState(true);
     let avatarArr = [avatar1, avatar2, avatar3, avatar4, avatar5];
     let messagesArr = [];
 
@@ -29,8 +44,11 @@ const Conversation = () => {
     }
 
     useEffect(() => {
-        dispatch(messageActions.thunkGetAllConversations())
-    }, [dispatch])
+        if(update){
+            dispatch(messageActions.thunkGetAllConversations())
+            setUpdate(false)
+        }
+    }, [dispatch, update])
 
     useEffect(() => {
         if (newMessage) setDisabled(false)
@@ -53,17 +71,18 @@ const Conversation = () => {
         dispatch(messageActions.thunkCreateMessage(conversationId, payload))
 
         setNewMessage('')
-        window.location.reload();
+        setUpdate(true)
     }
 
     const handleDelete = (messageId) => {
         dispatch(messageActions.thunkDeleteMessage(conversationId, messageId))
+        setUpdate(true)
     }
 
     return(
         <>
         <div className="convo-container">
-        <h1 className="page-title">Conversation #{conversationId}</h1>
+        <h1 className="page-title">{messageData[conversationId]?.between[0] == user.id ? messageData[conversationId]?.between[0] : messageData[conversationId]?.between[1]}</h1>
         <div className="message-list">
         <ul>
         {messagesArr ? messagesArr.map((message, index) => (
@@ -72,13 +91,13 @@ const Conversation = () => {
                 <div className="message-bubble" onClick={() => user.first_name == message.from ? setVisible(!visible) : ''}>
                     <p>{message.from}: {message.message}</p>
                     <br />
-                    <p className='message-timestamp'>{message.updated_at}</p>
+                    <p className='message-timestamp'>{timeFormat(message.updated_at)}</p>
                     {visible && user.first_name == message.from ?
                     <>
                     <button onClick={() => {handleDelete(message.id)}}>X</button>
                     <OpenModalButton
                     buttonText='Edit'
-                    modalComponent={<EditMessageModal conversationId={conversationId} message={message}/>}
+                    modalComponent={<EditMessageModal conversationId={conversationId} message={message} setUpdate={setUpdate}/>}
                     onModalClose
                     onButtonClick
                     />
