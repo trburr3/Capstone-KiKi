@@ -82,8 +82,6 @@ def sign_up():
             city=form.data['city'],
             state=form.data['state'],
             prof_pic=form.data['prof_pic'],
-            # pref_chatroom = 'light',
-            # pref_theme = 'light',
         )
         db.session.add(user)
         db.session.commit()

@@ -51,7 +51,7 @@ function SignupFormModal() {
         state
     }
 
-    console.log(payload)
+    // console.log(payload)
 
     const serverResponse = await dispatch(
       thunkSignup(
