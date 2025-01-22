@@ -17,11 +17,11 @@ function SignupFormModal() {
 	const [last_name, setLastName] = useState('');
 	const [city, setCity] = useState('');
 	const [state, setState] = useState('');
-	const [learning, setLearning] = useState('');
-  const [level, setLevel] = useState('');
+	const [learning, setLearning] = useState('English');
+  const [level, setLevel] = useState(1);
   const [prof_pic, setProfPic] = useState(1);
   const [bio, setBio] = useState('');
-  const [native, setNative] = useState('');
+  const [native, setNative] = useState('English');
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -36,10 +36,8 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
-
-    const serverResponse = await dispatch(
-      thunkSignup({
-        email,
+    const payload = {
+      email,
         username,
         password,
         first_name,
@@ -51,7 +49,14 @@ function SignupFormModal() {
         prof_pic,
         city,
         state
-      })
+    }
+
+    console.log(payload)
+
+    const serverResponse = await dispatch(
+      thunkSignup(
+        payload
+      )
     );
 
     if (serverResponse) {
