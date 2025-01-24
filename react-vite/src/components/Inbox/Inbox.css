@@ -33,11 +33,15 @@
     align-items: center;
     padding: 5px;
     font-size: larger;
-    margin: 10px;
+    margin: 20px;
     background-color: rgba(128, 128, 128, 0.483);
     background-image: url('../../images/Conversation-Tile-1.png');
     background-repeat: round;
     border-radius: 15px;
+}
+
+.convo-tile:hover, .request-tile:hover{
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.578);
 }
 
 .convo-image>img, .convo-image, .convo-preview, .convo-desc>h4, .convo-desc{
@@ -74,7 +78,7 @@
     align-items: center;
     padding: 5px;
     font-size: larger;
-    margin: 10px;
+    margin: 20px;
     background-color: rgba(128, 128, 128, 0.483);
     background-image: url('../../images/Comment-Tile.png');
     border-radius: 15px;
@@ -118,6 +122,8 @@
 
 .request-tile>button:hover, .request-buttons>button:hover, .convo-tile>button:hover{
     background-color: #812d2d;
+    box-shadow: 5px 5px 5px black;
+    color: white;
 }
 
 .button-yes, .button-no{
@@ -128,4 +134,13 @@
     text-align: center;
     font-size: x-large;
     margin-top: 50px;
+}
+
+.lion-animation{
+    height: 200px;
+    margin-top: 70px;
+}
+
+.turtle-animation{
+    height: 400px;
 }

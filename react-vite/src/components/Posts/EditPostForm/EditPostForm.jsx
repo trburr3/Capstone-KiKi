@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkEditPost, thunkSinglePost } from "../../../redux/posts";
 import '../Posts.css';
+import Lottie from "lottie-web";
+import message from '../../../lotties/message.json';
 
 const EditPostForm = () => {
 
@@ -17,6 +19,20 @@ const EditPostForm = () => {
 	const [language, setLanguage] = useState(post?.language);
 	const [title, setTitle] = useState(post?.title);
 	const [privated, setPrivated] = useState(post?.privated);
+
+    const container = useRef(null);
+
+    useEffect(() => {
+        const anim = Lottie.loadAnimation({
+          container: container.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: message,
+        })
+
+        return () => anim.destroy();
+      }, [container])
 
     useEffect(() => {
         if(postData) setPost(postData[postId])
@@ -138,6 +154,7 @@ const EditPostForm = () => {
                 </div>
 			</div>
 		</form>
+        <div className="lion-animation" ref={container}></div>
     </div>
 	</>
     )

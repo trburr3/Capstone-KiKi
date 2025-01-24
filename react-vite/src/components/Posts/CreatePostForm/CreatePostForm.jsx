@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { thunkCreatePost } from "../../../redux/posts";
 import '../Posts.css';
+import Lottie from "lottie-web";
+import message from '../../../lotties/message.json';
 
 const CreatePostForm = () => {
     const dispatch = useDispatch();
@@ -12,6 +14,33 @@ const CreatePostForm = () => {
 	const [language, setLanguage] = useState('English');
 	const [title, setTitle] = useState('');
 	const [privated, setPrivated] = useState(true);
+    const container = useRef(null);
+    // const containerOne = useRef(null);
+    // const containerTwo = useRef(null);
+
+    useEffect(() => {
+        const anim = Lottie.loadAnimation({
+          container: container.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: message,
+        })
+
+        return () => anim.destroy();
+      }, [container])
+
+    //   useEffect(() => {
+    //     const anim = Lottie.loadAnimation({
+    //       container: containerTwo.current,
+    //       renderer: 'svg',
+    //       loop: true,
+    //       autoplay: true,
+    //       animationData: message,
+    //     })
+
+    //     return () => anim.destroy();
+    //   }, [containerTwo])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +59,12 @@ const CreatePostForm = () => {
    return (
     <>
     <div className="form create-form">
+    {/* <div className="message-animation" ref={container}></div> */}
+        <div className="signup-header">
+        {/* <div className="message-animation" ref={containerOne}></div> */}
         <h1 className="page-title">Create Post</h1>
+        {/* <div className="message-animation" ref={containerTwo}></div> */}
+        </div>
 			<form onSubmit={handleSubmit}>
 				<div className='form-info'>
                     <div className="form-text-input">
@@ -110,12 +144,14 @@ const CreatePostForm = () => {
                         </select>
 					</div>
                     </div>
+                    {/* <div className="lion-animation" ref={container}></div> */}
                 <div className="form-buttons">
 				<button>Save</button>
                 <button onClick={() => setPrivated(false)}>Post</button>
                 </div>
 			</div>
 		</form>
+        <div className="lion-animation" ref={container}></div>
     </div>
 	</>
     )

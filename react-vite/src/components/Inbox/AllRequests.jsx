@@ -7,13 +7,16 @@ import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { FaXmark } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { thunkGetAllRequests } from "../../redux/friends";
+import Lottie from "lottie-web";
+import turtle from '../../lotties/turtle.json';
 
 const AllRequests = () => {
     const dispatch = useDispatch();
     const [update, setUpdate] = useState(true);
     let {sent, received} = useSelector(state => state.friends.requests);
+    const container = useRef(null);
     sent = Object.values(sent)
     received = Object.values(received)
 
@@ -23,6 +26,18 @@ const AllRequests = () => {
             setUpdate(false)
         }
     }, [dispatch, update])
+
+    useEffect(() => {
+        const anim = Lottie.loadAnimation({
+          container: container.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: turtle,
+        })
+
+        return () => anim.destroy();
+      }, [container])
 
     const handleClick = (action, request) => {
         switch(action){
@@ -94,6 +109,7 @@ const AllRequests = () => {
                     )) : <p>You have not received any new request.</p>}
                 </ul>
             </div>
+            <div className="turtle-animation" ref={container}></div>
         </div>
         </>
     )

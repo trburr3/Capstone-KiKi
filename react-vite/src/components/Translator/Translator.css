@@ -17,11 +17,21 @@
     padding: 10px;
 }
 
-#modal .tranlator-container {
+/* #modal .tranlator-container {
     border: solid 2px black;
     border-radius: 10px 10px 0px 0px;
     width: 500px;
-    height: 300px;;
+    height: 300px;
+} */
+
+.tranlator-container{
+    /* padding: 10px; */
+    border: solid 10px black;
+    border-radius: 15px;
+    width: 500px;
+    height: fit-content;
+    /* padding: 2px; */
+    border-style: inset;
 }
 
 .tranlator-container>h1 {
@@ -48,6 +58,8 @@
     background-color: white;
     margin-right: 0;
     margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .translator-form{
@@ -86,6 +98,7 @@
     font-size: 25px;
     margin-left: 5px;
     height: 100px;
+    padding-top: 10px;
 }
 
 .translator-input-box>button{

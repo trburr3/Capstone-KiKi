@@ -27,7 +27,7 @@
 
 .posts-tile-buttons>p{
     height: 70px;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 700;
     align-self: baseline;
     background-color: #812d2d00;
@@ -107,11 +107,30 @@
 
 .post-body{
     grid-area: body;
+    padding: 15px;
     display: grid;
     grid-template-rows: 1fr .2fr;
     grid-template-areas:
         "body"
         "buttons";
+}
+
+.post-body>* button{
+    padding: 5px 10px;
+}
+
+.user-buttons>button:hover, .post-comment-box>* button:hover{
+    background-color: #812d2d;
+    color: white;
+    box-shadow: 5px 5px 5px black;
+}
+
+.user-buttons>*{
+    margin:10px
+}
+
+.post-body>* button:hover, .post-comment-tile>* button:hover{
+    box-shadow: 5px 5px 5px black;
 }
 
 .post-body>span{
@@ -154,6 +173,7 @@
     grid-area: input;
     margin: 10px;
 }
+
 .post-comment-box>form #comment-input{
     width: 98%;
     height: 300px;
@@ -230,7 +250,7 @@
 }
 
 .comment-likes>button{
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .comment-img>img{
@@ -243,4 +263,21 @@
 
 .line{
     margin: 0;
+}
+
+.pagination-container{
+    border: 12px solid #812d2d;
+    justify-self: center;
+    border-style: groove;
+    box-shadow: 5px 5px 5px burlywood;
+    /* position: absolute;
+    top: 150%; */
+}
+
+.whale-animation{
+    height: 600px;
+}
+
+.message-animation{
+    height: 200px;
 }

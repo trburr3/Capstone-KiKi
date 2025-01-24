@@ -107,7 +107,7 @@ const PreviewModal = ({ learner }) => {
                 <button onClick={() => setVisible(!visible)}>💌</button>
                 {visible ?
                 <>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id='message-form'>
                         <input
                         placeholder="Say hello!"
                         value={message}

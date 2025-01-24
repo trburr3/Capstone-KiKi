@@ -47,7 +47,7 @@
     margin: 10px
 }
 
-.signup-form>* input, select{
+.signup-form>* input, .signup-form>* select{
     display: flex;
     width: 800px;
     justify-content: center;

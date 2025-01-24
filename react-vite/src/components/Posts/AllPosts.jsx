@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as postActions from '../../redux/posts';
 import { BiSolidBookHeart } from "react-icons/bi";
 import { LiaLongArrowAltRightSolid } from "react-icons/lia";
@@ -9,6 +9,9 @@ import Filter from "../Filters/Filter";
 import './Posts.css';
 import { Tooltip } from 'react-tooltip';
 import anchor from '../../images/anchor.png';
+import Pagination from "../Explore/Pagination";
+import Lottie from "lottie-web";
+import whale from '../../lotties/whale.json'
 
 export default function AllPosts(){
     const dispatch = useDispatch();
@@ -21,8 +24,31 @@ export default function AllPosts(){
     const[update, setUpdate] = useState(true)
     const user = useSelector(state => state.session.user);
     const postData = useSelector(state => state.posts.allPosts);
-    const friendsData = useSelector(state => state.friends.allFriends)
+    const friendsData = useSelector(state => state.friends.allFriends);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+    const container = useRef(null);
     let friendsArr = [];
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+      };
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredPosts?.slice(indexOfFirstItem, indexOfLastItem);
+
+    useEffect(() => {
+        const anim = Lottie.loadAnimation({
+          container: container.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: whale,
+        })
+
+        return () => anim.destroy();
+      }, [container])
 
     if(friendsData){
         const copy = Object.values(friendsData)
@@ -104,7 +130,7 @@ export default function AllPosts(){
         {<Filter levelFilter={levelFilter} languageFilter={languageFilter} localFilter={localFilter} friendFilter={friendFilter} handleClick={handleClick}/>}
         <div className="posts-list list">
             <ul>
-                {filteredPosts ? filteredPosts.map((post, index) => (
+                {currentItems ? currentItems.map((post, index) => (
                     <>
                     <li key={index}>
                         <div className="posts-tile">
@@ -126,6 +152,15 @@ export default function AllPosts(){
                 <li>Be the first to write a post!</li>
                 }
             </ul>
+            {/* <div className="whale-animation" ref={container}></div> */}
+            {/* <div className="post-pagination"> */}
+            <Pagination
+            itemsPerPage={itemsPerPage}
+            totalItems={filteredPosts?.length}
+            onPageChange={handlePageChange}
+            />
+            {/* </div> */}
+            {/* <div className="whale-animation" ref={container}></div> */}
         </div>
         </>
     )

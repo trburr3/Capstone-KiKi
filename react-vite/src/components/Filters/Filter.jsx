@@ -8,7 +8,7 @@ const Filter = ({ levelFilter, languageFilter, localFilter, friendFilter, handle
         <button className={!languageFilter? 'active-filter' : ''} onClick={() => {handleClick('language')}}>Language</button>
         <button className={!localFilter? 'active-filter' : ''} onClick={() => {handleClick('local')}}>Local</button>
         <button className={!friendFilter? 'active-filter' : ''} onClick={() => {handleClick('friends')}}>Friends</button>
-        <button>More...</button>
+        <button onClick={() => window.alert('Feature coming soon...')}>More...</button>
         </div>
         </>
     )

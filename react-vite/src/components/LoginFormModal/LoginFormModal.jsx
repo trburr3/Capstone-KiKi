@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import logo from '../../images/logo.png';
+import Lottie from "lottie-web";
+import waves from '../../lotties/waves-smaller.json';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -10,6 +13,19 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const container = useRef(null);
+
+  useEffect(() => {
+    const anim = Lottie.loadAnimation({
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: waves,
+    })
+
+    return () => anim.destroy();
+  }, [container])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +64,13 @@ function LoginFormModal() {
   return (
     <>
       <div className="modal login-modal">
+      <div className="modal-logo">
+      <img src={logo} alt="logo" />
+      </div>
+      {/* <div className="login-header">
+      <img src={logo} alt="logo" /> */}
       <h1 className="page-title">Log In</h1>
+      {/* </div> */}
       <form onSubmit={handleSubmit}>
         <label>
           Email
@@ -73,6 +95,10 @@ function LoginFormModal() {
         <button type="submit">Log In</button>
         <button onClick={handleClick}>Demo</button>
       </form>
+      {/* <div className="modal-logo">
+      <img src={logo} alt="logo" />
+      </div> */}
+      <div className="modal-animation" ref={container}></div>
       </div>
     </>
   );

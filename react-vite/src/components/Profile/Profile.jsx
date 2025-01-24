@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../Translator/OpenModalButton";
@@ -19,7 +19,10 @@ import { FaGlobe } from "react-icons/fa6";
 import { FaHeartCircleBolt } from "react-icons/fa6";
 import { FaLightbulb } from "react-icons/fa6";
 import RemoveFriendModal from "./RemoveFriendModal";
-import { Tooltip } from "react-tooltip";
+import Lottie from 'lottie-web';
+// import lion from '../../lotties/lion-fish.json';
+import turtle from '../../lotties/turtle.json';
+
 
 const ProfilePage = ({ profileState }) => {
     const dispatch = useDispatch();
@@ -36,6 +39,32 @@ const ProfilePage = ({ profileState }) => {
     const [bio, setBio] = useState(user?.bio);
     const [update, setUpdate] = useState(true);
     let [activeSection, setActiveSection] = useState('achievements');
+    const container = useRef(null);
+    // const containerOne = useRef(null);
+
+    // useEffect(() => {
+    //     const anim = Lottie.loadAnimation({
+    //       container: containerOne.current,
+    //       renderer: 'svg',
+    //       loop: true,
+    //       autoplay: true,
+    //       animationData: lion,
+    //     })
+
+    //     return () => anim.destroy();
+    //   }, [containerOne])
+
+      useEffect(() => {
+        const anim = Lottie.loadAnimation({
+          container: container.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: turtle,
+        })
+
+        return () => anim.destroy();
+      }, [container])
 
     useEffect(() => {
         if(profileState) setActiveSection(profileState)
@@ -318,6 +347,7 @@ const ProfilePage = ({ profileState }) => {
                         </li>
                     ))}
                     </ul>
+                    {/* <div className="lion-animation" ref={containerOne}></div> */}
                     </>
                 )
             }
@@ -363,6 +393,7 @@ const ProfilePage = ({ profileState }) => {
                         </li>
                     ))}
                     </ul>
+                    <div className="turtle-animation" ref={container}></div>
                     </>
                 )
             }

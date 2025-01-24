@@ -137,12 +137,14 @@ const PostDetails = () => {
                         {
                         post && user.id == post.author_id ?
                             <>
+                            <div className="user-buttons">
                             <button onClick={handleClick}>Edit</button>
                             <OpenModalButton
                             modalComponent={<DeletePostModal post={post}/>}
                             onButtonClick
                             onModalClose={() => navigate('/posts')}
                             buttonText='Delete'/>
+                            </div>
                             </>
                         :
                             ''

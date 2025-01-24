@@ -3,16 +3,16 @@
     color: white
 }
 .filters-container>button{
-    background-color: rgba(128, 128, 128, 0.334);
-    border-radius: 35%;
-    width: 5%;
-    padding: 5px;
+    background-color: rgba(128, 128, 128, 0.195);
+    border-radius: 45%;
+    width: 8%;
+    padding: 15px;
     margin: 15px;
+    box-shadow: 3px 3px 2px 1px black;
 }
 .filters-container>button:hover{
     background-color: white;
     box-shadow: 3px 3px 2px 1px black;
-    font-size: 14px;
     color:black;
 }
 

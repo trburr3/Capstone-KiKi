@@ -50,7 +50,7 @@ const Inbox = ({ inboxState }) => {
 			    <button
 				    className={activeSection === 'messages' ? 'active' : ''}
 				    onClick={() => setActiveSection('messages')}>
-				    Message
+				    Messages
 			    </button>
 			    <button
 				    className={activeSection === 'requests' ? 'active' : ''}

@@ -78,6 +78,7 @@ function ProfileButton() {
                 buttonText="Log In"
                 onButtonClick={closeMenu}
                 modalComponent={<LoginFormModal />}
+                // onModalClose={() => navigate('/explore')}
               />
               <OpenModalButton
                 buttonText="Sign Up"

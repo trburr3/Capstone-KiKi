@@ -16,25 +16,39 @@
     background-color: #812d2d00;
 }
 .learners-list div{
-    border: 8px solid #812d2d;
+    border: 12px solid #812d2d;
     justify-self: center;
-    background-color: burlywood;
+    /* background-color: burlywood; */
     border-style: groove;
+    background-image: url('../../images/circle-plaque.png');
+    background-position: 60%;
+    box-shadow: 5px 5px 5px burlywood;
 }
+
+.learners-list .learner-tile:hover{
+    /* border: 12px solid burlywood; */
+    box-shadow: 15px 15px 15px black;
+}
+
 .learner-tile-img{
-    border: 10px solid rgba(222, 184, 135, 0.738);
-    border-style: groove;
+    /* border: 10px solid rgba(222, 184, 135, 0.738); */
+    /* border: 10px solid rgba(166, 139, 104, 0.738); */
+    border: 10px solid #812d2d;
+    /* border-style: groove; */
     background-color: burlywood;
     width: 275px;
     justify-self: center;
+    border-radius: 100%;
 }
 
 .learner-tile>h2{
     text-align: center;
-    background-color: burlywood;
+    /* background-color: rgba(222, 184, 135, 0.376); */
+    background-color: rgba(222, 184, 135, 0);
     width: fit-content;
     justify-self: center;
     padding: 2px;
+    color: white
 }
 
 .learner-tile{
@@ -121,27 +135,42 @@
     width: 400px;
 }
 
+.preview-buttons{
+    padding: 10px;
+}
+
 .preview-buttons>button{
     font-size: 25px;
 }
 
-#learner-tooltip{
+/* #learner-tooltip{
     padding: 20px;
     letter-spacing: 3px;
+    background-color: burlywood;
+    background-image: none;
+    box-shadow: none;
+    font-weight: 500;
+    font-size: 20px;
 }
+
+.learner-tooltip-arrow .learner-arrow{
+    box-shadow: none;
+    border: 7px solid burlywood;
+} */
 
 .pagination{
     width: 800px;
     display: flex;
     justify-content: space-around;
     list-style: none;
-    padding: 5px;
+    padding: 15px;
     /* margin: 5px; */
 }
 
 .pagination>* button:hover{
     background-color: #812d2d;
-    color: white
+    color: white;
+    /* box-shadow: 5px 5px 5px black; */
 }
 
 .pagination>.active{
@@ -150,4 +179,9 @@
 
 .pagination-container{
     margin: 20px;
+}
+
+.pagination>* button{
+    /* padding: 5px; */
+    padding: 5px 10px;
 }

@@ -1,0 +1,41 @@
+.pick{
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.top{
+    margin: 10px;
+
+}
+
+.bottom>button{
+    font-size: larger;
+    width: 200px;
+}
+
+.bottom>button:hover{
+    color: white;
+    background-color: #812d2d;
+    box-shadow: 5px 5px 5px black;
+}
+
+.bottom{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.top, .middle{
+    border-bottom: 2px black solid;
+}
+
+.top>* input , .top>* select{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: large;
+}
+
+.signup-modal>h1{
+    padding-top: 100px;
+}

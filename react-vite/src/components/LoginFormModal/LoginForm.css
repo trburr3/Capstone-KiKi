@@ -4,9 +4,10 @@
     margin: 10px;
 }
 
-.login-modal>* button, input{
+.login-modal>* button, .login-modal>* input{
     font-size: large;
     margin: 10px;
+    padding: 5px;
 }
 
 .login-modal>* button{
@@ -16,4 +17,28 @@
 .login-modal>* button:hover{
     color: white;
     background-color: #812d2d;
+    box-shadow: 5px 5px 5px black;
+}
+
+.login-modal>h1{
+    margin-bottom: 40px;
+    margin-top: 100px;
+}
+
+.login-modal>img{
+    border: black solid;
+    background-color: #812d2d00;
+}
+
+.modal-logo{
+    display: flex;
+    justify-content: center;
+    /* margin: 0;
+    padding: 0; */
+    position: absolute;
+    z-index: 10;
+    right: 25px;
+    left: 25px;
+    background-color: #812d2d00;
+    height: 100px;
 }

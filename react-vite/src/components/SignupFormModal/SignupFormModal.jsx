@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
-import "./SignupForm.css";
+import "./SignupFormModal.css";
 import avatar1 from '../../images/Avatar 1.png';
 import avatar2 from '../../images/Avatar 2.png';
 import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
+import logo from '../../images/logo.png';
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -69,6 +70,9 @@ function SignupFormModal() {
   return (
     <>
       <div className="modal signup-modal">
+      <div className="modal-logo">
+      <img src={logo} alt="logo" />
+      </div>
       <h1 className="page-title">Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>

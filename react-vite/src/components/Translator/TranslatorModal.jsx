@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { thunkTranslate } from '../../redux/translate';
+import Lottie from "lottie-web";
+import waves from '../../lotties/waves-smaller.json';
 
 const TranslatorModal = () => {
     const dispatch = useDispatch();
@@ -8,7 +10,21 @@ const TranslatorModal = () => {
     const [translatedText, setTranslatedText] = useState('');
     const [language, setLanguage] = useState('English');
 
-    const res = useSelector(state => state.translation)
+    const res = useSelector(state => state.translation);
+
+    const container = useRef(null);
+
+    useEffect(() => {
+      const anim = Lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: waves,
+      })
+
+      return () => anim.destroy();
+    }, [container])
 
     useEffect(() => {
         setTranslatedText(res.translation[0])
@@ -87,6 +103,7 @@ const TranslatorModal = () => {
             <div className='translator-output'>
                 {translatedText ? <p>{translatedText}</p> : <p>Translating...</p>}
             </div>
+            <div className="modal-animation" ref={container}></div>
         </div>
         </>
     )

@@ -6,11 +6,15 @@
     align-items: center;
     padding: 5px;
     font-size: larger;
-    margin: 10px;
+    margin: 20px;
     background-color: rgba(128, 128, 128, 0.483);
     background-image: url('../../images/Chatroom.png');
     background-position-y: 35%;
     border-radius: 15px;
+}
+
+.friends-list>li:hover{
+  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.578);
 }
 
 .friends-list>li img, .friends-list>li p{
@@ -161,6 +165,7 @@
   .profile-picture>button{
     width: 100px;
     justify-self: center;
+    font-size: 15px;
   }
 
   .profile-picture>*{
@@ -375,6 +380,10 @@
     border-radius: 8px;
   }
 
+  .delete-modal>* h1, .edit-modal>* h1{
+    margin-top: 15px;
+  }
+
   .edit-modal>button, .delete-modal>button{
     font-size: large;
   }
@@ -399,6 +408,7 @@
 
   .edit-modal>a:hover, .delete-modal>a:hover{
     color: black;
+    font-size: 22px;
   }
 
   .done{
@@ -407,4 +417,44 @@
 
   .available-list{
     list-style-type: circle;
+  }
+
+  .generic-modal-content{
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .generic-modal{
+    border-radius: 10px;
+    padding: 3px;
+  }
+
+  .generic-modal-content>* a{
+    color: #812d2d;
+    padding-top: 10px;
+  }
+
+  .generic-modal-content>* a:hover{
+    font-size: 22px;
+    color: black;
+  }
+
+  .generic-modal-content>* h1{
+    padding-top: 85px;
+  }
+
+  .italics{
+    font-style: italic;
+    background-color: #812d2d00;
+  }
+
+  .bold{
+    font-weight: 700;
+    background-color: #812d2d00;
+  }
+
+  .generic-modal-content>* button:hover{
+    background-color: #812d2d;
+    color: white;
+    /* box-shadow: 5px 5px 5px black; */
   }

@@ -24,7 +24,7 @@
 
 .message-input>form button:hover{
     background-color: #812d2d;
-    color: white
+    color: white;
 }
 
 
@@ -67,6 +67,7 @@
     padding: 1em;
     border-inline: var(--t) solid #0000;
     border-radius: calc(var(--r) + var(--t))/var(--r);
+    /* border-radius: 60px 60px 0 60px; */
     mask:
       radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%)
         var(--_p) 100%/var(--t) var(--t) no-repeat,
@@ -100,9 +101,10 @@
     cursor: pointer;
   }
 
-  .right>* button:hover{
+  .right>* button:hover, .edit-modal-content>* button:hover{
     background-color: #812d2d;
     color: white;
+    box-shadow: 5px 5px 5px black;
   }
 
   .message-list{
@@ -114,3 +116,23 @@
   .message-input>form{
     background-color: #812d2d00;
   }
+
+ #edit-title{
+    margin-bottom: 40px;
+    padding-top: 100px;
+}
+
+.edit-message-modal{
+  border-radius: 8px;
+  padding: 0 5px
+}
+
+.edit-modal-content{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.edit-modal-content>* input, .edit-modal-content>* button{
+  padding: 10px
+}

@@ -11,7 +11,7 @@ import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import Filter from "../Filters/Filter";
-import { Tooltip } from 'react-tooltip';
+// import { Tooltip } from 'react-tooltip';
 import anchor from '../../images/anchor.png';
 import Pagination from "./Pagination";
 
@@ -105,7 +105,8 @@ const AllLearners = () => {
                     itemText={
                     <>
                         <div className="learner-tile" data-tooltip-id="learner-tooltip" data-tooltip-content={learner.city}>
-                        <Tooltip id="learner-tooltip" />
+                        {/* <Tooltip id="learner-tooltip" className='learner-tooltip-arrow' classNameArrow="learner-arrow" /> */}
+                            <h2>{learner.city}</h2>
                             <img className='learner-tile-img' src={avatarArr[(learner.prof_pic - 1)]} alt="avatar" />
                             <h2>{learningFlags[learner.learning]} {learner.first_name} {learner.last_name} {levelArr[(learner.level -1)]}</h2>
                         </div>
