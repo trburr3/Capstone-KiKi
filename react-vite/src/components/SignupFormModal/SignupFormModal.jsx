@@ -8,7 +8,7 @@ import avatar2 from '../../images/Avatar 2.png';
 import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 
 function SignupFormModal() {
   const dispatch = useDispatch();
