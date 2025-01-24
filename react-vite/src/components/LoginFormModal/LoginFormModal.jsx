@@ -3,7 +3,7 @@ import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 import Lottie from "lottie-web";
 import waves from '../../lotties/waves-smaller.json';
 

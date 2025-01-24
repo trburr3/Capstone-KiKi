@@ -4,7 +4,7 @@ import { useModal } from "../../context/Modal";
 import { thunkDeletePost } from "../../redux/posts";
 import { Link } from "react-router-dom";
 import '../Profile/Profile.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 import Lottie from "lottie-web";
 import waves from '../../lotties/waves-smaller.json';
 
