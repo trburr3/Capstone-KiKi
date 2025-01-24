@@ -1,0 +1,60 @@
+.header-animation{
+    height:150px;
+}
+
+.signup-header{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.signup-header>h1{
+    padding-top: 50px;
+}
+
+.signup-form>button{
+    padding: 15px
+}
+
+.signup-form>button:hover{
+    background-color: #812d2d;
+    color: white;
+    box-shadow: 5px 5px 5px black;
+}
+
+.avatar-container{
+    text-align: center;
+    font-size: xx-large;
+    padding: 15px;
+}
+
+.avatar-container>p{
+    margin-bottom: 30px;
+}
+
+.signup-form{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.signup-form>label{
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.avatar-options>li{
+    margin: 10px
+}
+
+.signup-form>* input, select{
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+}
+
+.signup-form>* select{
+    margin:10px;
+}

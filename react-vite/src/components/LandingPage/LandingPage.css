@@ -2,7 +2,7 @@
     display: inline-flexbox;
     text-align: center;
     font-size: xx-large;
-    height: 820px;
+    min-height: 820px;
     /* background-image: url('../../images/Landing-Scene-1.png');
     background-repeat: no-repeat;
     background-position-y: 130%;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.293);
     border-radius: 25px;
     width: fit-content;
     height: 100px;
@@ -63,4 +63,16 @@
   .fade-out {
     opacity: 0;
     transition: opacity 1.5s ease;
+  }
+
+  .bottom-animation{
+    height: 600px;
+  }
+
+  .landing-page-text>a{
+    color: #812d2d
+  }
+
+  .landing-page-text>a:hover{
+    font-size: 30px;
   }

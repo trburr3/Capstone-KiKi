@@ -39,4 +39,5 @@ a {
 
 select, input, button{
     border-radius: 8px;
+    font-size: 20px;
 }

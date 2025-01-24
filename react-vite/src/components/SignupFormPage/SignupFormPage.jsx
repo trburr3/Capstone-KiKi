@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { thunkSignup } from "../../redux/session";
@@ -7,6 +7,10 @@ import avatar2 from '../../images/Avatar 2.png';
 import avatar3 from '../../images/Avatar 3.png';
 import avatar4 from '../../images/Avatar 4.png';
 import avatar5 from '../../images/Avatar 5.png';
+import './SignupForm.css';
+import Lottie from "lottie-web";
+import vest from '../../lotties/life-jacket-lottie.json';
+import snorkle from '../../lotties/snorkle-lottie.json';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -25,6 +29,32 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const containerOne = useRef(null);
+  const containerTwo = useRef(null);
+
+  useEffect(() => {
+    const anim = Lottie.loadAnimation({
+      container: containerOne.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: vest
+    })
+
+    return () => anim.destroy();
+  }, [containerOne])
+
+  useEffect(() => {
+    const anim = Lottie.loadAnimation({
+      container: containerTwo.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: snorkle
+    })
+
+    return () => anim.destroy();
+  }, [containerTwo])
 
   if (sessionUser) return <Navigate to="/" replace={true} />;
 
@@ -55,9 +85,13 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <div className="signup-header">
+      <div className="header-animation" ref={containerOne}></div>
+      <h1 className="page-title">Sign Up</h1>
+      <div className="header-animation" ref={containerTwo}></div>
+      </div>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="signup-form">
         <label>First Name
 					<input
 						type='text'
@@ -113,7 +147,7 @@ function SignupFormPage() {
             <option
                 value="English"
                 required>
-                 Enlgish
+                 English
             </option>
             <option
                 value="French"
@@ -168,17 +202,6 @@ function SignupFormPage() {
 						onChange={(e) => setBio(e.target.value)}
 					/>
         </label>
-        <label>Pick an avatar!
-        <div>
-        <ul className="avatar-options">
-            <li className={prof_pic == 1? 'selected' : ''} onClick={() => setProfPic(1)}><img src={avatar1} alt="avatar1" /></li>
-            <li className={prof_pic == 2? 'selected' : ''} onClick={() => setProfPic(2)}><img src={avatar2} alt="avatar2" /></li>
-            <li className={prof_pic == 3? 'selected' : ''} onClick={() => setProfPic(3)}><img src={avatar3} alt="avatar3" /></li>
-            <li className={prof_pic == 4? 'selected' : ''} onClick={() => setProfPic(4)}><img src={avatar4} alt="avatar4" /></li>
-            <li className={prof_pic == 5? 'selected' : ''} onClick={() => setProfPic(5)}><img src={avatar5} alt="avatar5" /></li>
-          </ul>
-        </div>
-        </label>
         <label>
           Password
           <input
@@ -199,6 +222,18 @@ function SignupFormPage() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {/* <label>Pick an avatar! */}
+        <div className="avatar-container">
+        <p>Pick an avatar!</p>
+        <ul className="avatar-options">
+            <li className={prof_pic == 1? 'selected' : ''} onClick={() => setProfPic(1)}><img src={avatar1} alt="avatar1" /></li>
+            <li className={prof_pic == 2? 'selected' : ''} onClick={() => setProfPic(2)}><img src={avatar2} alt="avatar2" /></li>
+            <li className={prof_pic == 3? 'selected' : ''} onClick={() => setProfPic(3)}><img src={avatar3} alt="avatar3" /></li>
+            <li className={prof_pic == 4? 'selected' : ''} onClick={() => setProfPic(4)}><img src={avatar4} alt="avatar4" /></li>
+            <li className={prof_pic == 5? 'selected' : ''} onClick={() => setProfPic(5)}><img src={avatar5} alt="avatar5" /></li>
+          </ul>
+        </div>
+        {/* </label> */}
         <button type="submit">Sign Up</button>
       </form>
     </>
