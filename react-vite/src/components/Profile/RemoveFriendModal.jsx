@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import './Profile.css';
 import { Link } from "react-router-dom";
 import './Profile.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 import Lottie from "lottie-web";
 import waves from '../../lotties/waves-smaller.json';
 
