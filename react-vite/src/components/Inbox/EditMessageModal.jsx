@@ -4,7 +4,7 @@ import { thunkEditMessage } from "../../redux/messages";
 import { useModal } from "../../context/Modal";
 import Lottie from "lottie-web";
 import waves from '../../lotties/waves-smaller.json';
-import logo from '../../images/logo.png';
+import logo from '../../images/Logo.png';
 import './Conversation/Conversation.css';
 
 const EditMessageModal = ({ conversationId, message, setUpdate }) => {
